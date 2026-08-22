@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PlayStation Store</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&family=Outfit:wght@300;400;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=202608230350">
+</head>
+
+<body>
+  <header class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <img class="navbar__logo" alt="PlayStation" src="assets/navbar_logo.svg">
+      <p class="navbar__cart">cart</p>
+    </div>
+  </header>
+
+  <div class="canvas" id="canvas">
+
+    <section class="hero">
+      <div class="hero__stack">
+        <div class="hero__track">
+
+          <!-- Set 1: 9 cards from front (God of War) to back (RE7 Biohazard) -->
+          <div class="cover cover--gow">
+            <img src="assets/gow.png" alt="God of War">
+          </div>
+          <div class="cover cover--doa">
+            <img src="assets/doa.png" alt="Dead or Alive 5">
+          </div>
+          <div class="cover cover--detroit">
+            <img src="assets/detroit.png" alt="Detroit Become Human">
+          </div>
+          <div class="cover cover--spider">
+            <img src="assets/spider.png" alt="Spider-Man">
+          </div>
+          <div class="cover cover--wwe">
+            <img src="assets/wwe.png" alt="WWE 2K17">
+          </div>
+          <div class="cover cover--maden">
+            <img src="assets/maden.png" alt="Madden NFL 17">
+          </div>
+          <div class="cover cover--ratchet2">
+            <img src="assets/ratchet2.png" alt="Ratchet and Clank">
+          </div>
+          <div class="cover cover--grid">
+            <img src="assets/grid.png" alt="GRID">
+          </div>
+          <div class="cover cover--re7b">
+            <img src="assets/re7b.png" alt="Resident Evil 7 Biohazard">
+          </div>
+
+          <!-- Set 2: seamless duplicate loop extending up-right behind Set 1 -->
+          <div class="cover cover--gow-2">
+            <img src="assets/gow.png" alt="God of War">
+          </div>
+          <div class="cover cover--doa-2">
+            <img src="assets/doa.png" alt="Dead or Alive 5">
+          </div>
+          <div class="cover cover--detroit-2">
+            <img src="assets/detroit.png" alt="Detroit Become Human">
+          </div>
+          <div class="cover cover--spider-2">
+            <img src="assets/spider.png" alt="Spider-Man">
+          </div>
+          <div class="cover cover--wwe-2">
+            <img src="assets/wwe.png" alt="WWE 2K17">
+          </div>
+          <div class="cover cover--maden-2">
+            <img src="assets/maden.png" alt="Madden NFL 17">
+          </div>
+          <div class="cover cover--ratchet2-2">
+            <img src="assets/ratchet2.png" alt="Ratchet and Clank">
+          </div>
+          <div class="cover cover--grid-2">
+            <img src="assets/grid.png" alt="GRID">
+          </div>
+          <div class="cover cover--re7b-2">
+            <img src="assets/re7b.png" alt="Resident Evil 7 Biohazard">
+          </div>
+
+        </div>
+      </div>
+      <div class="hero__title">
+        <p>play</p>
+        <p>connect</p>
+        <p>repeat</p>
+      </div>
+    </section>
+
+    <section class="promo">
+      <div class="promo__glow"></div>
+      <img class="promo__logo" alt="" src="assets/promo_logo.svg">
+      <p class="promo__title">PLAY HAS NO LIMITS.</p>
+      <div class="promo__text">
+        <p>Gaming is more than a screen, a controller, or a few hours of your day. It is the feeling of stepping into
+          another world, becoming someone else, and experiencing stories that stay with you long after you put the
+          controller down.</p>
+        <p>From legendary adventures and immersive open worlds to intense competition and unforgettable characters,
+          PlayStation has created experiences for every kind of player. Some games challenge you. Some make you laugh.
+          Some completely absorb you.</p>
+        <p>Our collection brings together some of those experiences in one place, ready for you to discover, play, and
+          make your own memories with.</p>
+      </div>
+    </section>
+
+    <section class="store">
+      <p class="store__heading">STORE</p>
+
+      <div class="games">
+
+        <div class="art art--gow">
+          <img src="assets/gow.png" alt="God of War">
+        </div>
+        <p class="title title--gow">God Of War</p>
+        <p class="meta meta--gow"><span class="meta__cat">Action RPG</span><br>
+          <span class="meta__desc">Journey through the Norse realms with Kratos and Atreus.</span>
+        </p>
+        <button class="buy buy--gow" type="button">Add To Cart
+          <img class="buy__arrow" alt="" src="assets/buy_arrow.svg">
+        </button>
+
+        <div class="art art--detroit">
+          <img src="assets/detroit.png" alt="Detroit Become Human">
+        </div>
+        <p class="title title--detroit">Detroit Become Human</p>
+        <p class="meta meta--detroit"><span class="meta__cat">Adventure &middot; Narrative</span><br>
+          <span class="meta__desc">Shape the future through every choice you make.</span>
+        </p>
+        <button class="buy buy--detroit" type="button">Add To Cart
+          <img class="buy__arrow" alt="" src="assets/buy_arrow.svg">
+        </button>
+
+        <div class="art art--wwe">
+          <img src="assets/wwe.png" alt="WWE 2K17">
+        </div>
+        <p class="title title--wwe">WWE 2K1</p>
+        <p class="meta meta--wwe"><span class="meta__cat">Sports &middot; Wrestling</span><br>
+          <span class="meta__desc">Step into the ring and become a WWE Superstar.</span>
+        </p>
+        <button class="buy buy--wwe" type="button">Add To Cart
+          <img class="buy__arrow" alt="" src="assets/buy_arrow.svg">
+        </button>
+
+        <div class="art art--mouse">
+          <img src="assets/ratchet.png" alt="Ratchet and Clank">
+        </div>
+        <p class="title title--mouse">Ratchet &amp;<br>Clank</p>
+        <p class="meta meta--mouse"><span class="meta__cat">Action &middot; Adventure</span><br>
+          <span class="meta__desc">Blast through worlds with Ratchet and Clank.</span>
+        </p>
+        <button class="buy buy--mouse" type="button">Add To Cart
+          <img class="buy__arrow" alt="" src="assets/buy_arrow.svg">
+        </button>
+
+        <div class="art art--spider">
+          <img src="assets/spider.png" alt="Spider-Man">
+        </div>
+        <p class="title title--spider">Spiderman</p>
+        <p class="meta meta--spider"><span class="meta__cat">Action &middot; Adventure</span><br>
+          <span class="meta__desc">Swing through New York and become Spider-Man.</span>
+        </p>
+        <button class="buy buy--spider" type="button">Add To Cart
+          <img class="buy__arrow" alt="" src="assets/buy_arrow.svg">
+        </button>
+
+        <div class="art art--evil">
+          <img src="assets/re7.png" alt="Resident Evil Biohazard">
+        </div>
+        <p class="title title--evil">Resident Evil Biohazard</p>
+        <p class="meta meta--evil"><span class="meta__cat">Survival Horror &middot; Action</span><br>
+          <span class="meta__desc">Face your fears in a terrifying fight for survival.</span>
+        </p>
+        <button class="buy buy--evil" type="button">Add To Cart
+          <img class="buy__arrow" alt="" src="assets/buy_arrow.svg">
+        </button>
+
+      </div>
+    </section>
+
+    <div class="page-footer"></div>
+
+  </div>
+  <script>
+    var canvas = document.getElementById('canvas');
+    var DESIGN_W = 1280, DESIGN_H = 4076;
+    function fit() {
+      var s = window.innerWidth / DESIGN_W;
+      canvas.style.transform = 'scale(' + s + ')';
+      canvas.style.marginLeft = '0';
+      document.body.style.height = (DESIGN_H * s) + 'px';
+    }
+    window.addEventListener('resize', fit);
+    window.addEventListener('orientationchange', fit);
+    fit();
+
+    // Interactive add to cart feedback
+    document.querySelectorAll('.buy').forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var original = btn.childNodes[0].textContent;
+        btn.childNodes[0].textContent = 'Added! ';
+        setTimeout(function () {
+          btn.childNodes[0].textContent = original;
+        }, 1500);
+      });
+    });
+
+    // High-sensitivity scroll-reactive gradient animation on promo page (second section)
+    var promo = document.querySelector('.promo');
+    var promoGlow = document.querySelector('.promo__glow');
+    function updateScrollGlow() {
+      if (!promo || !promoGlow) return;
+      var rect = promo.getBoundingClientRect();
+      var windowH = window.innerHeight;
+
+      // Sensitive viewport entry calculation
+      var start = windowH * 0.95;
+      var end = windowH * 0.1;
+      var progress = (start - rect.top) / (start - end);
+      progress = Math.max(0, Math.min(1.25, progress));
+
+      // Expand size, opacity, and glow blur directly linked to scroll
+      var scaleVal = 0.2 + progress * 0.9;
+      var opacityVal = 0.1 + progress * 0.9;
+      var blurVal = 25 + progress * 80;
+
+      promoGlow.style.transform = 'scale(' + scaleVal.toFixed(3) + ')';
+      promoGlow.style.opacity = opacityVal.toFixed(2);
+      promoGlow.style.filter = 'blur(' + blurVal.toFixed(1) + 'px)';
+    }
+
+    // Linear scroll-driven gradient animation for STORE heading
+    // Top is signature blue (#0130EC), bottom fades completely into background white (#FFFFFF)
+    // As you scroll down, the blue gradient linearly flows down through the letters
+    var storeHeading = document.querySelector('.store__heading');
+    var storeSection = document.querySelector('.store');
+
+    function updateStoreScroll() {
+      if (!storeHeading || !storeSection) return;
+      var rect = storeSection.getBoundingClientRect();
+      var windowH = window.innerHeight;
+
+      // Active linear scroll window through the store section
+      var start = windowH * 0.85;
+      var end = -rect.height * 0.4;
+      var progress = (start - rect.top) / (start - end);
+      progress = Math.max(0, Math.min(1, progress));
+
+      // Natural, smooth multi-stop feathered gradient
+      var s0 = Math.max(0, progress * 35);
+      var s1 = s0 + 10;
+      var s2 = s0 + 20;
+      var s3 = s0 + 30;
+      var s4 = s0 + 40;
+      var s5 = s0 + 50;
+      var s6 = s0 + 60;
+      var s7 = Math.min(100, s0 + 72);
+
+      var gradStr = 'linear-gradient(180deg, ' +
+        '#0130EC 0%, ' +
+        '#0130EC ' + s0.toFixed(1) + '%, ' +
+        '#254ef0 ' + s1.toFixed(1) + '%, ' +
+        '#5274f4 ' + s2.toFixed(1) + '%, ' +
+        '#819cf8 ' + s3.toFixed(1) + '%, ' +
+        '#b0c3fb ' + s4.toFixed(1) + '%, ' +
+        '#d4dcfc ' + s5.toFixed(1) + '%, ' +
+        '#eef2fe ' + s6.toFixed(1) + '%, ' +
+        '#FFFFFF ' + s7.toFixed(1) + '%, ' +
+        '#FFFFFF 100%)';
+
+      storeHeading.style.backgroundImage = gradStr;
+    }
+
+    function onScroll() {
+      updateScrollGlow();
+      updateStoreScroll();
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    onScroll();
+
+  </script>
+</body>
+
+</html>
