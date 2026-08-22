@@ -1,35 +1,51 @@
-# PlayStation Website — Figma Replica
+# PlayStation Store — Concept UI
 
-This folder contains the complete PlayStation website built strictly according to your Figma specs, measurements, gradients, shadows, and layout.
+A modern, animated concept landing page for the PlayStation Store built with vanilla HTML, CSS, and JavaScript.
 
-## 📁 Project Structure
-- `index.html` — The semantic HTML structure for Navbar, Hero with Floating Games stack, Promo section, Store cards, and Footer.
-- `styles.css` — Exact CSS pixel measurements, gradients, shadows, and responsive scaling.
-- `script.js` — Interactive cart, notifications, and card hover effects.
-- `images/` — Drop your game cover images here.
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
 
-## 🎮 Exact Figma Measurements Applied
-### Hero Floating Games Stack
-- **Container**: `position: absolute; width: 1224px; height: 812px; left: 0px; top: -334px;`
-- **Madden**: `width: 341px; height: 438px; left: 883px; top: 0px; border-radius: 18px;`
-- **WWE 2K17**: `width: 358px; height: 454px; left: 724px; top: 54px; border-radius: 18px;`
-- **Spider-Man**: `width: 364px; height: 460px; left: 555px; top: 113px; border-radius: 18px;`
-- **Detroit**: `width: 368px; height: 477px; left: 334px; top: 185px; border-radius: 18px; box-shadow: 10px 17px 21.9px rgba(0, 0, 0, 0.49);`
-- **DOA5**: `width: 374px; height: 473px; left: 169px; top: 260px; border-radius: 18px;`
-- **God of War**: `width: 378px; height: 478px; left: 0px; top: 334px; border-radius: 18px; filter: drop-shadow(8px 13px 27px rgba(0, 0, 0, 0.48));`
+---
 
-## 🖼️ How to Add Your Images
-Whenever you're ready to provide images, simply:
-1. Place them in the `images/` folder (e.g. `maden.png`, `wwe.png`, `spider.png`, `detroit.png`, `doa.png`, `gow.png`).
-2. Or set them in `styles.css` under the `:root` variables:
-```css
-:root {
-  --img-maden: url('images/maden.png');
-  --img-wwe: url('images/wwe.png');
-  --img-spider: url('images/spider.png');
-  --img-detroit: url('images/detroit.png');
-  --img-doa: url('images/doa.png');
-  --img-gow: url('images/gow.png');
-}
-```
-Until then, clean, styled PlayStation placeholders are rendered in place.
+## ✨ Features
+
+- **Infinite Diagonal Game Carousel**: Smooth, continuous 3D card flow with seamless stacking.
+- **Scroll-Driven Gradients**: Real-time linear gradient morphing across typography and the promo glow section.
+- **Interactive UI**: Micro-interactions including directional button fills and instant cart feedback.
+- **Pure Vanilla**: Zero framework overhead, no dependencies.
+
+---
+
+## 🚀 Running Locally
+
+No build tools or installation needed.
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/byanam/PlayStation-Store-UI.git
+   cd PlayStation-Store-UI
+   ```
+
+2. Open in your browser:
+   ```bash
+   # On macOS
+   open index.html
+
+   # Or serve locally
+   python3 -m http.server 3000
+   ```
+
+---
+
+## 🛠️ Tech Stack
+
+- **HTML5** — Semantic layout and asset structure
+- **CSS3** — Custom keyframe animations, glassmorphism navbar, and custom styling
+- **Vanilla JavaScript** — Scroll-linked interpolation and responsive canvas scaling
+
+---
+
+## 📄 License
+
+MIT License. Feel free to use and adapt this project for your own portfolio or experiments.
