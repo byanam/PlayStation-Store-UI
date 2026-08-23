@@ -317,6 +317,14 @@
       }
     });
 
+    var checkoutBtn = document.getElementById('cartCheckout');
+    if (checkoutBtn) {
+      checkoutBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank');
+      });
+    }
+
     renderCart();
 
     // Store card video preview on hover
