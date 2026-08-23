@@ -10,7 +10,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&family=Outfit:wght@300;400;600;700;800&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=202608231551">
+  <link rel="stylesheet" href="styles.css?v=202608231553">
 </head>
 
 <body>
@@ -334,7 +334,7 @@
   </div>
   <script>
     var canvas = document.getElementById('canvas');
-    var DESIGN_W = 1280, DESIGN_H = 3906;
+    var DESIGN_W = 1280, DESIGN_H = 3870;
     function fit() {
       var s = window.innerWidth / DESIGN_W;
       canvas.style.transform = 'scale(' + s + ')';
@@ -497,80 +497,65 @@
       });
     });
 
-    // High-sensitivity scroll-reactive gradient animation on promo page (second section)
+    // High-performance RAF scroll-reactive animations
     var promo = document.querySelector('.promo');
     var promoGlow = document.querySelector('.promo__glow');
-    function updateScrollGlow() {
-      if (!promo || !promoGlow) return;
-      var rect = promo.getBoundingClientRect();
-      var windowH = window.innerHeight;
-
-      // Sensitive viewport entry calculation
-      var start = windowH * 0.95;
-      var end = windowH * 0.1;
-      var progress = (start - rect.top) / (start - end);
-      progress = Math.max(0, Math.min(1.25, progress));
-
-      // Expand size, opacity, and glow blur directly linked to scroll
-      var scaleVal = 0.2 + progress * 0.9;
-      var opacityVal = 0.1 + progress * 0.9;
-      var blurVal = 25 + progress * 80;
-
-      promoGlow.style.transform = 'scale(' + scaleVal.toFixed(3) + ')';
-      promoGlow.style.opacity = opacityVal.toFixed(2);
-      promoGlow.style.filter = 'blur(' + blurVal.toFixed(1) + 'px)';
-    }
-
-    // Linear scroll-driven gradient animation for STORE heading
-    // Top is signature blue (#0130EC), bottom fades completely into background white (#FFFFFF)
-    // As you scroll down, the blue gradient linearly flows down through the letters
     var storeHeading = document.querySelector('.store__heading');
     var storeSection = document.querySelector('.store');
 
-    function updateStoreScroll() {
-      if (!storeHeading || !storeSection) return;
-      var rect = storeSection.getBoundingClientRect();
+    var ticking = false;
+    function updateScrollEffects() {
       var windowH = window.innerHeight;
 
-      // Active linear scroll window through the store section
-      var start = windowH * 0.85;
-      var end = -rect.height * 0.4;
-      var progress = (start - rect.top) / (start - end);
-      progress = Math.max(0, Math.min(1, progress));
+      if (promo && promoGlow) {
+        var pRect = promo.getBoundingClientRect();
+        var pStart = windowH * 0.95;
+        var pEnd = windowH * 0.1;
+        var pProgress = Math.max(0, Math.min(1.25, (pStart - pRect.top) / (pStart - pEnd)));
+        var scaleVal = 0.4 + pProgress * 0.7;
+        var opacityVal = 0.2 + pProgress * 0.8;
+        promoGlow.style.transform = 'scale(' + scaleVal.toFixed(3) + ')';
+        promoGlow.style.opacity = opacityVal.toFixed(2);
+      }
 
-      // Natural, smooth multi-stop feathered gradient
-      var s0 = Math.max(0, progress * 35);
-      var s1 = s0 + 10;
-      var s2 = s0 + 20;
-      var s3 = s0 + 30;
-      var s4 = s0 + 40;
-      var s5 = s0 + 50;
-      var s6 = s0 + 60;
-      var s7 = Math.min(100, s0 + 72);
+      if (storeHeading && storeSection) {
+        var sRect = storeSection.getBoundingClientRect();
+        var sStart = windowH * 0.85;
+        var sEnd = -sRect.height * 0.4;
+        var sProgress = Math.max(0, Math.min(1, (sStart - sRect.top) / (sStart - sEnd)));
+        var s0 = Math.max(0, sProgress * 35);
+        var s7 = Math.min(100, s0 + 72);
 
-      var gradStr = 'linear-gradient(180deg, ' +
-        '#0130EC 0%, ' +
-        '#0130EC ' + s0.toFixed(1) + '%, ' +
-        '#254ef0 ' + s1.toFixed(1) + '%, ' +
-        '#5274f4 ' + s2.toFixed(1) + '%, ' +
-        '#819cf8 ' + s3.toFixed(1) + '%, ' +
-        '#b0c3fb ' + s4.toFixed(1) + '%, ' +
-        '#d4dcfc ' + s5.toFixed(1) + '%, ' +
-        '#eef2fe ' + s6.toFixed(1) + '%, ' +
-        '#FFFFFF ' + s7.toFixed(1) + '%, ' +
-        '#FFFFFF 100%)';
+        storeHeading.style.backgroundImage = 'linear-gradient(180deg, ' +
+          '#0130EC 0%, ' +
+          '#0130EC ' + s0.toFixed(1) + '%, ' +
+          '#254ef0 ' + (s0 + 10).toFixed(1) + '%, ' +
+          '#5274f4 ' + (s0 + 20).toFixed(1) + '%, ' +
+          '#819cf8 ' + (s0 + 30).toFixed(1) + '%, ' +
+          '#b0c3fb ' + (s0 + 40).toFixed(1) + '%, ' +
+          '#d4dcfc ' + (s0 + 50).toFixed(1) + '%, ' +
+          '#eef2fe ' + (s0 + 60).toFixed(1) + '%, ' +
+          '#FFFFFF ' + s7.toFixed(1) + '%, ' +
+          '#FFFFFF 100%)';
+      }
 
-      storeHeading.style.backgroundImage = gradStr;
+      ticking = false;
     }
 
-    function onScroll() {
-      updateScrollGlow();
-      updateStoreScroll();
+    function requestScrollUpdate() {
+      if (!ticking) {
+        requestAnimationFrame(updateScrollEffects);
+        ticking = true;
+      }
     }
 
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll, { passive: true });
-    onScroll();
+    window.addEventListener('scroll', requestScrollUpdate, { passive: true });
+    window.addEventListener('resize', function () {
+      fit();
+      requestScrollUpdate();
+    }, { passive: true });
+
+    requestScrollUpdate();
 
   </script>
 </body>
