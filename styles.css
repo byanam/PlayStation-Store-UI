@@ -57,11 +57,13 @@ p {
    NAVBAR (Frame 8 & Rectangle 1 - Floating Glass Pill)
 --------------------------------------------------------------------- */
 .navbar {
-  position: absolute;
+  position: fixed;
   width: 1209px;
   height: 85px;
-  left: calc(50% - 1209px / 2 - 0.5px);
+  left: 50%;
   top: 21px;
+  transform: translateX(-50%);
+  transform-origin: top center;
   background: rgba(217, 217, 217, 0.42);
   backdrop-filter: blur(9.2px);
   -webkit-backdrop-filter: blur(9.2px);
