@@ -135,9 +135,9 @@ p {
 .hero__stack {
   position: absolute;
   left: 0px;
-  top: -406px;
+  top: -466px;
   width: 1280px;
-  height: 884px;
+  height: 944px;
   overflow: hidden;
   /* full border-to-border coverage */
 }
