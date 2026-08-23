@@ -50,7 +50,7 @@ p {
   height: 4076px;
   transform-origin: top left;
   background: #fff;
-  overflow: visible;
+  overflow: hidden;
 }
 
 /* ---------------------------------------------------------------------
@@ -130,7 +130,6 @@ p {
   top: 355px;
   width: 1280px;
   height: 640px;
-  overflow: visible;
 }
 
 .hero__stack {
@@ -138,8 +137,8 @@ p {
   left: 0px;
   top: -406px;
   width: 1280px;
-  height: 1050px;
-  overflow: visible;
+  height: 1400px;
+  overflow: hidden;
 }
 
 /* ── Infinite diagonal scroll track ────────────────────────── */
