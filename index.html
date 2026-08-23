@@ -429,6 +429,171 @@
     window.addEventListener('orientationchange', fit);
     fit();
 
+    // PlayStation UI Web Audio Sound Synthesizer (Instant, Zero Latency)
+    var AudioFX = (function () {
+      var ctx = null;
+
+      function getContext() {
+        if (!ctx) {
+          var AudioContext = window.AudioContext || window.webkitAudioContext;
+          if (AudioContext) ctx = new AudioContext();
+        }
+        if (ctx && ctx.state === 'suspended') {
+          ctx.resume();
+        }
+        return ctx;
+      }
+
+      // 1. Subtle Glass Shimmer Hover Sound
+      function playHover() {
+        var c = getContext();
+        if (!c) return;
+        var now = c.currentTime;
+        var osc = c.createOscillator();
+        var gain = c.createGain();
+
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(1400, now);
+        osc.frequency.exponentialRampToValueAtTime(1900, now + 0.04);
+
+        gain.gain.setValueAtTime(0.035, now);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.07);
+
+        osc.connect(gain);
+        gain.connect(c.destination);
+
+        osc.start(now);
+        osc.stop(now + 0.07);
+      }
+
+      // 2. PlayStation Item Added / Trophy Acquisition Chime (C6 -> E6 -> G6 -> C7)
+      function playAddToCart() {
+        var c = getContext();
+        if (!c) return;
+        var now = c.currentTime;
+        var notes = [1046.50, 1318.51, 1567.98, 2093.00];
+
+        notes.forEach(function (freq, i) {
+          var osc = c.createOscillator();
+          var gain = c.createGain();
+          var noteStart = now + i * 0.045;
+
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(freq, noteStart);
+
+          gain.gain.setValueAtTime(0.12, noteStart);
+          gain.gain.exponentialRampToValueAtTime(0.0001, noteStart + 0.32);
+
+          osc.connect(gain);
+          gain.connect(c.destination);
+
+          osc.start(noteStart);
+          osc.stop(noteStart + 0.32);
+        });
+      }
+
+      // 3. PlayStation Menu Slide / Drawer Swoosh
+      function playCartOpen() {
+        var c = getContext();
+        if (!c) return;
+        var now = c.currentTime;
+        var osc = c.createOscillator();
+        var gain = c.createGain();
+
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(320, now);
+        osc.frequency.exponentialRampToValueAtTime(880, now + 0.14);
+
+        gain.gain.setValueAtTime(0.08, now);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.16);
+
+        osc.connect(gain);
+        gain.connect(c.destination);
+
+        osc.start(now);
+        osc.stop(now + 0.16);
+      }
+
+      // 4. Cart Close / Remove Item Bubble Pop
+      function playRemove() {
+        var c = getContext();
+        if (!c) return;
+        var now = c.currentTime;
+        var osc = c.createOscillator();
+        var gain = c.createGain();
+
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(800, now);
+        osc.frequency.exponentialRampToValueAtTime(280, now + 0.07);
+
+        gain.gain.setValueAtTime(0.1, now);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.08);
+
+        osc.connect(gain);
+        gain.connect(c.destination);
+
+        osc.start(now);
+        osc.stop(now + 0.08);
+      }
+
+      // 5. PlayStation Ethereal Chord / Scroll Glide (Visit Store & Logo Click)
+      function playGlide() {
+        var c = getContext();
+        if (!c) return;
+        var now = c.currentTime;
+        var chord = [523.25, 659.25, 783.99, 1046.50];
+
+        chord.forEach(function (freq, idx) {
+          var osc = c.createOscillator();
+          var gain = c.createGain();
+
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(freq, now);
+          osc.frequency.linearRampToValueAtTime(freq * 1.02, now + 0.4);
+
+          gain.gain.setValueAtTime(0.045, now + idx * 0.02);
+          gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.5);
+
+          osc.connect(gain);
+          gain.connect(c.destination);
+
+          osc.start(now);
+          osc.stop(now + 0.5);
+        });
+      }
+
+      // 6. Action Button Click (Checkout / Join Now)
+      function playClick() {
+        var c = getContext();
+        if (!c) return;
+        var now = c.currentTime;
+        var osc = c.createOscillator();
+        var gain = c.createGain();
+
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(987.77, now);
+        osc.frequency.exponentialRampToValueAtTime(1318.51, now + 0.06);
+
+        gain.gain.setValueAtTime(0.12, now);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.12);
+
+        osc.connect(gain);
+        gain.connect(c.destination);
+
+        osc.start(now);
+        osc.stop(now + 0.12);
+      }
+
+      return {
+        hover: playHover,
+        addToCart: playAddToCart,
+        cartOpen: playCartOpen,
+        remove: playRemove,
+        glide: playGlide,
+        click: playClick
+      };
+    })();
+
     // Slow, luxurious smooth scroll animation to Store section
     function smoothScrollTo(targetY, duration) {
       var startY = window.pageYOffset;
@@ -455,8 +620,10 @@
     }
 
     document.querySelectorAll('a[href="#store"]').forEach(function (link) {
+      link.addEventListener('mouseenter', AudioFX.hover);
       link.addEventListener('click', function (e) {
         e.preventDefault();
+        AudioFX.glide();
         var s = window.innerWidth / DESIGN_W;
         var targetY = (1730 * s) - (60 * s);
         smoothScrollTo(Math.max(0, targetY), 2400);
@@ -465,8 +632,10 @@
 
     var navLogo = document.getElementById('navbarLogoBtn') || document.querySelector('.navbar__logo');
     if (navLogo) {
+      navLogo.addEventListener('mouseenter', AudioFX.hover);
       navLogo.addEventListener('click', function (e) {
         e.stopPropagation();
+        AudioFX.glide();
         toggleCart(false);
         smoothScrollTo(0, 2400);
       });
@@ -476,6 +645,7 @@
     if (navbarEl) {
       navbarEl.addEventListener('click', function (e) {
         if (!e.target.closest('#navbarCartBtn') && !e.target.closest('#cartPanel')) {
+          AudioFX.glide();
           toggleCart(false);
           smoothScrollTo(0, 2400);
         }
@@ -504,7 +674,7 @@
         total += item.price;
         return '<div class="cart-item">' +
           '<img src="' + item.img + '" alt="' + item.title + '" loading="lazy" decoding="async">' +
-          '<button class="cart-item__remove" onclick="event.stopPropagation(); removeCartItem(event, ' + idx + ');" title="Remove item">&times;</button>' +
+          '<button class="cart-item__remove" onmouseenter="AudioFX.hover();" onclick="event.stopPropagation(); removeCartItem(event, ' + idx + ');" title="Remove item">&times;</button>' +
           '<div class="cart-item__price">$' + item.price.toFixed(2) + '</div>' +
           '</div>';
       }).join('');
@@ -514,6 +684,7 @@
 
     window.removeCartItem = function (e, idx) {
       if (e && e.stopPropagation) e.stopPropagation();
+      AudioFX.remove();
       cartState.splice(idx, 1);
       renderCart();
     };
@@ -523,9 +694,11 @@
       if (!panel) return;
       var willOpen = (forceOpen !== undefined) ? forceOpen : !panel.classList.contains('is-open');
       if (willOpen) {
+        AudioFX.cartOpen();
         panel.classList.add('is-open');
         document.body.classList.add('cart-open');
       } else {
+        AudioFX.remove();
         panel.classList.remove('is-open');
         document.body.classList.remove('cart-open');
       }
@@ -534,6 +707,7 @@
 
     var cartBtn = document.getElementById('navbarCartBtn');
     if (cartBtn) {
+      cartBtn.addEventListener('mouseenter', AudioFX.hover);
       cartBtn.addEventListener('click', function (e) {
         e.stopPropagation();
         toggleCart();
@@ -542,6 +716,7 @@
 
     var closeBtn = document.getElementById('cartCloseBtn');
     if (closeBtn) {
+      closeBtn.addEventListener('mouseenter', AudioFX.hover);
       closeBtn.addEventListener('click', function (e) {
         e.stopPropagation();
         toggleCart(false);
@@ -564,8 +739,10 @@
 
     var checkoutBtn = document.getElementById('cartCheckout');
     if (checkoutBtn) {
+      checkoutBtn.addEventListener('mouseenter', AudioFX.hover);
       checkoutBtn.addEventListener('click', function (e) {
         e.stopPropagation();
+        AudioFX.click();
         window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank');
       });
     }
@@ -577,6 +754,7 @@
       var video = card.querySelector('.art__video');
       if (!video) return;
       card.addEventListener('mouseenter', function () {
+        AudioFX.hover();
         if (video.preload === 'none') {
           video.preload = 'auto';
         }
@@ -603,8 +781,10 @@
     ];
 
     document.querySelectorAll('.buy').forEach(function (btn, index) {
+      btn.addEventListener('mouseenter', AudioFX.hover);
       btn.addEventListener('click', function (e) {
         e.stopPropagation();
+        AudioFX.addToCart();
         var game = gameDetails[index % gameDetails.length];
         cartState.push(game);
         renderCart();
@@ -616,6 +796,20 @@
           btn.childNodes[0].textContent = original;
         }, 1500);
       });
+    });
+
+    // Newsletter & Footer Link Sound Effects
+    var newsBtn = document.querySelector('.newsletter__btn');
+    if (newsBtn) {
+      newsBtn.addEventListener('mouseenter', AudioFX.hover);
+      newsBtn.addEventListener('click', function () {
+        AudioFX.click();
+      });
+    }
+
+    document.querySelectorAll('.footer-col a, .footer-legal a').forEach(function (link) {
+      link.addEventListener('mouseenter', AudioFX.hover);
+      link.addEventListener('click', AudioFX.click);
     });
 
     // High-performance RAF scroll-reactive animations
