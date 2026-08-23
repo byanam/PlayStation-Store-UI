@@ -102,7 +102,8 @@ p {
   width: 49px;
   height: 38px;
   left: calc(50% - 49px / 2 + 0.5px);
-  top: calc(50% - 38px / 2);
+  top: 50%;
+  transform: translateY(-50%);
   object-fit: contain;
   mix-blend-mode: luminosity;
   opacity: 0.88;
@@ -112,10 +113,11 @@ p {
 
 .navbar__cart {
   position: absolute;
-  width: 73px;
-  height: 30px;
+  width: 80px;
+  height: 24px;
   right: 48px;
-  top: calc(50% - 30px / 2);
+  top: 50%;
+  transform: translateY(-50%);
   object-fit: contain;
   mix-blend-mode: luminosity;
   opacity: 0.75;
@@ -128,7 +130,7 @@ p {
 
 .navbar__cart:hover {
   opacity: 1;
-  transform: scale(1.04);
+  transform: translateY(-50%) scale(1.04);
 }
 
 /* ---------------------------------------------------------------------
