@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>PlayStation Store</title>
+  <!-- Preconnect & Preload Key Assets -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="image" href="assets/gow.webp?v=hd" type="image/webp" fetchpriority="high">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&family=Outfit:wght@300;400;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="mobile.css?v=202608231902">
+</head>
+
+<body>
+
+  <!-- Floating Mobile Glassmorphic Navbar -->
+  <header class="mobile-navbar" id="mobileNavbar">
+    <img class="mobile-navbar__logo" id="mobileNavLogo" alt="PlayStation" src="assets/navbar_logo.svg?v=202608231804">
+    <img class="mobile-navbar__cart" id="mobileCartBtn" alt="CART" src="assets/cart_text.svg?v=202608231834">
+  </header>
+
+  <!-- Mobile Cart Drawer -->
+  <aside class="mobile-cart-drawer" id="mobileCartDrawer" aria-label="Shopping Cart">
+    <div class="mobile-cart-drawer__header">
+      <img class="mobile-cart-drawer__title" alt="CART" src="assets/cart_text.svg?v=202608231834">
+      <button class="mobile-cart-drawer__close" id="mobileCartClose" aria-label="Close cart">&times;</button>
+    </div>
+    <div class="mobile-cart-drawer__items" id="mobileCartItems">
+      <!-- Injected dynamically via JS -->
+    </div>
+    <div class="mobile-cart-drawer__footer">
+      <div class="mobile-cart-drawer__summary">
+        <span class="mobile-cart-drawer__total-lbl">SUBTOTAL</span>
+        <span class="mobile-cart-drawer__total" id="mobileCartTotal">$99.98</span>
+      </div>
+      <button class="mobile-cart-drawer__checkout" id="mobileCheckoutBtn" type="button">
+        <span>CHECKOUT</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main Mobile Content Flow -->
+  <main>
+
+    <!-- SECTION 1: MOBILE HERO -->
+    <section class="mobile-hero" id="mobileHero">
+      <div class="mobile-hero__badge">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+        </svg>
+        <span>NEXT-GEN GAMING</span>
+      </div>
+
+      <h1 class="mobile-hero__title">
+        <span class="highlight">CONNECT.</span><br>PLAY. REPEAT.
+      </h1>
+
+      <p class="mobile-hero__subtitle">
+        Step into breathtaking worlds, experience next-generation gaming, and discover legendary sagas on PlayStation.
+      </p>
+
+      <a class="mobile-hero__cta" href="#store" id="mobileHeroCta">
+        <span>VISIT STORE</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="7" y1="17" x2="17" y2="7"></line>
+          <polyline points="7 7 17 7 17 17"></polyline>
+        </svg>
+      </a>
+
+      <!-- Featured Hero Game Showcase -->
+      <div class="mobile-hero__featured-card">
+        <img src="assets/gow.webp?v=hd" alt="God of War" fetchpriority="high" loading="eager">
+        <div class="mobile-hero__card-badge">
+          <span class="mobile-hero__card-title">God of War</span>
+          <span class="mobile-hero__card-price">$59.99</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: PROMO (Play Has No Limits) -->
+    <section class="mobile-promo">
+      <div class="mobile-promo__glow"></div>
+      <img class="mobile-promo__logo" alt="PlayStation" src="assets/promo_logo.svg">
+      <h2 class="mobile-promo__title">PLAY HAS NO LIMITS</h2>
+      <p class="mobile-promo__text">
+        From breathtaking open worlds to pulse-pounding competition, PlayStation redefines what is possible.
+      </p>
+      <div class="mobile-promo__stats">
+        <div class="mobile-promo__stat">
+          <span class="mobile-promo__stat-val">4K</span>
+          <span class="mobile-promo__stat-lbl">HDR Gaming</span>
+        </div>
+        <div class="mobile-promo__stat-sep"></div>
+        <div class="mobile-promo__stat">
+          <span class="mobile-promo__stat-val">120 FPS</span>
+          <span class="mobile-promo__stat-lbl">Ultra Smooth</span>
+        </div>
+        <div class="mobile-promo__stat-sep"></div>
+        <div class="mobile-promo__stat">
+          <span class="mobile-promo__stat-val">3D AUDIO</span>
+          <span class="mobile-promo__stat-lbl">Tempest</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: STORE (2-Column Game Grid) -->
+    <section class="mobile-store" id="store">
+      <div class="mobile-store__header">
+        <span class="mobile-store__tag">FEATURED TITLES</span>
+        <h2 class="mobile-store__title">STORE</h2>
+      </div>
+
+      <div class="mobile-store__grid">
+
+        <!-- Game 1 -->
+        <article class="mobile-game-card">
+          <div class="mobile-game-card__cover">
+            <img src="assets/gow.webp?v=hd" alt="God of War" loading="lazy">
+            <video class="mobile-game-card__video" src="assets/videos/gow.mp4" muted loop playsinline preload="none"></video>
+          </div>
+          <h3 class="mobile-game-card__title">God Of War</h3>
+          <p class="mobile-game-card__cat">Action &middot; Norse RPG</p>
+          <div class="mobile-game-card__footer">
+            <span class="mobile-game-card__price">$59.99</span>
+            <button class="mobile-game-card__btn buy-btn" data-id="gow" type="button">Add +</button>
+          </div>
+        </article>
+
+        <!-- Game 2 -->
+        <article class="mobile-game-card">
+          <div class="mobile-game-card__cover">
+            <img src="assets/detroit.webp?v=hd" alt="Detroit Become Human" loading="lazy">
+            <video class="mobile-game-card__video" src="assets/videos/detroit.mp4" muted loop playsinline preload="none"></video>
+          </div>
+          <h3 class="mobile-game-card__title">Detroit Human</h3>
+          <p class="mobile-game-card__cat">Narrative &middot; Cyber</p>
+          <div class="mobile-game-card__footer">
+            <span class="mobile-game-card__price">$39.99</span>
+            <button class="mobile-game-card__btn buy-btn" data-id="detroit" type="button">Add +</button>
+          </div>
+        </article>
+
+        <!-- Game 3 -->
+        <article class="mobile-game-card">
+          <div class="mobile-game-card__cover">
+            <img src="assets/wwe.webp?v=hd" alt="WWE 2K17" loading="lazy">
+            <video class="mobile-game-card__video" src="assets/videos/wwe.mp4" muted loop playsinline preload="none"></video>
+          </div>
+          <h3 class="mobile-game-card__title">WWE 2K17</h3>
+          <p class="mobile-game-card__cat">Sports &middot; Wrestling</p>
+          <div class="mobile-game-card__footer">
+            <span class="mobile-game-card__price">$49.99</span>
+            <button class="mobile-game-card__btn buy-btn" data-id="wwe" type="button">Add +</button>
+          </div>
+        </article>
+
+        <!-- Game 4 -->
+        <article class="mobile-game-card">
+          <div class="mobile-game-card__cover">
+            <img src="assets/ratchet.webp?v=hd" alt="Ratchet and Clank" loading="lazy">
+            <video class="mobile-game-card__video" src="assets/videos/ratchet.mp4" muted loop playsinline preload="none"></video>
+          </div>
+          <h3 class="mobile-game-card__title">Ratchet &amp; Clank</h3>
+          <p class="mobile-game-card__cat">Action &middot; Adventure</p>
+          <div class="mobile-game-card__footer">
+            <span class="mobile-game-card__price">$69.99</span>
+            <button class="mobile-game-card__btn buy-btn" data-id="ratchet" type="button">Add +</button>
+          </div>
+        </article>
+
+        <!-- Game 5 -->
+        <article class="mobile-game-card">
+          <div class="mobile-game-card__cover">
+            <img src="assets/spider.webp?v=hd" alt="Spider-Man" loading="lazy">
+            <video class="mobile-game-card__video" src="assets/videos/spider.mp4" muted loop playsinline preload="none"></video>
+          </div>
+          <h3 class="mobile-game-card__title">Spider-Man</h3>
+          <p class="mobile-game-card__cat">Action &middot; Superhero</p>
+          <div class="mobile-game-card__footer">
+            <span class="mobile-game-card__price">$49.99</span>
+            <button class="mobile-game-card__btn buy-btn" data-id="spider" type="button">Add +</button>
+          </div>
+        </article>
+
+        <!-- Game 6 -->
+        <article class="mobile-game-card">
+          <div class="mobile-game-card__cover">
+            <img src="assets/re7.webp?v=hd" alt="Resident Evil 7" loading="lazy">
+            <video class="mobile-game-card__video" src="assets/videos/re7.mp4" muted loop playsinline preload="none"></video>
+          </div>
+          <h3 class="mobile-game-card__title">Resident Evil 7</h3>
+          <p class="mobile-game-card__cat">Survival &middot; Horror</p>
+          <div class="mobile-game-card__footer">
+            <span class="mobile-game-card__price">$19.99</span>
+            <button class="mobile-game-card__btn buy-btn" data-id="re7" type="button">Add +</button>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- SECTION 4: OPTIMIZED MOBILE FOOTER (PlayStation Blue with Vector Scatter) -->
+    <footer class="mobile-footer">
+      <!-- PlayStation Symbols Scatter SVG Background -->
+      <div class="mobile-footer__scatter" aria-hidden="true">
+        <!-- Triangle -->
+        <svg class="mobile-sc-sym" style="left:8%; top:6%; width:32px; height:32px; transform:rotate(-15deg);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8"><polygon points="12 3.5 21.5 19.5 2.5 19.5" stroke-linejoin="round" stroke-linecap="round"/></svg>
+        <!-- Circle -->
+        <svg class="mobile-sc-sym" style="left:82%; top:12%; width:36px; height:36px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8"><circle cx="12" cy="12" r="8.5"/></svg>
+        <!-- Cross -->
+        <svg class="mobile-sc-sym" style="left:48%; top:22%; width:28px; height:28px; transform:rotate(12deg);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8"><line x1="4.5" y1="4.5" x2="19.5" y2="19.5" stroke-linecap="round"/><line x1="19.5" y1="4.5" x2="4.5" y2="19.5" stroke-linecap="round"/></svg>
+        <!-- Square -->
+        <svg class="mobile-sc-sym" style="left:14%; top:42%; width:30px; height:30px; transform:rotate(20deg);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8"><rect x="4" y="4" width="16" height="16" rx="2"/></svg>
+        <!-- Triangle -->
+        <svg class="mobile-sc-sym" style="left:76%; top:50%; width:34px; height:34px; transform:rotate(35deg);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8"><polygon points="12 3.5 21.5 19.5 2.5 19.5" stroke-linejoin="round" stroke-linecap="round"/></svg>
+        <!-- Circle -->
+        <svg class="mobile-sc-sym" style="left:24%; top:70%; width:28px; height:28px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8"><circle cx="12" cy="12" r="8.5"/></svg>
+        <!-- Cross -->
+        <svg class="mobile-sc-sym" style="left:88%; top:82%; width:32px; height:32px; transform:rotate(-25deg);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8"><line x1="4.5" y1="4.5" x2="19.5" y2="19.5" stroke-linecap="round"/><line x1="19.5" y1="4.5" x2="4.5" y2="19.5" stroke-linecap="round"/></svg>
+      </div>
+
+      <div class="mobile-footer__content">
+        <!-- Newsletter Signup -->
+        <div class="mobile-newsletter">
+          <h3 class="mobile-newsletter__title">STAY IN THE GAME</h3>
+          <p class="mobile-newsletter__desc">Get exclusive PlayStation Store drops, new releases, and subscriber discounts.</p>
+          <form class="mobile-newsletter__form" onsubmit="event.preventDefault(); AudioFX.click(); alert('Thank you for subscribing to PlayStation!');">
+            <input class="mobile-newsletter__input" type="email" placeholder="Enter your email" required>
+            <button class="mobile-newsletter__btn" type="submit">SUBSCRIBE</button>
+          </form>
+        </div>
+
+        <!-- Navigation Links -->
+        <div class="mobile-footer__nav">
+          <div class="mobile-footer-col">
+            <h4 class="mobile-footer-col__title">HARDWARE</h4>
+            <ul class="mobile-footer-col__list">
+              <li><a href="#">PlayStation 5</a></li>
+              <li><a href="#">DualSense Controller</a></li>
+              <li><a href="#">PULSE 3D Headset</a></li>
+              <li><a href="#">PlayStation Portal</a></li>
+            </ul>
+          </div>
+          <div class="mobile-footer-col">
+            <h4 class="mobile-footer-col__title">SERVICES</h4>
+            <ul class="mobile-footer-col__list">
+              <li><a href="#">PlayStation Plus</a></li>
+              <li><a href="#">PlayStation Stars</a></li>
+              <li><a href="#">PS Store Cards</a></li>
+              <li><a href="#">PlayStation App</a></li>
+            </ul>
+          </div>
+          <div class="mobile-footer-col">
+            <h4 class="mobile-footer-col__title">SUPPORT</h4>
+            <ul class="mobile-footer-col__list">
+              <li><a href="#">Support Hub</a></li>
+              <li><a href="#">PSN Status</a></li>
+              <li><a href="#">Order Lookup</a></li>
+              <li><a href="#">Software Updates</a></li>
+            </ul>
+          </div>
+          <div class="mobile-footer-col">
+            <h4 class="mobile-footer-col__title">CONNECT</h4>
+            <ul class="mobile-footer-col__list">
+              <li><a href="#">iOS & Android App</a></li>
+              <li><a href="#">Community Hub</a></li>
+              <li><a href="index.html?desktop=1">Switch to Desktop View</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Bottom Copyright -->
+        <div class="mobile-footer__bottom">
+          <img class="mobile-footer__logo" alt="PlayStation" src="assets/navbar_logo.svg">
+          <p class="mobile-footer__copy">&copy; 2026 Sony Interactive Entertainment LLC. All PlayStation trademarks and copyrights belong to their respective owners.</p>
+          <div class="mobile-footer__links">
+            <a href="#">Privacy Policy</a>
+            <span>&middot;</span>
+            <a href="#">Terms of Service</a>
+            <span>&middot;</span>
+            <a href="#">Health Warnings</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <script>
+    // -----------------------------------------------------------------
+    // Whisper-Soft Web Audio API Sound Engine
+    // -----------------------------------------------------------------
+    var AudioFX = (function () {
+      var ctx = null;
+
+      function getContext() {
+        if (!ctx) {
+          var AudioContext = window.AudioContext || window.webkitAudioContext;
+          if (AudioContext) ctx = new AudioContext();
+        }
+        if (ctx && ctx.state === 'suspended') {
+          ctx.resume();
+        }
+        return ctx;
+      }
+
+      function playHover() {
+        var c = getContext();
+        if (!c) return;
+        var now = c.currentTime;
+        var osc = c.createOscillator();
+        var gain = c.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(680, now);
+        osc.frequency.exponentialRampToValueAtTime(1450, now + 0.035);
+        gain.gain.setValueAtTime(0.018, now);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.04);
+        osc.connect(gain);
+        gain.connect(c.destination);
+        osc.start(now);
+        osc.stop(now + 0.04);
+      }
+
+      function playClick() {
+        var c = getContext();
+        if (!c) return;
+        var now = c.currentTime;
+        var osc = c.createOscillator();
+        var gain = c.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(520, now);
+        osc.frequency.exponentialRampToValueAtTime(300, now + 0.03);
+        gain.gain.setValueAtTime(0.018, now);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.035);
+        osc.connect(gain);
+        gain.connect(c.destination);
+        osc.start(now);
+        osc.stop(now + 0.035);
+      }
+
+      function playAddToCart() {
+        var c = getContext();
+        if (!c) return;
+        var now = c.currentTime;
+        var freqs = [1046.50, 1318.51, 1567.98];
+        freqs.forEach(function (freq, i) {
+          var noteStart = now + i * 0.035;
+          var osc = c.createOscillator();
+          var gain = c.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(freq, noteStart);
+          gain.gain.setValueAtTime(0.018, noteStart);
+          gain.gain.exponentialRampToValueAtTime(0.0001, noteStart + 0.2);
+          osc.connect(gain);
+          gain.connect(c.destination);
+          osc.start(noteStart);
+          osc.stop(noteStart + 0.2);
+        });
+      }
+
+      function playCartOpen() {
+        var c = getContext();
+        if (!c) return;
+        var now = c.currentTime;
+        var osc = c.createOscillator();
+        var gain = c.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(280, now);
+        osc.frequency.exponentialRampToValueAtTime(600, now + 0.08);
+        gain.gain.setValueAtTime(0.02, now);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.1);
+        osc.connect(gain);
+        gain.connect(c.destination);
+        osc.start(now);
+        osc.stop(now + 0.1);
+      }
+
+      function playRemove() {
+        var c = getContext();
+        if (!c) return;
+        var now = c.currentTime;
+        var osc = c.createOscillator();
+        var gain = c.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(650, now);
+        osc.frequency.exponentialRampToValueAtTime(280, now + 0.035);
+        gain.gain.setValueAtTime(0.018, now);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.04);
+        osc.connect(gain);
+        gain.connect(c.destination);
+        osc.start(now);
+        osc.stop(now + 0.04);
+      }
+
+      function playGlide() {
+        var c = getContext();
+        if (!c) return;
+        var now = c.currentTime;
+        var osc = c.createOscillator();
+        var gain = c.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(440, now);
+        osc.frequency.exponentialRampToValueAtTime(660, now + 0.08);
+        gain.gain.setValueAtTime(0.014, now);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.12);
+        osc.connect(gain);
+        gain.connect(c.destination);
+        osc.start(now);
+        osc.stop(now + 0.12);
+      }
+
+      return {
+        hover: playHover,
+        click: playClick,
+        addToCart: playAddToCart,
+        cartOpen: playCartOpen,
+        remove: playRemove,
+        glide: playGlide
+      };
+    })();
+
+    // Auto-unlock Web Audio on first touch/click
+    ['touchstart', 'click'].forEach(function (evt) {
+      window.addEventListener(evt, function unlock() {
+        if (AudioFX && AudioFX.hover) AudioFX.hover();
+        window.removeEventListener(evt, unlock);
+      }, { once: true, passive: true });
+    });
+
+    // -----------------------------------------------------------------
+    // Shopping Cart State & Interactivity
+    // -----------------------------------------------------------------
+    var cartState = [
+      { id: 'gow', title: 'God of War', price: 59.99, img: 'assets/gow.webp' },
+      { id: 'detroit', title: 'Detroit Become Human', price: 39.99, img: 'assets/detroit.webp' }
+    ];
+
+    var gameDetails = {
+      'gow': { id: 'gow', title: 'God of War', price: 59.99, img: 'assets/gow.webp' },
+      'detroit': { id: 'detroit', title: 'Detroit Become Human', price: 39.99, img: 'assets/detroit.webp' },
+      'wwe': { id: 'wwe', title: 'WWE 2K17', price: 49.99, img: 'assets/wwe.webp' },
+      'ratchet': { id: 'ratchet', title: 'Ratchet & Clank', price: 69.99, img: 'assets/ratchet.webp' },
+      'spider': { id: 'spider', title: 'Spider-Man', price: 49.99, img: 'assets/spider.webp' },
+      're7': { id: 're7', title: 'Resident Evil 7', price: 19.99, img: 'assets/re7.webp' }
+    };
+
+    function renderCart() {
+      var container = document.getElementById('mobileCartItems');
+      var totalEl = document.getElementById('mobileCartTotal');
+      if (!container || !totalEl) return;
+
+      if (cartState.length === 0) {
+        container.innerHTML = '<p style="grid-column: 1/-1; text-align:center; color:rgba(0,0,0,0.45); font-family:var(--code-font); font-size:13px; margin:30px 0;">YOUR CART IS EMPTY</p>';
+        totalEl.textContent = '$0.00';
+        return;
+      }
+
+      var total = 0;
+      container.innerHTML = cartState.map(function (item, idx) {
+        total += item.price;
+        return '<div class="mobile-cart-item">' +
+          '<img src="' + item.img + '" alt="' + item.title + '" loading="lazy">' +
+          '<button class="mobile-cart-item__remove" onclick="removeMobileCartItem(event, ' + idx + ');" title="Remove">&times;</button>' +
+          '<div class="mobile-cart-item__price">$' + item.price.toFixed(2) + '</div>' +
+          '</div>';
+      }).join('');
+
+      totalEl.textContent = '$' + total.toFixed(2);
+    }
+
+    window.removeMobileCartItem = function (e, idx) {
+      if (e && e.stopPropagation) e.stopPropagation();
+      AudioFX.remove();
+      cartState.splice(idx, 1);
+      renderCart();
+    };
+
+    function toggleCart(forceOpen) {
+      var drawer = document.getElementById('mobileCartDrawer');
+      if (!drawer) return;
+      var willOpen = (forceOpen !== undefined) ? forceOpen : !drawer.classList.contains('is-open');
+      if (willOpen) {
+        AudioFX.cartOpen();
+        drawer.classList.add('is-open');
+      } else {
+        AudioFX.remove();
+        drawer.classList.remove('is-open');
+      }
+    }
+
+    // Cart Button Click
+    var cartBtn = document.getElementById('mobileCartBtn');
+    if (cartBtn) {
+      cartBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        toggleCart();
+      });
+    }
+
+    // Cart Close Button
+    var closeBtn = document.getElementById('mobileCartClose');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        toggleCart(false);
+      });
+    }
+
+    // Checkout Button
+    var checkoutBtn = document.getElementById('mobileCheckoutBtn');
+    if (checkoutBtn) {
+      checkoutBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        AudioFX.click();
+        window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank');
+      });
+    }
+
+    // Close drawer when clicking outside
+    document.addEventListener('click', function (e) {
+      var drawer = document.getElementById('mobileCartDrawer');
+      if (drawer && drawer.classList.contains('is-open') && !drawer.contains(e.target) && !e.target.closest('#mobileCartBtn')) {
+        toggleCart(false);
+      }
+    });
+
+    // Add To Cart Buttons
+    document.querySelectorAll('.buy-btn').forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        AudioFX.addToCart();
+        var gameId = btn.getAttribute('data-id');
+        var game = gameDetails[gameId] || gameDetails['gow'];
+        cartState.push(game);
+        renderCart();
+        toggleCart(true);
+
+        var original = btn.textContent;
+        btn.textContent = 'Added!';
+        setTimeout(function () {
+          btn.textContent = original;
+        }, 1400);
+      });
+    });
+
+    // Logo Click -> Smooth Scroll to Top
+    var navLogo = document.getElementById('mobileNavLogo');
+    if (navLogo) {
+      navLogo.addEventListener('click', function (e) {
+        e.stopPropagation();
+        AudioFX.glide();
+        toggleCart(false);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+    // Hero CTA -> Smooth Scroll to Store
+    var heroCta = document.getElementById('mobileHeroCta');
+    if (heroCta) {
+      heroCta.addEventListener('click', function (e) {
+        e.preventDefault();
+        AudioFX.glide();
+        var store = document.getElementById('store');
+        if (store) {
+          var target = store.getBoundingClientRect().top + window.pageYOffset - 70;
+          window.scrollTo({ top: target, behavior: 'smooth' });
+        }
+      });
+    }
+
+    // Video Previews on Tap / Touch
+    document.querySelectorAll('.mobile-game-card').forEach(function (card) {
+      var video = card.querySelector('.mobile-game-card__video');
+      if (!video) return;
+      card.addEventListener('mouseenter', function () {
+        if (video.preload === 'none') video.preload = 'auto';
+        video.currentTime = 0;
+        video.play().catch(function () {});
+      });
+      card.addEventListener('mouseleave', function () {
+        video.pause();
+        video.currentTime = 0;
+      });
+      card.addEventListener('touchstart', function () {
+        if (video.preload === 'none') video.preload = 'auto';
+        if (video.paused) {
+          video.play().catch(function () {});
+        } else {
+          video.pause();
+        }
+      }, { passive: true });
+    });
+
+    renderCart();
+  </script>
+</body>
+
+</html>

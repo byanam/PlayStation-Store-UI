@@ -15,7 +15,12 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&family=Outfit:wght@300;400;600;700;800&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=202608231858">
+  <script>
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || (window.innerWidth <= 768 && !window.location.search.includes('desktop=1'))) {
+      window.location.replace('mobile.html' + window.location.search + window.location.hash);
+    }
+  </script>
+  <link rel="stylesheet" href="styles.css?v=202608231904">
 </head>
 
 <body>

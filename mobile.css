@@ -1,0 +1,791 @@
+/* =====================================================================
+   PLAYSTATION STORE — DEDICATED MOBILE WEB APP STYLESHEET
+   ===================================================================== */
+@font-face {
+  font-family: "Code";
+  src: local("Code Light");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Code";
+  src: local("Code Bold");
+  font-weight: 700;
+  font-style: normal;
+}
+
+:root {
+  --code-font: "Code", sans-serif;
+  --albert: "Albert Sans", -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+  --blue: #0130ec;
+  --blue-glow: rgba(1, 48, 236, 0.4);
+  --dark-bg: #00041a;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  background: #ffffff;
+  color: #000000;
+  font-family: var(--albert);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---------------------------------------------------------------------
+   1. MOBILE FLOATING NAVBAR
+--------------------------------------------------------------------- */
+.mobile-navbar {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  height: 58px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.72) 0%, rgba(240, 240, 245, 0.6) 100%);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 29px;
+  box-shadow:
+    inset 0 1px 1.5px rgba(255, 255, 255, 0.9),
+    0 8px 24px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  z-index: 1000;
+  transition: transform 0.3s ease;
+}
+
+.mobile-navbar__logo {
+  width: 44px;
+  height: 34px;
+  object-fit: contain;
+  cursor: pointer;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.08));
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mobile-navbar__logo:active {
+  transform: scale(0.94);
+}
+
+.mobile-navbar__cart {
+  width: 64px;
+  height: 20px;
+  object-fit: contain;
+  cursor: pointer;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.08));
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mobile-navbar__cart:active {
+  transform: scale(0.94);
+}
+
+/* ---------------------------------------------------------------------
+   2. MOBILE CART DRAWER (Bottom Sheet / Overlay)
+--------------------------------------------------------------------- */
+.mobile-cart-drawer {
+  position: fixed;
+  top: 78px;
+  left: 12px;
+  right: 12px;
+  max-height: calc(100vh - 90px);
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 24px;
+  box-shadow:
+    inset 0 1px 2px rgba(255, 255, 255, 0.95),
+    0 20px 60px rgba(0, 0, 0, 0.2);
+  padding: 18px;
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-15px) scale(0.98);
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mobile-cart-drawer.is-open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+.mobile-cart-drawer__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.mobile-cart-drawer__title {
+  width: 68px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.mobile-cart-drawer__close {
+  background: none;
+  border: none;
+  font-family: var(--code-font);
+  font-size: 26px;
+  line-height: 1;
+  color: #666;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.mobile-cart-drawer__items {
+  flex: 1;
+  overflow-y: auto;
+  padding: 14px 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  max-height: 340px;
+}
+
+.mobile-cart-item {
+  position: relative;
+  height: 140px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #000;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+.mobile-cart-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mobile-cart-item__remove {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.mobile-cart-item__price {
+  position: absolute;
+  bottom: 6px;
+  left: 6px;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+  color: #fff;
+  font-family: var(--code-font);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.mobile-cart-drawer__footer {
+  padding-top: 14px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mobile-cart-drawer__summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--code-font);
+  font-weight: 700;
+}
+
+.mobile-cart-drawer__total-lbl {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.8);
+  letter-spacing: 0.5px;
+}
+
+.mobile-cart-drawer__total {
+  font-size: 18px;
+  color: #000;
+}
+
+.mobile-cart-drawer__checkout {
+  width: 100%;
+  height: 46px;
+  background: var(--blue);
+  border: 2px solid var(--blue);
+  border-radius: 23px;
+  color: #fff;
+  font-family: var(--code-font);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(1, 48, 236, 0.35);
+  transition: transform 0.2s ease;
+}
+
+.mobile-cart-drawer__checkout:active {
+  transform: scale(0.97);
+}
+
+/* ---------------------------------------------------------------------
+   3. MOBILE HERO SECTION (No Slide Animation, Clean & Bold)
+--------------------------------------------------------------------- */
+.mobile-hero {
+  position: relative;
+  width: 100%;
+  padding: 96px 20px 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 20%, rgba(1, 48, 236, 0.08) 0%, rgba(255, 255, 255, 0) 70%);
+}
+
+.mobile-hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(1, 48, 236, 0.08);
+  border: 1px solid rgba(1, 48, 236, 0.2);
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-family: var(--code-font);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  color: var(--blue);
+  margin-bottom: 20px;
+}
+
+.mobile-hero__title {
+  font-family: var(--code-font);
+  font-weight: 700;
+  font-size: clamp(30px, 8.5vw, 42px);
+  line-height: 1.12;
+  letter-spacing: -0.5px;
+  color: #000000;
+  margin: 0 0 16px;
+  max-width: 340px;
+}
+
+.mobile-hero__title .highlight {
+  background: linear-gradient(135deg, #0130EC 0%, #3b66f5 50%, #011db3 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.mobile-hero__subtitle {
+  font-family: var(--albert);
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.65);
+  max-width: 320px;
+  margin: 0 0 24px;
+}
+
+.mobile-hero__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 200px;
+  height: 48px;
+  background: var(--blue);
+  color: #ffffff;
+  border-radius: 24px;
+  font-family: var(--code-font);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(1, 48, 236, 0.35);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+}
+
+.mobile-hero__cta:active {
+  transform: scale(0.96);
+}
+
+.mobile-hero__featured-card {
+  position: relative;
+  width: 260px;
+  height: 330px;
+  margin-top: 32px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow:
+    0 12px 35px rgba(0, 0, 0, 0.22),
+    0 4px 12px rgba(1, 48, 236, 0.25);
+  border: 2px solid rgba(255, 255, 255, 0.8);
+}
+
+.mobile-hero__featured-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mobile-hero__card-badge {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 8px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #ffffff;
+}
+
+.mobile-hero__card-title {
+  font-family: var(--albert);
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.mobile-hero__card-price {
+  font-family: var(--code-font);
+  font-weight: 700;
+  font-size: 13px;
+  color: #4df;
+}
+
+/* ---------------------------------------------------------------------
+   4. MOBILE EXPERIENCE PROMO SECTION
+--------------------------------------------------------------------- */
+.mobile-promo {
+  position: relative;
+  width: calc(100% - 24px);
+  margin: 20px auto 40px;
+  background: linear-gradient(135deg, #0130ec 0%, #001f99 100%);
+  border-radius: 24px;
+  padding: 36px 20px;
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(1, 48, 236, 0.35);
+  color: #ffffff;
+  text-align: center;
+}
+
+.mobile-promo__glow {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.mobile-promo__logo {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  margin: 0 auto 16px;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3));
+}
+
+.mobile-promo__title {
+  font-family: var(--code-font);
+  font-weight: 700;
+  font-size: clamp(26px, 7.5vw, 36px);
+  line-height: 1.05;
+  margin: 0 0 14px;
+  color: #ffffff;
+}
+
+.mobile-promo__text {
+  font-family: var(--albert);
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.88);
+  margin: 0 0 24px;
+}
+
+.mobile-promo__stats {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  border-radius: 16px;
+  padding: 14px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.mobile-promo__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.mobile-promo__stat-val {
+  font-family: var(--code-font);
+  font-weight: 700;
+  font-size: 18px;
+  color: #ffffff;
+}
+
+.mobile-promo__stat-lbl {
+  font-size: 10px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.mobile-promo__stat-sep {
+  width: 1px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* ---------------------------------------------------------------------
+   5. MOBILE STORE SECTION (2-Column Responsive Game Grid)
+--------------------------------------------------------------------- */
+.mobile-store {
+  width: 100%;
+  padding: 20px 16px 50px;
+}
+
+.mobile-store__header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.mobile-store__tag {
+  font-family: var(--code-font);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--blue);
+  text-transform: uppercase;
+}
+
+.mobile-store__title {
+  font-family: var(--code-font);
+  font-weight: 700;
+  font-size: 38px;
+  letter-spacing: 1px;
+  color: #000000;
+  margin: 4px 0 0;
+}
+
+.mobile-store__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  width: 100%;
+}
+
+.mobile-game-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.mobile-game-card:active {
+  transform: scale(0.98);
+}
+
+.mobile-game-card__cover {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3/4;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #000;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.mobile-game-card__cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
+}
+
+.mobile-game-card__video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.mobile-game-card:hover .mobile-game-card__video,
+.mobile-game-card:active .mobile-game-card__video {
+  opacity: 1;
+}
+
+.mobile-game-card__title {
+  font-family: var(--albert);
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 1.2;
+  color: #000;
+  margin: 0 0 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mobile-game-card__cat {
+  font-family: var(--albert);
+  font-size: 11px;
+  color: rgba(0, 0, 0, 0.5);
+  margin: 0 0 10px;
+  flex: 1;
+}
+
+.mobile-game-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.mobile-game-card__price {
+  font-family: var(--code-font);
+  font-weight: 700;
+  font-size: 13px;
+  color: #000;
+}
+
+.mobile-game-card__btn {
+  background: var(--blue);
+  color: #fff;
+  border: none;
+  border-radius: 14px;
+  padding: 6px 10px;
+  font-family: var(--code-font);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  box-shadow: 0 2px 8px rgba(1, 48, 236, 0.3);
+  transition: transform 0.15s ease;
+}
+
+.mobile-game-card__btn:active {
+  transform: scale(0.92);
+}
+
+/* ---------------------------------------------------------------------
+   6. OPTIMIZED MOBILE FOOTER (PlayStation Blue with Vector Scatter)
+--------------------------------------------------------------------- */
+.mobile-footer {
+  position: relative;
+  width: 100%;
+  background: var(--blue);
+  color: #ffffff;
+  padding: 48px 20px 32px;
+  overflow: hidden;
+}
+
+/* PlayStation Symbols Scatter Background */
+.mobile-footer__scatter {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.mobile-sc-sym {
+  position: absolute;
+  color: rgba(255, 255, 255, 0.16);
+  transform-origin: center;
+}
+
+.mobile-footer__content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.mobile-newsletter {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 18px;
+  padding: 20px 16px;
+  text-align: center;
+}
+
+.mobile-newsletter__title {
+  font-family: var(--code-font);
+  font-weight: 700;
+  font-size: 20px;
+  margin: 0 0 6px;
+}
+
+.mobile-newsletter__desc {
+  font-family: var(--albert);
+  font-size: 12.5px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0 0 16px;
+}
+
+.mobile-newsletter__form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mobile-newsletter__input {
+  width: 100%;
+  height: 44px;
+  background: rgba(255, 255, 255, 0.95);
+  border: none;
+  border-radius: 22px;
+  padding: 0 18px;
+  font-family: var(--albert);
+  font-size: 13.5px;
+  color: #000;
+  outline: none;
+}
+
+.mobile-newsletter__btn {
+  width: 100%;
+  height: 44px;
+  background: #ffffff;
+  color: var(--blue);
+  border: none;
+  border-radius: 22px;
+  font-family: var(--code-font);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+}
+
+.mobile-footer__nav {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px 16px;
+}
+
+.mobile-footer-col__title {
+  font-family: var(--code-font);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1px;
+  margin: 0 0 10px;
+  color: #ffffff;
+}
+
+.mobile-footer-col__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mobile-footer-col__list a {
+  font-family: var(--albert);
+  font-size: 12.5px;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+}
+
+.mobile-footer__bottom {
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+}
+
+.mobile-footer__logo {
+  width: 38px;
+  height: 30px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
+}
+
+.mobile-footer__copy {
+  font-family: var(--albert);
+  font-size: 11px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.mobile-footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  font-size: 11px;
+}
+
+.mobile-footer__links a {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+}
