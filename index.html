@@ -10,7 +10,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&family=Outfit:wght@300;400;600;700;800&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=202608231456">
+  <link rel="stylesheet" href="styles.css?v=202608231457">
 </head>
 
 <body>
@@ -269,7 +269,7 @@
           '<img src="' + item.img + '" alt="' + item.title + '">' +
           '<button class="cart-item__remove" onclick="removeCartItem(' + idx + ')" title="Remove item">&times;</button>' +
           '<div class="cart-item__price">$' + item.price.toFixed(2) + '</div>' +
-        '</div>';
+          '</div>';
       }).join('');
 
       totalEl.textContent = '$' + total.toFixed(2);
