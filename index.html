@@ -8,27 +8,28 @@
   <!-- Preconnect & Preload Key Hero Assets -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="image" href="assets/gow.webp" type="image/webp" fetchpriority="high">
-  <link rel="preload" as="image" href="assets/doa.webp" type="image/webp" fetchpriority="high">
-  <link rel="preload" as="image" href="assets/detroit.webp" type="image/webp" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/gow.webp?v=hd" type="image/webp" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/doa.webp?v=hd" type="image/webp" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/detroit.webp?v=hd" type="image/webp" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/spider.webp?v=hd" type="image/webp" fetchpriority="high">
   <link
     href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&family=Outfit:wght@300;400;600;700;800&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=202608231838">
+  <link rel="stylesheet" href="styles.css?v=202608231849">
 </head>
 
 <body>
   <header class="navbar" id="navbar">
     <div class="navbar__inner">
       <img class="navbar__logo" id="navbarLogoBtn" alt="PlayStation" src="assets/navbar_logo.svg?v=202608231804">
-      <img class="navbar__cart" alt="CART" src="assets/cart_text.svg?v=202608231804" id="navbarCartBtn">
+      <img class="navbar__cart" alt="CART" src="assets/cart_text.svg?v=202608231834" id="navbarCartBtn">
     </div>
   </header>
 
   <!-- Floating Glassmorphic Cart Panel (Rectangle 2) -->
   <aside class="cart-panel" id="cartPanel" aria-label="Shopping Cart">
     <div class="cart-panel__header">
-      <img class="cart-panel__title-svg" alt="CART" src="assets/cart_text.svg?v=202608231804">
+      <img class="cart-panel__title-svg" alt="CART" src="assets/cart_text.svg?v=202608231834">
       <button class="cart-panel__close" id="cartCloseBtn" aria-label="Close cart">&times;</button>
     </div>
     <div class="cart-panel__items" id="cartItems">
@@ -53,68 +54,70 @@
   <div class="canvas" id="canvas">
 
     <!-- -----------------------------------------------------------------
-         HERO (Frame 9, 10, 11, 12, 13, 14, 15, 16, 17, 18)
+       SECTION 1: HERO (Connecting, Playing, Repeating)
     ------------------------------------------------------------------ -->
-    <section class="hero">
+    <section class="hero" aria-label="Featured Games Gallery">
+
+      <!-- Diagonal Floating Cards Stack -->
       <div class="hero__stack">
         <div class="hero__track">
 
           <!-- Set 1: 9 cards from front (God of War) to back (RE7 Biohazard) -->
           <div class="cover cover--gow">
-            <img src="assets/gow.webp?v=4k" alt="God of War" fetchpriority="high" decoding="async">
+            <img src="assets/gow.webp?v=hd" alt="God of War" fetchpriority="high" loading="eager" decoding="async">
           </div>
           <div class="cover cover--doa">
-            <img src="assets/doa.webp?v=4k" alt="Dead or Alive 5" fetchpriority="high" decoding="async">
+            <img src="assets/doa.webp?v=hd" alt="Dead or Alive 5" fetchpriority="high" loading="eager" decoding="async">
           </div>
           <div class="cover cover--detroit">
-            <img src="assets/detroit.webp?v=4k" alt="Detroit Become Human" fetchpriority="high" decoding="async">
+            <img src="assets/detroit.webp?v=hd" alt="Detroit Become Human" fetchpriority="high" loading="eager" decoding="async">
           </div>
           <div class="cover cover--spider">
-            <img src="assets/spider.webp?v=4k" alt="Spider-Man" decoding="async">
+            <img src="assets/spider.webp?v=hd" alt="Spider-Man" fetchpriority="high" loading="eager" decoding="async">
           </div>
           <div class="cover cover--wwe">
-            <img src="assets/wwe.webp?v=4k" alt="WWE 2K17" decoding="async">
+            <img src="assets/wwe.webp?v=hd" alt="WWE 2K17" loading="eager" decoding="async">
           </div>
           <div class="cover cover--maden">
-            <img src="assets/maden.webp?v=4k" alt="Madden NFL 17" decoding="async">
+            <img src="assets/maden.webp?v=hd" alt="Madden NFL 17" loading="eager" decoding="async">
           </div>
           <div class="cover cover--ratchet2">
-            <img src="assets/ratchet2.webp?v=4k" alt="Ratchet and Clank" decoding="async">
+            <img src="assets/ratchet2.webp?v=hd" alt="Ratchet and Clank" loading="eager" decoding="async">
           </div>
           <div class="cover cover--grid">
-            <img src="assets/grid.webp?v=4k" alt="GRID" decoding="async">
+            <img src="assets/grid.webp?v=hd" alt="GRID" loading="eager" decoding="async">
           </div>
           <div class="cover cover--re7b">
-            <img src="assets/re7b.webp?v=4k" alt="Resident Evil 7 Biohazard" decoding="async">
+            <img src="assets/re7b.webp?v=hd" alt="Resident Evil 7 Biohazard" loading="eager" decoding="async">
           </div>
 
           <!-- Set 2: seamless duplicate loop extending up-right behind Set 1 -->
           <div class="cover cover--gow-2">
-            <img src="assets/gow.webp?v=4k" alt="God of War" decoding="async">
+            <img src="assets/gow.webp?v=hd" alt="God of War" loading="eager" decoding="async">
           </div>
           <div class="cover cover--doa-2">
-            <img src="assets/doa.webp?v=4k" alt="Dead or Alive 5" decoding="async">
+            <img src="assets/doa.webp?v=hd" alt="Dead or Alive 5" loading="eager" decoding="async">
           </div>
           <div class="cover cover--detroit-2">
-            <img src="assets/detroit.webp?v=4k" alt="Detroit Become Human" decoding="async">
+            <img src="assets/detroit.webp?v=hd" alt="Detroit Become Human" loading="eager" decoding="async">
           </div>
           <div class="cover cover--spider-2">
-            <img src="assets/spider.webp?v=4k" alt="Spider-Man" decoding="async">
+            <img src="assets/spider.webp?v=hd" alt="Spider-Man" loading="eager" decoding="async">
           </div>
           <div class="cover cover--wwe-2">
-            <img src="assets/wwe.webp?v=4k" alt="WWE 2K17" decoding="async">
+            <img src="assets/wwe.webp?v=hd" alt="WWE 2K17" loading="eager" decoding="async">
           </div>
           <div class="cover cover--maden-2">
-            <img src="assets/maden.webp?v=4k" alt="Madden NFL 17" decoding="async">
+            <img src="assets/maden.webp?v=hd" alt="Madden NFL 17" loading="eager" decoding="async">
           </div>
           <div class="cover cover--ratchet2-2">
-            <img src="assets/ratchet2.webp?v=4k" alt="Ratchet and Clank" decoding="async">
+            <img src="assets/ratchet2.webp?v=hd" alt="Ratchet and Clank" loading="eager" decoding="async">
           </div>
           <div class="cover cover--grid-2">
-            <img src="assets/grid.webp?v=4k" alt="GRID" decoding="async">
+            <img src="assets/grid.webp?v=hd" alt="GRID" loading="eager" decoding="async">
           </div>
           <div class="cover cover--re7b-2">
-            <img src="assets/re7b.webp?v=4k" alt="Resident Evil 7 Biohazard" decoding="async">
+            <img src="assets/re7b.webp?v=hd" alt="Resident Evil 7 Biohazard" loading="eager" decoding="async">
           </div>
 
         </div>
