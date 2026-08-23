@@ -109,8 +109,8 @@ p {
   top: calc(50% - 33px / 2 + 0.5px);
   object-fit: contain;
   mix-blend-mode: luminosity;
-  opacity: 0.75;
-  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.12));
+  opacity: 0.82;
+  filter: drop-shadow(0 1px 1.5px rgba(0, 0, 0, 0.08));
   z-index: 1;
   user-select: none;
   cursor: pointer;
