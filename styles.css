@@ -129,7 +129,8 @@ p {
   left: 0px;
   top: 355px;
   width: 1280px;
-  height: 478px;
+  height: 640px;
+  overflow: visible;
 }
 
 .hero__stack {
@@ -137,9 +138,8 @@ p {
   left: 0px;
   top: -406px;
   width: 1280px;
-  height: 884px;
-  overflow: hidden;
-  /* full border-to-border coverage */
+  height: 1050px;
+  overflow: visible;
 }
 
 /* ── Infinite diagonal scroll track ────────────────────────── */
@@ -315,6 +315,7 @@ p {
   top: 996px;
   width: 1163px;
   height: 725px;
+  z-index: 10;
 }
 
 .promo__glow {
