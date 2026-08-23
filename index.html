@@ -608,6 +608,16 @@
       };
     })();
 
+    // Ensure audio context is immediately unlocked on first gesture
+    ['click', 'touchstart', 'pointerdown'].forEach(function (evt) {
+      window.addEventListener(evt, function unlockAudio() {
+        if (AudioFX && AudioFX.hover) {
+          AudioFX.hover();
+        }
+        window.removeEventListener(evt, unlockAudio);
+      }, { once: true, passive: true });
+    });
+
     // Slow, luxurious smooth scroll animation to Store section
     function smoothScrollTo(targetY, duration) {
       var startY = window.pageYOffset;
