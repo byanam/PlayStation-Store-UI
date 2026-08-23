@@ -585,7 +585,12 @@ body.cart-open .navbar__cart {
 
 .hero-word--connect {
   font-weight: 700;
-  color: #0130EC;
+  background: linear-gradient(135deg, #0130EC 0%, #2957f8 40%, #567dfa 60%, #0124b8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 2px 6px rgba(1, 48, 236, 0.16));
 }
 
 .hero-word--repeat {
