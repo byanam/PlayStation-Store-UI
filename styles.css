@@ -429,6 +429,8 @@ p {
 .art {
   position: absolute;
   overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 10px 17px 24px rgba(0, 0, 0, 0.48);
 }
 
 .art--gow {
@@ -436,7 +438,6 @@ p {
   top: 289px;
   width: 283px;
   height: 358px;
-  box-shadow: 8px 13px 27px rgba(0, 0, 0, 0.48);
 }
 
 .art--detroit {
@@ -444,8 +445,7 @@ p {
   top: 289px;
   width: 274px;
   height: 355px;
-  box-shadow: 10px 17px 21.9px rgba(0, 0, 0, 0.49);
-  border-radius: 6px;
+  border-radius: 12px;
 }
 
 .art--wwe {
@@ -453,7 +453,6 @@ p {
   top: 289px;
   width: 280px;
   height: 355px;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .art--mouse {
@@ -468,7 +467,6 @@ p {
   top: 872px;
   width: 281px;
   height: 355px;
-  border-radius: 3px;
 }
 
 .art--evil {
@@ -476,7 +474,6 @@ p {
   top: 870px;
   width: 279px;
   height: 357px;
-  border-radius: 9px;
 }
 
 .title {
