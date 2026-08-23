@@ -142,7 +142,7 @@ p {
   /* full border-to-border coverage */
 }
 
-/* ── Infinite floating curve scroll track ────────────────────────── */
+/* ── Infinite scroll-wheel curve track ────────────────────────── */
 .hero__track {
   position: absolute;
   left: 0;
@@ -162,187 +162,122 @@ p {
   }
 }
 
-/* Organic weightless levitation wave */
-@keyframes heroBob {
-  0%, 100% {
-    margin-top: 0px;
-  }
-
-  50% {
-    margin-top: -12px;
-  }
-}
-
 .cover {
   position: absolute;
   width: 360px;
   height: 460px;
   border-radius: 18px;
   overflow: hidden;
-  /* Realistic directional lighting shadow (light from top-right casting deep soft shadow) */
-  box-shadow: -14px 28px 45px -8px rgba(0, 0, 0, 0.55), -4px 10px 18px -2px rgba(0, 0, 0, 0.35);
-  transform-origin: center center;
-  transition: box-shadow 0.3s ease;
+  box-shadow: 10px 17px 24px rgba(0, 0, 0, 0.48);
 }
 
-/* ── Set 1: 9 cards with progressive spatial depth, scale & levitation ── */
+/* ── Set 1: 9 upright cards positioned along a scroll-wheel circular arc ── */
 .cover--gow {
   left: 0px;
   top: 334px;
-  transform: scale(1.02) rotate(12deg);
   z-index: 18;
-  filter: brightness(1.0);
-  animation: heroBob 6s ease-in-out infinite 0s;
 }
 
 .cover--doa {
-  left: 172px;
-  top: 245px;
-  transform: scale(0.98) rotate(9.5deg);
+  left: 175px;
+  top: 326px;
   z-index: 17;
-  filter: brightness(0.98);
-  animation: heroBob 6s ease-in-out infinite 0.6s;
 }
 
 .cover--detroit {
-  left: 345px;
-  top: 168px;
-  transform: scale(0.94) rotate(7deg);
+  left: 350px;
+  top: 306px;
   z-index: 16;
-  filter: brightness(0.96);
-  animation: heroBob 6s ease-in-out infinite 1.2s;
 }
 
 .cover--spider {
-  left: 518px;
-  top: 102px;
-  transform: scale(0.90) rotate(4.5deg);
+  left: 525px;
+  top: 276px;
   z-index: 15;
-  filter: brightness(0.94);
-  animation: heroBob 6s ease-in-out infinite 1.8s;
 }
 
 .cover--wwe {
-  left: 692px;
-  top: 48px;
-  transform: scale(0.86) rotate(2deg);
+  left: 700px;
+  top: 236px;
   z-index: 14;
-  filter: brightness(0.92);
-  animation: heroBob 6s ease-in-out infinite 2.4s;
 }
 
 .cover--maden {
-  left: 865px;
-  top: 4px;
-  transform: scale(0.82) rotate(-0.5deg);
+  left: 875px;
+  top: 186px;
   z-index: 13;
-  filter: brightness(0.90);
-  animation: heroBob 6s ease-in-out infinite 3.0s;
 }
 
 .cover--ratchet2 {
-  left: 1038px;
-  top: -30px;
-  transform: scale(0.78) rotate(-3deg);
+  left: 1050px;
+  top: 126px;
   z-index: 12;
-  filter: brightness(0.88);
-  animation: heroBob 6s ease-in-out infinite 3.6s;
 }
 
 .cover--grid {
-  left: 1210px;
-  top: -52px;
-  transform: scale(0.74) rotate(-5.5deg);
+  left: 1225px;
+  top: 58px;
   z-index: 11;
-  filter: brightness(0.86);
-  animation: heroBob 6s ease-in-out infinite 4.2s;
 }
 
 .cover--re7b {
-  left: 1382px;
-  top: -62px;
-  transform: scale(0.70) rotate(-8deg);
+  left: 1400px;
+  top: -20px;
   z-index: 10;
-  filter: brightness(0.84);
-  animation: heroBob 6s ease-in-out infinite 4.8s;
 }
 
 /* ── Set 2: seamless duplicate loop extending up-right behind Set 1 ── */
 .cover--gow-2 {
   left: 1563px;
   top: -62px;
-  transform: scale(1.02) rotate(12deg);
   z-index: 9;
-  filter: brightness(1.0);
-  animation: heroBob 6s ease-in-out infinite 0s;
 }
 
 .cover--doa-2 {
-  left: 1735px;
-  top: -151px;
-  transform: scale(0.98) rotate(9.5deg);
+  left: 1738px;
+  top: -70px;
   z-index: 8;
-  filter: brightness(0.98);
-  animation: heroBob 6s ease-in-out infinite 0.6s;
 }
 
 .cover--detroit-2 {
-  left: 1908px;
-  top: -228px;
-  transform: scale(0.94) rotate(7deg);
+  left: 1913px;
+  top: -90px;
   z-index: 7;
-  filter: brightness(0.96);
-  animation: heroBob 6s ease-in-out infinite 1.2s;
 }
 
 .cover--spider-2 {
-  left: 2081px;
-  top: -294px;
-  transform: scale(0.90) rotate(4.5deg);
+  left: 2088px;
+  top: -120px;
   z-index: 6;
-  filter: brightness(0.94);
-  animation: heroBob 6s ease-in-out infinite 1.8s;
 }
 
 .cover--wwe-2 {
-  left: 2255px;
-  top: -348px;
-  transform: scale(0.86) rotate(2deg);
+  left: 2263px;
+  top: -160px;
   z-index: 5;
-  filter: brightness(0.92);
-  animation: heroBob 6s ease-in-out infinite 2.4s;
 }
 
 .cover--maden-2 {
-  left: 2428px;
-  top: -392px;
-  transform: scale(0.82) rotate(-0.5deg);
+  left: 2438px;
+  top: -210px;
   z-index: 4;
-  filter: brightness(0.90);
-  animation: heroBob 6s ease-in-out infinite 3.0s;
 }
 
 .cover--ratchet2-2 {
-  left: 2601px;
-  top: -426px;
-  transform: scale(0.78) rotate(-3deg);
+  left: 2613px;
+  top: -270px;
   z-index: 3;
-  filter: brightness(0.88);
-  animation: heroBob 6s ease-in-out infinite 3.6s;
 }
 
 .cover--grid-2 {
-  left: 2773px;
-  top: -448px;
-  transform: scale(0.74) rotate(-5.5deg);
+  left: 2788px;
+  top: -338px;
   z-index: 2;
-  filter: brightness(0.86);
-  animation: heroBob 6s ease-in-out infinite 4.2s;
 }
 
 .cover--re7b-2 {
-  left: 2956px;
-  top: -789px;
+  left: 2963px;
+  top: -416px;
   z-index: 1;
 }
 
