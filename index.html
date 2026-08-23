@@ -10,16 +10,36 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&family=Outfit:wght@300;400;600;700;800&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=202608231439">
+  <link rel="stylesheet" href="styles.css?v=202608231446">
 </head>
 
 <body>
   <header class="navbar" id="navbar">
     <div class="navbar__inner">
-      <img class="navbar__logo" alt="PlayStation" src="assets/navbar_logo.svg?v=202608231441">
-      <img class="navbar__cart" alt="CART" src="assets/cart_text.svg?v=202608231441">
+      <img class="navbar__logo" alt="PlayStation" src="assets/navbar_logo.svg?v=202608231445">
+      <img class="navbar__cart" alt="CART" src="assets/cart_text.svg?v=202608231445" id="navbarCartBtn">
     </div>
   </header>
+
+  <!-- Floating Glassmorphic Cart Panel (Rectangle 2) -->
+  <aside class="cart-panel" id="cartPanel" aria-label="Shopping Cart">
+    <div class="cart-panel__header">
+      <h2 class="cart-panel__title">CART</h2>
+      <button class="cart-panel__close" id="cartClose" aria-label="Close cart">&times;</button>
+    </div>
+
+    <div class="cart-panel__items" id="cartItems">
+      <!-- Dynamically populated -->
+    </div>
+
+    <div class="cart-panel__footer">
+      <div class="cart-panel__subtotal">
+        <span>TOTAL</span>
+        <span id="cartTotal">$99.98</span>
+      </div>
+      <button class="cart-panel__checkout" id="cartCheckout">CHECKOUT</button>
+    </div>
+  </aside>
 
   <div class="canvas" id="canvas">
 
@@ -207,10 +227,92 @@
         navbar.style.transform = 'translateX(-50%) scale(' + s + ')';
         navbar.style.top = (21 * s) + 'px';
       }
+
+      var cartPanel = document.getElementById('cartPanel');
+      if (cartPanel) {
+        var isOpen = cartPanel.classList.contains('is-open');
+        cartPanel.style.transform = (isOpen ? 'translateY(0)' : 'translateY(-15px)') + ' scale(' + s + ')';
+        cartPanel.style.top = (127 * s) + 'px';
+        cartPanel.style.right = (36 * s) + 'px';
+        cartPanel.style.transformOrigin = 'top right';
+      }
     }
     window.addEventListener('resize', fit);
     window.addEventListener('orientationchange', fit);
     fit();
+
+    // Shopping Cart State & Interactivity
+    var cartState = [
+      { id: 'gow', title: 'God of War', price: 59.99, img: 'assets/gow.png' },
+      { id: 'detroit', title: 'Detroit Become Human', price: 39.99, img: 'assets/detroit.png' }
+    ];
+
+    function renderCart() {
+      var container = document.getElementById('cartItems');
+      var totalEl = document.getElementById('cartTotal');
+      if (!container || !totalEl) return;
+
+      if (cartState.length === 0) {
+        container.innerHTML = '<p style="width:100%; text-align:center; color:rgba(0,0,0,0.45); font-family:var(--code-font); font-size:14px; margin-top:60px;">YOUR CART IS EMPTY</p>';
+        totalEl.textContent = '$0.00';
+        return;
+      }
+
+      var total = 0;
+      container.innerHTML = cartState.map(function (item, idx) {
+        total += item.price;
+        return '<div class="cart-item">' +
+          '<img src="' + item.img + '" alt="' + item.title + '">' +
+          '<button class="cart-item__remove" onclick="removeCartItem(' + idx + ')" title="Remove item">&times;</button>' +
+          '<div class="cart-item__price">$' + item.price.toFixed(2) + '</div>' +
+        '</div>';
+      }).join('');
+
+      totalEl.textContent = '$' + total.toFixed(2);
+    }
+
+    window.removeCartItem = function (idx) {
+      cartState.splice(idx, 1);
+      renderCart();
+    };
+
+    function toggleCart(forceOpen) {
+      var panel = document.getElementById('cartPanel');
+      if (!panel) return;
+      if (forceOpen === true) {
+        panel.classList.add('is-open');
+      } else if (forceOpen === false) {
+        panel.classList.remove('is-open');
+      } else {
+        panel.classList.toggle('is-open');
+      }
+      fit();
+    }
+
+    var cartBtn = document.getElementById('navbarCartBtn');
+    if (cartBtn) {
+      cartBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        toggleCart();
+      });
+    }
+
+    var closeBtn = document.getElementById('cartClose');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        toggleCart(false);
+      });
+    }
+
+    document.addEventListener('click', function (e) {
+      var panel = document.getElementById('cartPanel');
+      if (panel && panel.classList.contains('is-open') && !panel.contains(e.target) && !e.target.closest('#navbarCartBtn')) {
+        toggleCart(false);
+      }
+    });
+
+    renderCart();
 
     // Store card video preview on hover
     document.querySelectorAll('.art').forEach(function (card) {
@@ -229,10 +331,24 @@
       });
     });
 
-    // Interactive add to cart feedback
-    document.querySelectorAll('.buy').forEach(function (btn) {
+    // Interactive add to cart functionality
+    var gameDetails = [
+      { id: 'gow', title: 'God of War', price: 59.99, img: 'assets/gow.png' },
+      { id: 'detroit', title: 'Detroit Become Human', price: 39.99, img: 'assets/detroit.png' },
+      { id: 'wwe', title: 'WWE 2K17', price: 49.99, img: 'assets/wwe.png' },
+      { id: 'ratchet', title: 'Ratchet & Clank', price: 69.99, img: 'assets/ratchet.png' },
+      { id: 'spider', title: 'Marvel Spider-Man', price: 49.99, img: 'assets/spider.png' },
+      { id: 're7', title: 'Resident Evil 7', price: 19.99, img: 'assets/re7.png' }
+    ];
+
+    document.querySelectorAll('.buy').forEach(function (btn, index) {
       btn.addEventListener('click', function (e) {
         e.stopPropagation();
+        var game = gameDetails[index % gameDetails.length];
+        cartState.push(game);
+        renderCart();
+        toggleCart(true);
+
         var original = btn.childNodes[0].textContent;
         btn.childNodes[0].textContent = 'Added! ';
         setTimeout(function () {

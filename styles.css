@@ -134,6 +134,203 @@ p {
 }
 
 /* ---------------------------------------------------------------------
+   CART PANEL (Rectangle 2 - Floating Glassmorphic Drawer)
+--------------------------------------------------------------------- */
+.cart-panel {
+  box-sizing: border-box;
+  position: fixed;
+  width: 348px;
+  height: 689px;
+  right: 36px;
+  top: 127px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.48) 0%, rgba(217, 217, 217, 0.38) 100%);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: 42.5px;
+  z-index: 1001;
+  box-shadow:
+    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.85),
+    0 8px 20px -4px rgba(0, 0, 0, 0.06),
+    0 20px 50px -6px rgba(0, 0, 0, 0.12),
+    0 30px 80px -10px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  padding: 30px 24px 24px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-15px);
+  transform-origin: top right;
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+.cart-panel.is-open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.cart-panel__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.cart-panel__title {
+  font-family: var(--code-font);
+  font-weight: 700;
+  font-size: 24px;
+  margin: 0;
+  background: linear-gradient(180deg, rgba(209, 209, 209, 0.8) 0%, rgba(196, 196, 196, 0.7) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  mix-blend-mode: luminosity;
+  letter-spacing: 1px;
+}
+
+.cart-panel__close {
+  background: none;
+  border: none;
+  font-size: 28px;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.45);
+  cursor: pointer;
+  padding: 0 4px;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.cart-panel__close:hover {
+  color: #000;
+  transform: scale(1.15);
+}
+
+.cart-panel__items {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 16px 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 16px 12px;
+  scrollbar-width: none;
+}
+
+.cart-panel__items::-webkit-scrollbar {
+  display: none;
+}
+
+/* Individual Cart Card (gow, detroit, etc.) */
+.cart-item {
+  position: relative;
+  width: 140px;
+  height: 178px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #000;
+  box-shadow: 8px 13px 24px rgba(0, 0, 0, 0.48);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.cart-item:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 10px 17px 28px rgba(0, 0, 0, 0.58);
+}
+
+.cart-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cart-item__remove {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.65);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease, background 0.2s ease;
+}
+
+.cart-item:hover .cart-item__remove {
+  opacity: 1;
+}
+
+.cart-item__remove:hover {
+  background: #e60012;
+  transform: scale(1.1);
+}
+
+.cart-item__price {
+  position: absolute;
+  bottom: 6px;
+  left: 6px;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  color: #fff;
+  font-family: var(--code-font);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.cart-panel__footer {
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cart-panel__subtotal {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--code-font);
+  font-weight: 700;
+  font-size: 16px;
+  color: #000;
+}
+
+.cart-panel__checkout {
+  width: 100%;
+  height: 48px;
+  border-radius: 24px;
+  background: var(--blue);
+  color: #fff;
+  border: none;
+  font-family: var(--code-font);
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(1, 48, 236, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.cart-panel__checkout:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(1, 48, 236, 0.5);
+  background: #0026c2;
+}
+
+/* ---------------------------------------------------------------------
    HERO  13,355  1134x478 (Figma Exact)
 --------------------------------------------------------------------- */
 .hero {
