@@ -1,5 +1,7 @@
 # PlayStation Store — Concept UI
 
+> 🎮 **Live Demo**: [https://byanam.github.io/PlayStation-Store-UI/](https://byanam.github.io/PlayStation-Store-UI/)
+
 A modern, animated concept landing page for the PlayStation Store built with vanilla HTML, CSS, and JavaScript.
 
 ---
