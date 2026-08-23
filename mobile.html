@@ -12,7 +12,13 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&family=Outfit:wght@300;400;600;700;800&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="mobile.css?v=202608231902">
+  <!-- Ensure mobile version only opens on mobile devices; redirects desktop/PC to index.html -->
+  <script>
+    if (window.innerWidth > 768 && !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) && !window.location.search.includes('mobile=1')) {
+      window.location.replace('index.html' + window.location.search + window.location.hash);
+    }
+  </script>
+  <link rel="stylesheet" href="mobile.css?v=202608231906">
 </head>
 
 <body>
@@ -53,6 +59,16 @@
 
     <!-- SECTION 1: MOBILE HERO -->
     <section class="mobile-hero" id="mobileHero">
+      <!-- Desktop Recommendation Banner -->
+      <div class="mobile-desktop-notice">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+          <line x1="8" y1="21" x2="16" y2="21"></line>
+          <line x1="12" y1="17" x2="12" y2="21"></line>
+        </svg>
+        <span>Best viewed on a desktop or PC</span>
+      </div>
+
       <div class="mobile-hero__badge">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
           <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>

@@ -280,6 +280,26 @@ img {
   background: radial-gradient(circle at 50% 20%, rgba(1, 48, 236, 0.08) 0%, rgba(255, 255, 255, 0) 70%);
 }
 
+.mobile-desktop-notice {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(1, 48, 236, 0.06);
+  border: 1px solid rgba(1, 48, 236, 0.16);
+  border-radius: 20px;
+  padding: 5px 12px;
+  font-family: var(--albert);
+  font-weight: 600;
+  font-size: 11px;
+  color: rgba(0, 0, 0, 0.7);
+  margin-bottom: 12px;
+}
+
+.mobile-desktop-notice svg {
+  color: var(--blue);
+  flex-shrink: 0;
+}
+
 .mobile-hero__badge {
   display: inline-flex;
   align-items: center;
@@ -293,7 +313,7 @@ img {
   font-size: 11px;
   letter-spacing: 1.5px;
   color: var(--blue);
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
 .mobile-hero__title {
