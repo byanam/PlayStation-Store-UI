@@ -10,7 +10,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&family=Outfit:wght@300;400;600;700;800&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=202608231602">
+  <link rel="stylesheet" href="styles.css?v=202608231604">
 </head>
 
 <body>
@@ -237,24 +237,65 @@
 
     <!-- Premium PlayStation Ecosystem Footer -->
     <footer class="page-footer">
+      <!-- PlayStation Vector Icon Definitions -->
+      <svg style="display: none;">
+        <defs>
+          <g id="ps-tri">
+            <polygon points="12 3.5 21.5 19.5 2.5 19.5" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round"/>
+          </g>
+          <g id="ps-circ">
+            <circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="3.2"/>
+          </g>
+          <g id="ps-cross">
+            <line x1="4.5" y1="4.5" x2="19.5" y2="19.5" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/>
+            <line x1="19.5" y1="4.5" x2="4.5" y2="19.5" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/>
+          </g>
+          <g id="ps-sq">
+            <rect x="4" y="4" width="16" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linejoin="round"/>
+          </g>
+        </defs>
+      </svg>
+
       <!-- Atmospheric Scattered PlayStation Shapes Background -->
       <div class="page-footer__scatter" aria-hidden="true">
-        <span class="sc-sym sym--tri" style="top: 8%; left: 4%; font-size: 64px; transform: rotate(-15deg); opacity: 0.08;">&#9651;</span>
-        <span class="sc-sym sym--circ" style="top: 18%; left: 18%; font-size: 42px; opacity: 0.06;">&#9711;</span>
-        <span class="sc-sym sym--cross" style="top: 10%; left: 88%; font-size: 58px; transform: rotate(18deg); opacity: 0.09;">&#10005;</span>
-        <span class="sc-sym sym--sq" style="top: 26%; left: 94%; font-size: 48px; transform: rotate(-8deg); opacity: 0.05;">&#9633;</span>
-        <span class="sc-sym sym--tri" style="top: 45%; left: 8%; font-size: 80px; transform: rotate(25deg); opacity: 0.07;">&#9651;</span>
-        <span class="sc-sym sym--cross" style="top: 36%; left: 82%; font-size: 72px; transform: rotate(-22deg); opacity: 0.08;">&#10005;</span>
-        <span class="sc-sym sym--sq" style="top: 58%; left: 3%; font-size: 54px; transform: rotate(12deg); opacity: 0.06;">&#9633;</span>
-        <span class="sc-sym sym--circ" style="top: 72%; left: 14%; font-size: 68px; opacity: 0.07;">&#9711;</span>
-        <span class="sc-sym sym--tri" style="top: 55%; left: 91%; font-size: 60px; transform: rotate(-18deg); opacity: 0.07;">&#9651;</span>
-        <span class="sc-sym sym--cross" style="top: 78%; left: 85%; font-size: 50px; transform: rotate(14deg); opacity: 0.06;">&#10005;</span>
-        <span class="sc-sym sym--sq" style="top: 85%; left: 75%; font-size: 44px; transform: rotate(-10deg); opacity: 0.05;">&#9633;</span>
-        <span class="sc-sym sym--circ" style="top: 84%; left: 24%; font-size: 38px; opacity: 0.05;">&#9711;</span>
-        <span class="sc-sym sym--cross" style="top: 6%; left: 45%; font-size: 32px; transform: rotate(10deg); opacity: 0.05;">&#10005;</span>
-        <span class="sc-sym sym--tri" style="top: 48%; left: 52%; font-size: 40px; transform: rotate(-12deg); opacity: 0.04;">&#9651;</span>
-        <span class="sc-sym sym--sq" style="top: 74%; left: 48%; font-size: 36px; transform: rotate(15deg); opacity: 0.04;">&#9633;</span>
-        <span class="sc-sym sym--circ" style="top: 32%; left: 38%; font-size: 28px; opacity: 0.04;">&#9711;</span>
+        <!-- Left Side Scatter -->
+        <svg class="sc-sym" style="top: 5%; left: 3%; width: 56px; height: 56px; transform: rotate(-15deg); opacity: 0.14;"><use href="#ps-tri"/></svg>
+        <svg class="sc-sym" style="top: 18%; left: 12%; width: 44px; height: 44px; opacity: 0.12;"><use href="#ps-circ"/></svg>
+        <svg class="sc-sym" style="top: 10%; left: 24%; width: 38px; height: 38px; transform: rotate(18deg); opacity: 0.09;"><use href="#ps-cross"/></svg>
+        <svg class="sc-sym" style="top: 28%; left: 5%; width: 48px; height: 48px; transform: rotate(-8deg); opacity: 0.11;"><use href="#ps-sq"/></svg>
+        <svg class="sc-sym" style="top: 42%; left: 16%; width: 68px; height: 68px; transform: rotate(25deg); opacity: 0.13;"><use href="#ps-tri"/></svg>
+        <svg class="sc-sym" style="top: 54%; left: 4%; width: 52px; height: 52px; transform: rotate(-20deg); opacity: 0.12;"><use href="#ps-cross"/></svg>
+        <svg class="sc-sym" style="top: 68%; left: 12%; width: 60px; height: 60px; opacity: 0.14;"><use href="#ps-circ"/></svg>
+        <svg class="sc-sym" style="top: 80%; left: 3%; width: 42px; height: 42px; transform: rotate(12deg); opacity: 0.10;"><use href="#ps-sq"/></svg>
+        <svg class="sc-sym" style="top: 88%; left: 18%; width: 50px; height: 50px; transform: rotate(-15deg); opacity: 0.12;"><use href="#ps-tri"/></svg>
+        <svg class="sc-sym" style="top: 76%; left: 26%; width: 36px; height: 36px; transform: rotate(16deg); opacity: 0.09;"><use href="#ps-cross"/></svg>
+
+        <!-- Center Scatter -->
+        <svg class="sc-sym" style="top: 4%; left: 38%; width: 34px; height: 34px; opacity: 0.08;"><use href="#ps-circ"/></svg>
+        <svg class="sc-sym" style="top: 6%; left: 62%; width: 36px; height: 36px; transform: rotate(14deg); opacity: 0.09;"><use href="#ps-tri"/></svg>
+        <svg class="sc-sym" style="top: 22%; left: 32%; width: 30px; height: 30px; transform: rotate(-10deg); opacity: 0.07;"><use href="#ps-sq"/></svg>
+        <svg class="sc-sym" style="top: 24%; left: 68%; width: 32px; height: 32px; transform: rotate(20deg); opacity: 0.08;"><use href="#ps-cross"/></svg>
+        <svg class="sc-sym" style="top: 48%; left: 36%; width: 40px; height: 40px; transform: rotate(15deg); opacity: 0.08;"><use href="#ps-tri"/></svg>
+        <svg class="sc-sym" style="top: 46%; left: 64%; width: 42px; height: 42px; opacity: 0.08;"><use href="#ps-circ"/></svg>
+        <svg class="sc-sym" style="top: 64%; left: 42%; width: 34px; height: 34px; transform: rotate(-12deg); opacity: 0.07;"><use href="#ps-cross"/></svg>
+        <svg class="sc-sym" style="top: 66%; left: 58%; width: 36px; height: 36px; transform: rotate(8deg); opacity: 0.07;"><use href="#ps-sq"/></svg>
+        <svg class="sc-sym" style="top: 86%; left: 38%; width: 44px; height: 44px; opacity: 0.10;"><use href="#ps-circ"/></svg>
+        <svg class="sc-sym" style="top: 88%; left: 62%; width: 46px; height: 46px; transform: rotate(-18deg); opacity: 0.11;"><use href="#ps-tri"/></svg>
+        <svg class="sc-sym" style="top: 92%; left: 50%; width: 38px; height: 38px; transform: rotate(12deg); opacity: 0.08;"><use href="#ps-cross"/></svg>
+
+        <!-- Right Side Scatter -->
+        <svg class="sc-sym" style="top: 8%; left: 78%; width: 48px; height: 48px; transform: rotate(-14deg); opacity: 0.12;"><use href="#ps-sq"/></svg>
+        <svg class="sc-sym" style="top: 6%; left: 92%; width: 58px; height: 58px; transform: rotate(18deg); opacity: 0.14;"><use href="#ps-cross"/></svg>
+        <svg class="sc-sym" style="top: 20%; left: 85%; width: 64px; height: 64px; opacity: 0.13;"><use href="#ps-circ"/></svg>
+        <svg class="sc-sym" style="top: 26%; left: 95%; width: 44px; height: 44px; transform: rotate(-12deg); opacity: 0.10;"><use href="#ps-tri"/></svg>
+        <svg class="sc-sym" style="top: 40%; left: 76%; width: 54px; height: 54px; transform: rotate(22deg); opacity: 0.11;"><use href="#ps-cross"/></svg>
+        <svg class="sc-sym" style="top: 44%; left: 90%; width: 72px; height: 72px; transform: rotate(-18deg); opacity: 0.15;"><use href="#ps-sq"/></svg>
+        <svg class="sc-sym" style="top: 60%; left: 82%; width: 62px; height: 62px; transform: rotate(15deg); opacity: 0.13;"><use href="#ps-tri"/></svg>
+        <svg class="sc-sym" style="top: 62%; left: 94%; width: 46px; height: 46px; opacity: 0.11;"><use href="#ps-circ"/></svg>
+        <svg class="sc-sym" style="top: 76%; left: 74%; width: 40px; height: 40px; transform: rotate(-10deg); opacity: 0.09;"><use href="#ps-sq"/></svg>
+        <svg class="sc-sym" style="top: 78%; left: 88%; width: 56px; height: 56px; transform: rotate(16deg); opacity: 0.13;"><use href="#ps-cross"/></svg>
+        <svg class="sc-sym" style="top: 90%; left: 80%; width: 48px; height: 48px; opacity: 0.11;"><use href="#ps-circ"/></svg>
+        <svg class="sc-sym" style="top: 88%; left: 93%; width: 52px; height: 52px; transform: rotate(-22deg); opacity: 0.12;"><use href="#ps-tri"/></svg>
       </div>
 
       <div class="page-footer__content">
