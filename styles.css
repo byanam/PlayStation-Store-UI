@@ -117,7 +117,7 @@ p {
   position: absolute;
   width: 80px;
   height: 24px;
-  right: 48px;
+  right: 36px;
   top: 50%;
   transform: translateY(-50%);
   object-fit: contain;
