@@ -10,7 +10,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&family=Outfit:wght@300;400;600;700;800&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=202608231450">
+  <link rel="stylesheet" href="styles.css?v=202608231454">
 </head>
 
 <body>
@@ -283,12 +283,13 @@
     function toggleCart(forceOpen) {
       var panel = document.getElementById('cartPanel');
       if (!panel) return;
-      if (forceOpen === true) {
+      var willOpen = (forceOpen !== undefined) ? forceOpen : !panel.classList.contains('is-open');
+      if (willOpen) {
         panel.classList.add('is-open');
-      } else if (forceOpen === false) {
-        panel.classList.remove('is-open');
+        document.body.classList.add('cart-open');
       } else {
-        panel.classList.toggle('is-open');
+        panel.classList.remove('is-open');
+        document.body.classList.remove('cart-open');
       }
       fit();
     }

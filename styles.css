@@ -125,12 +125,19 @@ p {
   z-index: 1;
   user-select: none;
   cursor: pointer;
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .navbar__cart:hover {
   opacity: 1;
   transform: translateY(-50%) scale(1.04);
+}
+
+/* When Cart is Open: Navbar text glides down into the cart window */
+body.cart-open .navbar__cart {
+  opacity: 0;
+  transform: translateY(22px) scale(0.85);
+  pointer-events: none;
 }
 
 /* ---------------------------------------------------------------------
@@ -185,29 +192,57 @@ p {
   font-weight: 700;
   font-size: 24px;
   margin: 0;
-  background: linear-gradient(180deg, rgba(209, 209, 209, 0.8) 0%, rgba(196, 196, 196, 0.7) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(209, 209, 209, 0.75) 0%,
+    rgba(199, 199, 199, 0.65) 58.17%,
+    rgba(206, 206, 206, 0.55) 78.37%,
+    rgba(196, 196, 196, 0.5) 88.46%
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   color: transparent;
   mix-blend-mode: luminosity;
+  opacity: 0.75;
   letter-spacing: 1px;
+  transform: translateY(-6px);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
 }
 
+.cart-panel.is-open .cart-panel__title {
+  transform: translateY(0);
+}
+
+/* Close cross logo with matching frosted platinum gradient & luminosity */
 .cart-panel__close {
   background: none;
   border: none;
+  font-family: var(--code-font);
+  font-weight: 700;
   font-size: 28px;
   line-height: 1;
-  color: rgba(0, 0, 0, 0.45);
+  background: linear-gradient(
+    180deg,
+    rgba(209, 209, 209, 0.75) 0%,
+    rgba(199, 199, 199, 0.65) 58.17%,
+    rgba(206, 206, 206, 0.55) 78.37%,
+    rgba(196, 196, 196, 0.5) 88.46%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  mix-blend-mode: luminosity;
+  opacity: 0.75;
   cursor: pointer;
   padding: 0 4px;
-  transition: color 0.2s ease, transform 0.2s ease;
+  transition: opacity 0.2s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .cart-panel__close:hover {
-  color: #000;
-  transform: scale(1.15);
+  opacity: 1;
+  transform: scale(1.15) rotate(90deg);
 }
 
 .cart-panel__items {
