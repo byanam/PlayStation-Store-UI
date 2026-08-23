@@ -95,7 +95,9 @@ p {
   left: calc(50% - 52px / 2 + 0.5px);
   top: calc(50% - 40px / 2 + 0.5px);
   object-fit: contain;
-  opacity: 0.75;
+  mix-blend-mode: luminosity;
+  opacity: 0.88;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.12));
   z-index: 1;
 }
 
