@@ -10,7 +10,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&family=Outfit:wght@300;400;600;700;800&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=202608231447">
+  <link rel="stylesheet" href="styles.css?v=202608231450">
 </head>
 
 <body>
@@ -231,8 +231,12 @@
       var cartPanel = document.getElementById('cartPanel');
       if (cartPanel) {
         var isOpen = cartPanel.classList.contains('is-open');
+        var topPos = 105 * s;
+        var maxH = Math.max(320, (window.innerHeight - topPos - (20 * s)) / s);
+        cartPanel.style.maxHeight = maxH + 'px';
+        cartPanel.style.height = Math.min(689, maxH) + 'px';
         cartPanel.style.transform = (isOpen ? 'translateY(0)' : 'translateY(-15px)') + ' scale(' + s + ')';
-        cartPanel.style.top = (105 * s) + 'px';
+        cartPanel.style.top = topPos + 'px';
         cartPanel.style.right = (36 * s) + 'px';
         cartPanel.style.transformOrigin = 'top right';
       }
