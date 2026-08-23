@@ -142,7 +142,7 @@ p {
   /* full border-to-border coverage */
 }
 
-/* ── Infinite circular arc scroll track ────────────────────────── */
+/* ── Infinite floating curve scroll track ────────────────────────── */
 .hero__track {
   position: absolute;
   left: 0;
@@ -158,7 +158,18 @@ p {
   }
 
   to {
-    transform: translate(-1563px, 402px);
+    transform: translate(-1563px, 396px);
+  }
+}
+
+/* Organic weightless levitation wave */
+@keyframes heroBob {
+  0%, 100% {
+    margin-top: 0px;
+  }
+
+  50% {
+    margin-top: -12px;
   }
 }
 
@@ -168,135 +179,170 @@ p {
   height: 460px;
   border-radius: 18px;
   overflow: hidden;
-  box-shadow: 10px 17px 24px rgba(0, 0, 0, 0.48);
+  /* Realistic directional lighting shadow (light from top-right casting deep soft shadow) */
+  box-shadow: -14px 28px 45px -8px rgba(0, 0, 0, 0.55), -4px 10px 18px -2px rgba(0, 0, 0, 0.35);
   transform-origin: center center;
+  transition: box-shadow 0.3s ease;
 }
 
-/* ── Set 1: 9 cards curved along a rounded circular arc (bottom-right quadrant) ── */
+/* ── Set 1: 9 cards with progressive spatial depth, scale & levitation ── */
 .cover--gow {
   left: 0px;
   top: 334px;
-  transform: rotate(14deg);
+  transform: scale(1.02) rotate(12deg);
   z-index: 18;
+  filter: brightness(1.0);
+  animation: heroBob 6s ease-in-out infinite 0s;
 }
 
 .cover--doa {
-  left: 170px;
-  top: 242px;
-  transform: rotate(11deg);
+  left: 172px;
+  top: 245px;
+  transform: scale(0.98) rotate(9.5deg);
   z-index: 17;
+  filter: brightness(0.98);
+  animation: heroBob 6s ease-in-out infinite 0.6s;
 }
 
 .cover--detroit {
-  left: 340px;
-  top: 162px;
-  transform: rotate(8deg);
+  left: 345px;
+  top: 168px;
+  transform: scale(0.94) rotate(7deg);
   z-index: 16;
+  filter: brightness(0.96);
+  animation: heroBob 6s ease-in-out infinite 1.2s;
 }
 
 .cover--spider {
-  left: 515px;
-  top: 94px;
-  transform: rotate(5.5deg);
+  left: 518px;
+  top: 102px;
+  transform: scale(0.90) rotate(4.5deg);
   z-index: 15;
+  filter: brightness(0.94);
+  animation: heroBob 6s ease-in-out infinite 1.8s;
 }
 
 .cover--wwe {
-  left: 690px;
-  top: 38px;
-  transform: rotate(3deg);
+  left: 692px;
+  top: 48px;
+  transform: scale(0.86) rotate(2deg);
   z-index: 14;
+  filter: brightness(0.92);
+  animation: heroBob 6s ease-in-out infinite 2.4s;
 }
 
 .cover--maden {
   left: 865px;
-  top: -6px;
-  transform: rotate(0.5deg);
+  top: 4px;
+  transform: scale(0.82) rotate(-0.5deg);
   z-index: 13;
+  filter: brightness(0.90);
+  animation: heroBob 6s ease-in-out infinite 3.0s;
 }
 
 .cover--ratchet2 {
-  left: 1040px;
-  top: -38px;
-  transform: rotate(-2deg);
+  left: 1038px;
+  top: -30px;
+  transform: scale(0.78) rotate(-3deg);
   z-index: 12;
+  filter: brightness(0.88);
+  animation: heroBob 6s ease-in-out infinite 3.6s;
 }
 
 .cover--grid {
-  left: 1215px;
-  top: -58px;
-  transform: rotate(-4.5deg);
+  left: 1210px;
+  top: -52px;
+  transform: scale(0.74) rotate(-5.5deg);
   z-index: 11;
+  filter: brightness(0.86);
+  animation: heroBob 6s ease-in-out infinite 4.2s;
 }
 
 .cover--re7b {
-  left: 1390px;
-  top: -68px;
-  transform: rotate(-7deg);
+  left: 1382px;
+  top: -62px;
+  transform: scale(0.70) rotate(-8deg);
   z-index: 10;
+  filter: brightness(0.84);
+  animation: heroBob 6s ease-in-out infinite 4.8s;
 }
 
 /* ── Set 2: seamless duplicate loop extending up-right behind Set 1 ── */
 .cover--gow-2 {
   left: 1563px;
-  top: -68px;
-  transform: rotate(14deg);
+  top: -62px;
+  transform: scale(1.02) rotate(12deg);
   z-index: 9;
+  filter: brightness(1.0);
+  animation: heroBob 6s ease-in-out infinite 0s;
 }
 
 .cover--doa-2 {
-  left: 1733px;
-  top: -160px;
-  transform: rotate(11deg);
+  left: 1735px;
+  top: -151px;
+  transform: scale(0.98) rotate(9.5deg);
   z-index: 8;
+  filter: brightness(0.98);
+  animation: heroBob 6s ease-in-out infinite 0.6s;
 }
 
 .cover--detroit-2 {
-  left: 1903px;
-  top: -240px;
-  transform: rotate(8deg);
+  left: 1908px;
+  top: -228px;
+  transform: scale(0.94) rotate(7deg);
   z-index: 7;
+  filter: brightness(0.96);
+  animation: heroBob 6s ease-in-out infinite 1.2s;
 }
 
 .cover--spider-2 {
-  left: 2078px;
-  top: -308px;
-  transform: rotate(5.5deg);
+  left: 2081px;
+  top: -294px;
+  transform: scale(0.90) rotate(4.5deg);
   z-index: 6;
+  filter: brightness(0.94);
+  animation: heroBob 6s ease-in-out infinite 1.8s;
 }
 
 .cover--wwe-2 {
-  left: 2253px;
-  top: -364px;
-  transform: rotate(3deg);
+  left: 2255px;
+  top: -348px;
+  transform: scale(0.86) rotate(2deg);
   z-index: 5;
+  filter: brightness(0.92);
+  animation: heroBob 6s ease-in-out infinite 2.4s;
 }
 
 .cover--maden-2 {
   left: 2428px;
-  top: -408px;
-  transform: rotate(0.5deg);
+  top: -392px;
+  transform: scale(0.82) rotate(-0.5deg);
   z-index: 4;
+  filter: brightness(0.90);
+  animation: heroBob 6s ease-in-out infinite 3.0s;
 }
 
 .cover--ratchet2-2 {
-  left: 2603px;
-  top: -440px;
-  transform: rotate(-2deg);
+  left: 2601px;
+  top: -426px;
+  transform: scale(0.78) rotate(-3deg);
   z-index: 3;
+  filter: brightness(0.88);
+  animation: heroBob 6s ease-in-out infinite 3.6s;
 }
 
 .cover--grid-2 {
-  left: 2778px;
-  top: -460px;
-  transform: rotate(-4.5deg);
+  left: 2773px;
+  top: -448px;
+  transform: scale(0.74) rotate(-5.5deg);
   z-index: 2;
+  filter: brightness(0.86);
+  animation: heroBob 6s ease-in-out infinite 4.2s;
 }
 
 .cover--re7b-2 {
-  left: 2953px;
-  top: -470px;
-  transform: rotate(-7deg);
+  left: 2956px;
+  top: -789px;
   z-index: 1;
 }
 
