@@ -5,12 +5,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PlayStation Store</title>
+  <!-- Preconnect & Preload Key Hero Assets -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="image" href="assets/gow.webp" type="image/webp" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/doa.webp" type="image/webp" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/detroit.webp" type="image/webp" fetchpriority="high">
   <link
     href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&family=Outfit:wght@300;400;600;700;800&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=202608231746">
+  <link rel="stylesheet" href="styles.css?v=202608231753">
 </head>
 
 <body>
@@ -25,84 +29,92 @@
   <aside class="cart-panel" id="cartPanel" aria-label="Shopping Cart">
     <div class="cart-panel__header">
       <h2 class="cart-panel__title">CART</h2>
-      <button class="cart-panel__close" id="cartClose" aria-label="Close cart">&times;</button>
+      <button class="cart-panel__close" id="cartCloseBtn" aria-label="Close cart">&times;</button>
     </div>
-
     <div class="cart-panel__items" id="cartItems">
-      <!-- Dynamically populated -->
+      <!-- Injected via JavaScript -->
     </div>
-
     <div class="cart-panel__footer">
-      <div class="cart-panel__subtotal">
-        <span>TOTAL</span>
-        <span id="cartTotal">$99.98</span>
+      <div class="cart-panel__summary">
+        <span class="cart-panel__total-label">SUBTOTAL</span>
+        <span class="cart-panel__total" id="cartTotal">$99.98</span>
       </div>
-      <button class="cart-panel__checkout" id="cartCheckout">CHECKOUT</button>
+      <button class="cart-panel__checkout" id="cartCheckout" type="button">
+        <span>CHECKOUT</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </button>
     </div>
   </aside>
 
   <div class="canvas" id="canvas">
 
+    <!-- -----------------------------------------------------------------
+         HERO (Frame 9, 10, 11, 12, 13, 14, 15, 16, 17, 18)
+    ------------------------------------------------------------------ -->
     <section class="hero">
       <div class="hero__stack">
         <div class="hero__track">
 
           <!-- Set 1: 9 cards from front (God of War) to back (RE7 Biohazard) -->
           <div class="cover cover--gow">
-            <img src="assets/gow.png" alt="God of War">
+            <img src="assets/gow.webp" alt="God of War" fetchpriority="high" decoding="async">
           </div>
           <div class="cover cover--doa">
-            <img src="assets/doa.png" alt="Dead or Alive 5">
+            <img src="assets/doa.webp" alt="Dead or Alive 5" fetchpriority="high" decoding="async">
           </div>
           <div class="cover cover--detroit">
-            <img src="assets/detroit.png" alt="Detroit Become Human">
+            <img src="assets/detroit.webp" alt="Detroit Become Human" fetchpriority="high" decoding="async">
           </div>
           <div class="cover cover--spider">
-            <img src="assets/spider.png" alt="Spider-Man">
+            <img src="assets/spider.webp" alt="Spider-Man" decoding="async">
           </div>
           <div class="cover cover--wwe">
-            <img src="assets/wwe.png" alt="WWE 2K17">
+            <img src="assets/wwe.webp" alt="WWE 2K17" decoding="async">
           </div>
           <div class="cover cover--maden">
-            <img src="assets/maden.png" alt="Madden NFL 17">
+            <img src="assets/maden.webp" alt="Madden NFL 17" decoding="async">
           </div>
           <div class="cover cover--ratchet2">
-            <img src="assets/ratchet2.png" alt="Ratchet and Clank">
+            <img src="assets/ratchet2.webp" alt="Ratchet and Clank" decoding="async">
           </div>
           <div class="cover cover--grid">
-            <img src="assets/grid.png" alt="GRID">
+            <img src="assets/grid.webp" alt="GRID" decoding="async">
           </div>
           <div class="cover cover--re7b">
-            <img src="assets/re7b.png" alt="Resident Evil 7 Biohazard">
+            <img src="assets/re7b.webp" alt="Resident Evil 7 Biohazard" decoding="async">
           </div>
 
           <!-- Set 2: seamless duplicate loop extending up-right behind Set 1 -->
           <div class="cover cover--gow-2">
-            <img src="assets/gow.png" alt="God of War">
+            <img src="assets/gow.webp" alt="God of War" decoding="async">
           </div>
           <div class="cover cover--doa-2">
-            <img src="assets/doa.png" alt="Dead or Alive 5">
+            <img src="assets/doa.webp" alt="Dead or Alive 5" decoding="async">
           </div>
           <div class="cover cover--detroit-2">
-            <img src="assets/detroit.png" alt="Detroit Become Human">
+            <img src="assets/detroit.webp" alt="Detroit Become Human" decoding="async">
           </div>
           <div class="cover cover--spider-2">
-            <img src="assets/spider.png" alt="Spider-Man">
+            <img src="assets/spider.webp" alt="Spider-Man" decoding="async">
           </div>
           <div class="cover cover--wwe-2">
-            <img src="assets/wwe.png" alt="WWE 2K17">
+            <img src="assets/wwe.webp" alt="WWE 2K17" decoding="async">
           </div>
           <div class="cover cover--maden-2">
-            <img src="assets/maden.png" alt="Madden NFL 17">
+            <img src="assets/maden.webp" alt="Madden NFL 17" decoding="async">
           </div>
           <div class="cover cover--ratchet2-2">
-            <img src="assets/ratchet2.png" alt="Ratchet and Clank">
+            <img src="assets/ratchet2.webp" alt="Ratchet and Clank" decoding="async">
           </div>
           <div class="cover cover--grid-2">
-            <img src="assets/grid.png" alt="GRID">
+            <img src="assets/grid.webp" alt="GRID" decoding="async">
           </div>
           <div class="cover cover--re7b-2">
-            <img src="assets/re7b.png" alt="Resident Evil 7 Biohazard">
+            <img src="assets/re7b.webp" alt="Resident Evil 7 Biohazard" decoding="async">
           </div>
 
         </div>
@@ -161,8 +173,8 @@
       <div class="games">
 
         <div class="art art--gow">
-          <img src="assets/gow.png" alt="God of War">
-          <video class="art__video" src="assets/videos/gow.mp4" muted loop playsinline preload="auto"></video>
+          <img src="assets/gow.webp" alt="God of War" loading="lazy" decoding="async">
+          <video class="art__video" src="assets/videos/gow.mp4" muted loop playsinline preload="none"></video>
         </div>
         <p class="title title--gow">God Of War</p>
         <p class="meta meta--gow"><span class="meta__cat">Action RPG</span><br>
@@ -173,8 +185,8 @@
         </button>
 
         <div class="art art--detroit">
-          <img src="assets/detroit.png" alt="Detroit Become Human">
-          <video class="art__video" src="assets/videos/detroit.mp4" muted loop playsinline preload="auto"></video>
+          <img src="assets/detroit.webp" alt="Detroit Become Human" loading="lazy" decoding="async">
+          <video class="art__video" src="assets/videos/detroit.mp4" muted loop playsinline preload="none"></video>
         </div>
         <p class="title title--detroit">Detroit Become Human</p>
         <p class="meta meta--detroit"><span class="meta__cat">Adventure &middot; Narrative</span><br>
@@ -185,8 +197,8 @@
         </button>
 
         <div class="art art--wwe">
-          <img src="assets/wwe.png" alt="WWE 2K17">
-          <video class="art__video" src="assets/videos/wwe.mp4" muted loop playsinline preload="auto"></video>
+          <img src="assets/wwe.webp" alt="WWE 2K17" loading="lazy" decoding="async">
+          <video class="art__video" src="assets/videos/wwe.mp4" muted loop playsinline preload="none"></video>
         </div>
         <p class="title title--wwe">WWE 2K1</p>
         <p class="meta meta--wwe"><span class="meta__cat">Sports &middot; Wrestling</span><br>
@@ -197,8 +209,8 @@
         </button>
 
         <div class="art art--mouse">
-          <img src="assets/ratchet.png" alt="Ratchet and Clank">
-          <video class="art__video" src="assets/videos/ratchet.mp4" muted loop playsinline preload="auto"></video>
+          <img src="assets/ratchet.webp" alt="Ratchet and Clank" loading="lazy" decoding="async">
+          <video class="art__video" src="assets/videos/ratchet.mp4" muted loop playsinline preload="none"></video>
         </div>
         <p class="title title--mouse">Ratchet &amp;<br>Clank</p>
         <p class="meta meta--mouse"><span class="meta__cat">Action &middot; Adventure</span><br>
@@ -209,8 +221,8 @@
         </button>
 
         <div class="art art--spider">
-          <img src="assets/spider.png" alt="Spider-Man">
-          <video class="art__video" src="assets/videos/spider.mp4" muted loop playsinline preload="auto"></video>
+          <img src="assets/spider.webp" alt="Spider-Man" loading="lazy" decoding="async">
+          <video class="art__video" src="assets/videos/spider.mp4" muted loop playsinline preload="none"></video>
         </div>
         <p class="title title--spider">Spiderman</p>
         <p class="meta meta--spider"><span class="meta__cat">Action &middot; Adventure</span><br>
@@ -221,8 +233,8 @@
         </button>
 
         <div class="art art--evil">
-          <img src="assets/re7.png" alt="Resident Evil Biohazard">
-          <video class="art__video" src="assets/videos/re7.mp4" muted loop playsinline preload="auto"></video>
+          <img src="assets/re7.webp" alt="Resident Evil Biohazard" loading="lazy" decoding="async">
+          <video class="art__video" src="assets/videos/re7.mp4" muted loop playsinline preload="none"></video>
         </div>
         <p class="title title--evil">Resident Evil Biohazard</p>
         <p class="meta meta--evil"><span class="meta__cat">Survival Horror &middot; Action</span><br>
@@ -453,8 +465,8 @@
 
     // Shopping Cart State & Interactivity
     var cartState = [
-      { id: 'gow', title: 'God of War', price: 59.99, img: 'assets/gow.png' },
-      { id: 'detroit', title: 'Detroit Become Human', price: 39.99, img: 'assets/detroit.png' }
+      { id: 'gow', title: 'God of War', price: 59.99, img: 'assets/gow.webp' },
+      { id: 'detroit', title: 'Detroit Become Human', price: 39.99, img: 'assets/detroit.webp' }
     ];
 
     function renderCart() {
@@ -472,7 +484,7 @@
       container.innerHTML = cartState.map(function (item, idx) {
         total += item.price;
         return '<div class="cart-item">' +
-          '<img src="' + item.img + '" alt="' + item.title + '">' +
+          '<img src="' + item.img + '" alt="' + item.title + '" loading="lazy" decoding="async">' +
           '<button class="cart-item__remove" onclick="event.stopPropagation(); removeCartItem(event, ' + idx + ');" title="Remove item">&times;</button>' +
           '<div class="cart-item__price">$' + item.price.toFixed(2) + '</div>' +
           '</div>';
@@ -509,7 +521,7 @@
       });
     }
 
-    var closeBtn = document.getElementById('cartClose');
+    var closeBtn = document.getElementById('cartCloseBtn');
     if (closeBtn) {
       closeBtn.addEventListener('click', function (e) {
         e.stopPropagation();
@@ -541,11 +553,14 @@
 
     renderCart();
 
-    // Store card video preview on hover
+    // Store card video preview on hover (lazy load video streams on demand)
     document.querySelectorAll('.art').forEach(function (card) {
       var video = card.querySelector('.art__video');
       if (!video) return;
       card.addEventListener('mouseenter', function () {
+        if (video.preload === 'none') {
+          video.preload = 'auto';
+        }
         video.currentTime = 0;
         var p = video.play();
         if (p !== undefined) {
@@ -560,12 +575,12 @@
 
     // Interactive add to cart functionality
     var gameDetails = [
-      { id: 'gow', title: 'God of War', price: 59.99, img: 'assets/gow.png' },
-      { id: 'detroit', title: 'Detroit Become Human', price: 39.99, img: 'assets/detroit.png' },
-      { id: 'wwe', title: 'WWE 2K17', price: 49.99, img: 'assets/wwe.png' },
-      { id: 'ratchet', title: 'Ratchet & Clank', price: 69.99, img: 'assets/ratchet.png' },
-      { id: 'spider', title: 'Marvel Spider-Man', price: 49.99, img: 'assets/spider.png' },
-      { id: 're7', title: 'Resident Evil 7', price: 19.99, img: 'assets/re7.png' }
+      { id: 'gow', title: 'God of War', price: 59.99, img: 'assets/gow.webp' },
+      { id: 'detroit', title: 'Detroit Become Human', price: 39.99, img: 'assets/detroit.webp' },
+      { id: 'wwe', title: 'WWE 2K17', price: 49.99, img: 'assets/wwe.webp' },
+      { id: 'ratchet', title: 'Ratchet & Clank', price: 69.99, img: 'assets/ratchet.webp' },
+      { id: 'spider', title: 'Marvel Spider-Man', price: 49.99, img: 'assets/spider.webp' },
+      { id: 're7', title: 'Resident Evil 7', price: 19.99, img: 'assets/re7.webp' }
     ];
 
     document.querySelectorAll('.buy').forEach(function (btn, index) {
