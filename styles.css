@@ -68,7 +68,7 @@ p {
 .navbar {
   position: fixed;
   width: 1209px;
-  height: 85px;
+  height: 72px;
   left: 50%;
   top: 21px;
   transform: translateX(-50%);
@@ -77,7 +77,7 @@ p {
   backdrop-filter: blur(16px) saturate(180%);
   -webkit-backdrop-filter: blur(16px) saturate(180%);
   border: 1px solid rgba(255, 255, 255, 0.65);
-  border-radius: 42.5px;
+  border-radius: 36px;
   z-index: 1000;
   box-shadow:
     inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.85),
@@ -99,10 +99,10 @@ p {
 
 .navbar__logo {
   position: absolute;
-  width: 52px;
-  height: 40px;
-  left: calc(50% - 52px / 2 + 0.5px);
-  top: calc(50% - 40px / 2 + 0.5px);
+  width: 49px;
+  height: 38px;
+  left: calc(50% - 49px / 2 + 0.5px);
+  top: calc(50% - 38px / 2);
   object-fit: contain;
   mix-blend-mode: luminosity;
   opacity: 0.88;
@@ -112,10 +112,10 @@ p {
 
 .navbar__cart {
   position: absolute;
-  width: 80px;
-  height: 33px;
+  width: 73px;
+  height: 30px;
   right: 48px;
-  top: calc(50% - 33px / 2 + 0.5px);
+  top: calc(50% - 30px / 2);
   object-fit: contain;
   mix-blend-mode: luminosity;
   opacity: 0.75;
