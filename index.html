@@ -539,7 +539,7 @@
         return ctx;
       }
 
-      // 1. Cute, Delightful Water Bubble / Airy Pop on Hover
+      // 1. Cute, Delightful Water Bubble / Airy Pop on Hover (Whisper-Soft)
       function playHover() {
         var c = getContext();
         if (!c) return;
@@ -550,19 +550,19 @@
 
         osc.type = 'sine';
         osc.frequency.setValueAtTime(680, now);
-        osc.frequency.exponentialRampToValueAtTime(1450, now + 0.038);
+        osc.frequency.exponentialRampToValueAtTime(1450, now + 0.035);
 
-        gain.gain.setValueAtTime(0.035, now);
-        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.045);
+        gain.gain.setValueAtTime(0.018, now);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.04);
 
         osc.connect(gain);
         gain.connect(c.destination);
 
         osc.start(now);
-        osc.stop(now + 0.045);
+        osc.stop(now + 0.04);
       }
 
-      // 2. Soft, Velvety Tactile Tap on Click (Zero Clank, Pleasant & Gentle)
+      // 2. Soft, Velvety Tactile Tap on Click (Ultra-Gentle Whisper)
       function playClick() {
         var c = getContext();
         if (!c) return;
@@ -572,20 +572,20 @@
         var gain = c.createGain();
 
         osc.type = 'sine';
-        osc.frequency.setValueAtTime(560, now);
-        osc.frequency.exponentialRampToValueAtTime(320, now + 0.032);
+        osc.frequency.setValueAtTime(520, now);
+        osc.frequency.exponentialRampToValueAtTime(300, now + 0.03);
 
-        gain.gain.setValueAtTime(0.035, now);
-        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.038);
+        gain.gain.setValueAtTime(0.018, now);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.035);
 
         osc.connect(gain);
         gain.connect(c.destination);
 
         osc.start(now);
-        osc.stop(now + 0.038);
+        osc.stop(now + 0.035);
       }
 
-      // 3. Shimmering Crystal Trophy / Item Added Arpeggio (Soft, Airy & Warm)
+      // 3. Shimmering Crystal Trophy / Item Added Arpeggio (Whisper-Soft)
       function playAddToCart() {
         var c = getContext();
         if (!c) return;
@@ -593,25 +593,25 @@
         var freqs = [1046.50, 1318.51, 1567.98];
 
         freqs.forEach(function (freq, i) {
-          var noteStart = now + i * 0.038;
+          var noteStart = now + i * 0.035;
           var osc = c.createOscillator();
           var gain = c.createGain();
 
           osc.type = 'sine';
           osc.frequency.setValueAtTime(freq, noteStart);
 
-          gain.gain.setValueAtTime(0.035, noteStart);
-          gain.gain.exponentialRampToValueAtTime(0.0001, noteStart + 0.25);
+          gain.gain.setValueAtTime(0.018, noteStart);
+          gain.gain.exponentialRampToValueAtTime(0.0001, noteStart + 0.2);
 
           osc.connect(gain);
           gain.connect(c.destination);
 
           osc.start(noteStart);
-          osc.stop(noteStart + 0.25);
+          osc.stop(noteStart + 0.2);
         });
       }
 
-      // 4. Smooth Magnetic Glass Drawer Swoosh (Soft Volume)
+      // 4. Smooth Magnetic Glass Drawer Swoosh (Whisper-Soft)
       function playCartOpen() {
         var c = getContext();
         if (!c) return;
@@ -622,19 +622,19 @@
 
         osc.type = 'sine';
         osc.frequency.setValueAtTime(280, now);
-        osc.frequency.exponentialRampToValueAtTime(680, now + 0.1);
+        osc.frequency.exponentialRampToValueAtTime(600, now + 0.08);
 
-        gain.gain.setValueAtTime(0.04, now);
-        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.12);
+        gain.gain.setValueAtTime(0.02, now);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.1);
 
         osc.connect(gain);
         gain.connect(c.destination);
 
         osc.start(now);
-        osc.stop(now + 0.12);
+        osc.stop(now + 0.1);
       }
 
-      // 5. Playful Soft Bubble Pop Down on Remove / Close
+      // 5. Playful Soft Bubble Pop Down on Remove / Close (Whisper-Soft)
       function playRemove() {
         var c = getContext();
         if (!c) return;
@@ -644,42 +644,40 @@
         var gain = c.createGain();
 
         osc.type = 'sine';
-        osc.frequency.setValueAtTime(750, now);
-        osc.frequency.exponentialRampToValueAtTime(320, now + 0.04);
+        osc.frequency.setValueAtTime(650, now);
+        osc.frequency.exponentialRampToValueAtTime(280, now + 0.035);
 
-        gain.gain.setValueAtTime(0.035, now);
-        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.045);
+        gain.gain.setValueAtTime(0.018, now);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.04);
 
         osc.connect(gain);
         gain.connect(c.destination);
 
         osc.start(now);
-        osc.stop(now + 0.045);
+        osc.stop(now + 0.04);
       }
 
-      // 6. Ethereal Soft Harmonic Chime (Gentle Logo & Store Jump)
+      // 6. Warm, Whisper-Quiet Ethereal Note (Gentle Logo & Store Jump)
       function playGlide() {
         var c = getContext();
         if (!c) return;
         var now = c.currentTime;
-        var freqs = [880, 1320];
 
-        freqs.forEach(function (freq, idx) {
-          var osc = c.createOscillator();
-          var gain = c.createGain();
+        var osc = c.createOscillator();
+        var gain = c.createGain();
 
-          osc.type = 'sine';
-          osc.frequency.setValueAtTime(freq, now);
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(440, now);
+        osc.frequency.exponentialRampToValueAtTime(660, now + 0.08);
 
-          gain.gain.setValueAtTime(0.025, now + idx * 0.02);
-          gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.22);
+        gain.gain.setValueAtTime(0.014, now);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.12);
 
-          osc.connect(gain);
-          gain.connect(c.destination);
+        osc.connect(gain);
+        gain.connect(c.destination);
 
-          osc.start(now);
-          osc.stop(now + 0.22);
-        });
+        osc.start(now);
+        osc.stop(now + 0.12);
       }
 
       return {
