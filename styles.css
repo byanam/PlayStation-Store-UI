@@ -472,6 +472,15 @@ body.cart-open .navbar__cart {
     0 45px 90px -20px rgba(0, 0, 0, 0.38);
 }
 
+.cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  image-rendering: -webkit-optimize-contrast;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
 /* ── Set 1: 9 cards with perfectly uniform 170px / -66px step spacing ── */
 .cover--gow {
   left: 0px;
