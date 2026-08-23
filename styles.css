@@ -1018,7 +1018,12 @@ body.cart-open .navbar__cart {
 }
 
 .page-footer__hero {
+  width: 100%;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   margin-bottom: 28px;
 }
 
@@ -1031,6 +1036,7 @@ body.cart-open .navbar__cart {
   letter-spacing: 2px;
   color: #fff;
   text-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+  text-align: center;
 }
 
 .page-footer__desc {
@@ -1041,13 +1047,16 @@ body.cart-open .navbar__cart {
   margin: 0 auto;
   max-width: 680px;
   line-height: 1.5;
+  text-align: center;
 }
 
 /* Newsletter Input Pill */
 .page-footer__newsletter {
+  width: 100%;
   display: flex;
   justify-content: center;
-  margin-bottom: 40px;
+  align-items: center;
+  margin: 0 auto 40px auto;
 }
 
 .newsletter__glass {
