@@ -103,10 +103,10 @@ p {
 
 .navbar__cart {
   position: absolute;
-  width: 74px;
-  height: 22px;
-  right: 36px;
-  top: calc(50% - 22px / 2);
+  height: 33px;
+  right: 48px;
+  top: 50%;
+  transform: translateY(-50%);
   font-family: var(--code-font);
   font-style: normal;
   font-weight: 700;
@@ -115,15 +115,30 @@ p {
   display: flex;
   align-items: center;
   text-transform: lowercase;
-  background: linear-gradient(180deg, #271BFD 0%, #D2C9ED 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.75) 0%,
+    rgba(226, 226, 226, 0.55) 58.17%,
+    rgba(206, 206, 206, 0.50) 78.37%,
+    rgba(216, 207, 236, 0.45) 88.46%
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   color: transparent;
+  mix-blend-mode: luminosity;
+  opacity: 0.88;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.12));
   white-space: nowrap;
   z-index: 1;
   user-select: none;
   cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.navbar__cart:hover {
+  opacity: 1;
+  transform: translateY(-50%) scale(1.04);
 }
 
 /* ---------------------------------------------------------------------
