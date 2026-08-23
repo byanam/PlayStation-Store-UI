@@ -135,14 +135,14 @@ p {
 .hero__stack {
   position: absolute;
   left: 0px;
-  top: -466px;
+  top: -406px;
   width: 1280px;
-  height: 944px;
+  height: 884px;
   overflow: hidden;
   /* full border-to-border coverage */
 }
 
-/* ── Infinite scroll-wheel curve track ────────────────────────── */
+/* ── Infinite diagonal scroll track ────────────────────────── */
 .hero__track {
   position: absolute;
   left: 0;
@@ -158,7 +158,7 @@ p {
   }
 
   to {
-    transform: translate(-1563px, 396px);
+    transform: translate(-1530px, 594px);
   }
 }
 
@@ -171,7 +171,7 @@ p {
   box-shadow: 10px 17px 24px rgba(0, 0, 0, 0.48);
 }
 
-/* ── Set 1: 9 upright cards positioned along a scroll-wheel circular arc ── */
+/* ── Set 1: 9 cards with perfectly uniform 170px / -66px step spacing ── */
 .cover--gow {
   left: 0px;
   top: 334px;
@@ -179,105 +179,105 @@ p {
 }
 
 .cover--doa {
-  left: 175px;
-  top: 326px;
+  left: 170px;
+  top: 268px;
   z-index: 17;
 }
 
 .cover--detroit {
-  left: 350px;
-  top: 306px;
+  left: 340px;
+  top: 202px;
   z-index: 16;
 }
 
 .cover--spider {
-  left: 525px;
-  top: 276px;
+  left: 510px;
+  top: 136px;
   z-index: 15;
 }
 
 .cover--wwe {
-  left: 700px;
-  top: 236px;
+  left: 680px;
+  top: 70px;
   z-index: 14;
 }
 
 .cover--maden {
-  left: 875px;
-  top: 186px;
+  left: 850px;
+  top: 4px;
   z-index: 13;
 }
 
 .cover--ratchet2 {
-  left: 1050px;
-  top: 126px;
+  left: 1020px;
+  top: -62px;
   z-index: 12;
 }
 
 .cover--grid {
-  left: 1225px;
-  top: 58px;
+  left: 1190px;
+  top: -128px;
   z-index: 11;
 }
 
 .cover--re7b {
-  left: 1400px;
-  top: -20px;
+  left: 1360px;
+  top: -194px;
   z-index: 10;
 }
 
-/* ── Set 2: seamless duplicate loop extending up-right behind Set 1 ── */
+/* ── Set 2: seamless duplicate loop extending up-right behind Set 1 (+1530px, -594px) ── */
 .cover--gow-2 {
-  left: 1563px;
-  top: -62px;
+  left: 1530px;
+  top: -260px;
   z-index: 9;
 }
 
 .cover--doa-2 {
-  left: 1738px;
-  top: -70px;
+  left: 1700px;
+  top: -326px;
   z-index: 8;
 }
 
 .cover--detroit-2 {
-  left: 1913px;
-  top: -90px;
+  left: 1870px;
+  top: -392px;
   z-index: 7;
 }
 
 .cover--spider-2 {
-  left: 2088px;
-  top: -120px;
+  left: 2040px;
+  top: -458px;
   z-index: 6;
 }
 
 .cover--wwe-2 {
-  left: 2263px;
-  top: -160px;
+  left: 2210px;
+  top: -524px;
   z-index: 5;
 }
 
 .cover--maden-2 {
-  left: 2438px;
-  top: -210px;
+  left: 2380px;
+  top: -590px;
   z-index: 4;
 }
 
 .cover--ratchet2-2 {
-  left: 2613px;
-  top: -270px;
+  left: 2550px;
+  top: -656px;
   z-index: 3;
 }
 
 .cover--grid-2 {
-  left: 2788px;
-  top: -338px;
+  left: 2720px;
+  top: -722px;
   z-index: 2;
 }
 
 .cover--re7b-2 {
-  left: 2963px;
-  top: -416px;
+  left: 2890px;
+  top: -788px;
   z-index: 1;
 }
 
