@@ -393,7 +393,7 @@ body.cart-open .navbar__cart {
 .hero {
   position: absolute;
   left: 0px;
-  top: 355px;
+  top: 240px;
   width: 1280px;
   height: 640px;
 }
@@ -553,7 +553,7 @@ body.cart-open .navbar__cart {
 .hero__title {
   position: absolute;
   left: 600px;
-  top: 140px;
+  top: 60px;
   width: 637px;
   height: auto;
   overflow: visible;
