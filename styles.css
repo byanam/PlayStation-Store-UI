@@ -1148,19 +1148,27 @@ body.cart-open .navbar__cart {
   z-index: 1;
 }
 
-/* Background Atmospheric PlayStation Symbols */
-.page-footer__symbols {
+/* Background Atmospheric Scattered PlayStation Shapes */
+.page-footer__scatter {
   position: absolute;
-  top: -70px;
-  right: -10px;
-  display: flex;
-  gap: 28px;
-  font-size: 72px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.sc-sym {
+  position: absolute;
+  color: #fff;
   font-weight: 300;
-  color: rgba(255, 255, 255, 0.08);
+  line-height: 1;
   user-select: none;
   pointer-events: none;
-  letter-spacing: 8px;
+  filter: drop-shadow(0 4px 14px rgba(255, 255, 255, 0.06));
+  will-change: transform;
 }
 
 .page-footer__hero {
