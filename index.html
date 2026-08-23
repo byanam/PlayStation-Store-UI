@@ -10,7 +10,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&family=Outfit:wght@300;400;600;700;800&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=202608231226">
+  <link rel="stylesheet" href="styles.css?v=202608231245">
 </head>
 
 <body>
@@ -117,6 +117,7 @@
 
         <div class="art art--gow">
           <img src="assets/gow.png" alt="God of War">
+          <video class="art__video" src="assets/videos/gow.mp4" muted loop playsinline preload="auto"></video>
         </div>
         <p class="title title--gow">God Of War</p>
         <p class="meta meta--gow"><span class="meta__cat">Action RPG</span><br>
@@ -128,6 +129,7 @@
 
         <div class="art art--detroit">
           <img src="assets/detroit.png" alt="Detroit Become Human">
+          <video class="art__video" src="assets/videos/detroit.mp4" muted loop playsinline preload="auto"></video>
         </div>
         <p class="title title--detroit">Detroit Become Human</p>
         <p class="meta meta--detroit"><span class="meta__cat">Adventure &middot; Narrative</span><br>
@@ -139,6 +141,7 @@
 
         <div class="art art--wwe">
           <img src="assets/wwe.png" alt="WWE 2K17">
+          <video class="art__video" src="assets/videos/wwe.mp4" muted loop playsinline preload="auto"></video>
         </div>
         <p class="title title--wwe">WWE 2K1</p>
         <p class="meta meta--wwe"><span class="meta__cat">Sports &middot; Wrestling</span><br>
@@ -150,6 +153,7 @@
 
         <div class="art art--mouse">
           <img src="assets/ratchet.png" alt="Ratchet and Clank">
+          <video class="art__video" src="assets/videos/ratchet.mp4" muted loop playsinline preload="auto"></video>
         </div>
         <p class="title title--mouse">Ratchet &amp;<br>Clank</p>
         <p class="meta meta--mouse"><span class="meta__cat">Action &middot; Adventure</span><br>
@@ -161,6 +165,7 @@
 
         <div class="art art--spider">
           <img src="assets/spider.png" alt="Spider-Man">
+          <video class="art__video" src="assets/videos/spider.mp4" muted loop playsinline preload="auto"></video>
         </div>
         <p class="title title--spider">Spiderman</p>
         <p class="meta meta--spider"><span class="meta__cat">Action &middot; Adventure</span><br>
@@ -172,6 +177,7 @@
 
         <div class="art art--evil">
           <img src="assets/re7.png" alt="Resident Evil Biohazard">
+          <video class="art__video" src="assets/videos/re7.mp4" muted loop playsinline preload="auto"></video>
         </div>
         <p class="title title--evil">Resident Evil Biohazard</p>
         <p class="meta meta--evil"><span class="meta__cat">Survival Horror &middot; Action</span><br>
@@ -199,6 +205,23 @@
     window.addEventListener('resize', fit);
     window.addEventListener('orientationchange', fit);
     fit();
+
+    // Store card video preview on hover
+    document.querySelectorAll('.art').forEach(function (card) {
+      var video = card.querySelector('.art__video');
+      if (!video) return;
+      card.addEventListener('mouseenter', function () {
+        video.currentTime = 0;
+        var p = video.play();
+        if (p !== undefined) {
+          p.catch(function () {});
+        }
+      });
+      card.addEventListener('mouseleave', function () {
+        video.pause();
+        video.currentTime = 0;
+      });
+    });
 
     // Interactive add to cart feedback
     document.querySelectorAll('.buy').forEach(function (btn) {
