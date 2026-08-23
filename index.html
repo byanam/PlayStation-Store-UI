@@ -267,7 +267,7 @@
         total += item.price;
         return '<div class="cart-item">' +
           '<img src="' + item.img + '" alt="' + item.title + '">' +
-          '<button class="cart-item__remove" onclick="removeCartItem(' + idx + ')" title="Remove item">&times;</button>' +
+          '<button class="cart-item__remove" onclick="event.stopPropagation(); removeCartItem(event, ' + idx + ');" title="Remove item">&times;</button>' +
           '<div class="cart-item__price">$' + item.price.toFixed(2) + '</div>' +
           '</div>';
       }).join('');
@@ -275,7 +275,8 @@
       totalEl.textContent = '$' + total.toFixed(2);
     }
 
-    window.removeCartItem = function (idx) {
+    window.removeCartItem = function (e, idx) {
+      if (e && e.stopPropagation) e.stopPropagation();
       cartState.splice(idx, 1);
       renderCart();
     };
@@ -307,6 +308,13 @@
       closeBtn.addEventListener('click', function (e) {
         e.stopPropagation();
         toggleCart(false);
+      });
+    }
+
+    var panelEl = document.getElementById('cartPanel');
+    if (panelEl) {
+      panelEl.addEventListener('click', function (e) {
+        e.stopPropagation();
       });
     }
 
