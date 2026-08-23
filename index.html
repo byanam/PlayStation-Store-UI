@@ -10,7 +10,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&family=Outfit:wght@300;400;600;700;800&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=202608231553">
+  <link rel="stylesheet" href="styles.css?v=202608231556">
 </head>
 
 <body>
@@ -112,7 +112,7 @@
         <p class="hero-word hero-word--connect">connect</p>
         <p class="hero-word hero-word--repeat">repeat</p>
         <div class="hero__action">
-          <a href="#store" class="hero__cta">
+          <a href="#store" class="hero__cta" id="heroCtaBtn">
             <span>VISIT STORE</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
               stroke-linecap="round" stroke-linejoin="round">
@@ -155,7 +155,7 @@
       </div>
     </section>
 
-    <section class="store">
+    <section class="store" id="store">
       <p class="store__heading">STORE</p>
 
       <div class="games">
@@ -363,6 +363,40 @@
     window.addEventListener('resize', fit);
     window.addEventListener('orientationchange', fit);
     fit();
+
+    // Slow, luxurious smooth scroll animation to Store section
+    function smoothScrollTo(targetY, duration) {
+      var startY = window.pageYOffset;
+      var diff = targetY - startY;
+      var startTime = null;
+
+      function step(currentTime) {
+        if (!startTime) startTime = currentTime;
+        var timeElapsed = currentTime - startTime;
+        var progress = Math.min(timeElapsed / duration, 1);
+        // Easing: easeInOutCubic for cinematic deceleration
+        var ease = progress < 0.5
+          ? 4 * progress * progress * progress
+          : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+
+        window.scrollTo(0, startY + diff * ease);
+
+        if (timeElapsed < duration) {
+          requestAnimationFrame(step);
+        }
+      }
+
+      requestAnimationFrame(step);
+    }
+
+    document.querySelectorAll('a[href="#store"]').forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        var s = window.innerWidth / DESIGN_W;
+        var targetY = (1730 * s) - (60 * s);
+        smoothScrollTo(Math.max(0, targetY), 1300);
+      });
+    });
 
     // Shopping Cart State & Interactivity
     var cartState = [
