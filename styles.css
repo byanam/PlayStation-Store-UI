@@ -975,7 +975,7 @@ body.cart-open .navbar__cart {
 }
 
 /* ---------------------------------------------------------------------
-   FOOTER  0,3350  1280x726
+   FOOTER (PlayStation Ecosystem & Branding Hub)
 --------------------------------------------------------------------- */
 .page-footer {
   position: absolute;
@@ -983,6 +983,227 @@ body.cart-open .navbar__cart {
   top: 3350px;
   width: 1280px;
   height: 726px;
-  background: linear-gradient(180deg, #FFFFFF 0%, #0131ec 100%);
+  background: linear-gradient(180deg, #FFFFFF 0%, #0130EC 45%, #001780 100%);
+  overflow: hidden;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  pointer-events: auto;
+}
+
+.page-footer__content {
+  position: relative;
+  width: 1134px;
+  margin: 0 auto;
+  padding: 0 0 36px 0;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+}
+
+/* Background Atmospheric PlayStation Symbols */
+.page-footer__symbols {
+  position: absolute;
+  top: -70px;
+  right: -10px;
+  display: flex;
+  gap: 28px;
+  font-size: 72px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.08);
+  user-select: none;
   pointer-events: none;
+  letter-spacing: 8px;
+}
+
+.page-footer__hero {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.page-footer__tagline {
+  font-family: var(--code-font);
+  font-weight: 700;
+  font-size: 42px;
+  line-height: 46px;
+  margin: 0 0 8px 0;
+  letter-spacing: 2px;
+  color: #fff;
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+}
+
+.page-footer__desc {
+  font-family: var(--albert);
+  font-weight: 400;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0 auto;
+  max-width: 680px;
+  line-height: 1.5;
+}
+
+/* Newsletter Input Pill */
+.page-footer__newsletter {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.newsletter__glass {
+  display: flex;
+  align-items: center;
+  width: 560px;
+  height: 52px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 26px;
+  padding: 4px 6px 4px 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.newsletter__input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: var(--albert);
+  font-size: 15px;
+  color: #fff;
+}
+
+.newsletter__input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.newsletter__btn {
+  position: relative;
+  height: 42px;
+  padding: 0 22px;
+  border-radius: 21px;
+  background: #fff;
+  border: 1px solid #fff;
+  font-family: var(--albert);
+  font-weight: 700;
+  font-size: 14px;
+  color: #0130EC;
+  cursor: pointer;
+  overflow: hidden;
+  isolation: isolate;
+  transition: color 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.newsletter__btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #0130EC;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  z-index: -1;
+}
+
+.newsletter__btn:hover {
+  color: #fff;
+}
+
+.newsletter__btn:hover::before {
+  transform: scaleX(1);
+}
+
+/* 4-Column Navigation */
+.page-footer__links {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  margin-bottom: 34px;
+}
+
+.footer-col__title {
+  font-family: var(--code-font);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 1px;
+  color: #fff;
+  margin: 0 0 14px 0;
+  opacity: 0.95;
+}
+
+.footer-col__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-col__list a {
+  font-family: var(--albert);
+  font-size: 13.5px;
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+  display: inline-block;
+}
+
+.footer-col__list a:hover {
+  color: #fff;
+  transform: translateX(3px);
+}
+
+/* Bottom Legal Strip */
+.page-footer__bottom {
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.footer-brand__logo {
+  width: 36px;
+  height: 28px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: 0.85;
+}
+
+.footer-brand__copy {
+  font-family: var(--albert);
+  font-size: 11.5px;
+  color: rgba(255, 255, 255, 0.65);
+  max-width: 520px;
+  line-height: 1.4;
+}
+
+.footer-legal {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--albert);
+  font-size: 11.5px;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.footer-legal a {
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-legal a:hover {
+  color: #fff;
 }
