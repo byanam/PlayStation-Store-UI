@@ -1,23 +1,31 @@
 <svg preserveAspectRatio="xMidYMid meet" overflow="visible" width="80" height="24" viewBox="0 0 80 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <defs>
-<filter id="filter_cart_i" x="0" y="0" width="80" height="26" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset dy="1.2"/>
-<feGaussianBlur stdDeviation="0.6"/>
-<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.18 0"/>
-<feBlend mode="normal" in2="shape" result="effect1_innerShadow"/>
-</filter>
-<linearGradient id="paint_cart" x1="40" y1="0" x2="40" y2="24" gradientUnits="userSpaceOnUse">
-<stop offset="0" stop-color="#E8E8E8" stop-opacity="0.65"/>
-<stop offset="0.581731" stop-color="#D5D5D5" stop-opacity="0.55"/>
-<stop offset="0.783654" stop-color="#CECECE" stop-opacity="0.50"/>
-<stop offset="0.884615" stop-color="#D8CFEC" stop-opacity="0.50"/>
-</linearGradient>
+  <filter id="cart_glass_filter" x="-20%" y="-20%" width="140%" height="140%" filterUnits="userSpaceOnUse">
+    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+    <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+    <feOffset dy="1.5"/>
+    <feGaussianBlur stdDeviation="1"/>
+    <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.22 0"/>
+    <feBlend mode="normal" in2="shape" result="innerShadow"/>
+  </filter>
+
+  <linearGradient id="cart_frost_grad" x1="40" y1="0" x2="40" y2="24" gradientUnits="userSpaceOnUse">
+    <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.95"/>
+    <stop offset="45%" stop-color="#ECECEF" stop-opacity="0.82"/>
+    <stop offset="75%" stop-color="#DADAE0" stop-opacity="0.70"/>
+    <stop offset="100%" stop-color="#C6C6CE" stop-opacity="0.65"/>
+  </linearGradient>
+
+  <linearGradient id="cart_stroke_grad" x1="0" y1="0" x2="80" y2="24" gradientUnits="userSpaceOnUse">
+    <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.9"/>
+    <stop offset="50%" stop-color="#E8E8EC" stop-opacity="0.6"/>
+    <stop offset="100%" stop-color="#D0D0D8" stop-opacity="0.4"/>
+  </linearGradient>
 </defs>
-<g filter="url(#filter_cart_i)">
-<text x="0" y="12" dominant-baseline="central" font-family="'Code Bold', 'Code', 'Outfit', sans-serif" font-weight="700" font-size="28" fill="url(#paint_cart)" letter-spacing="1">CART</text>
+
+<g filter="url(#cart_glass_filter)">
+  <text x="0" y="12" dominant-baseline="central" font-family="'Code Bold', 'Code', 'Outfit', sans-serif" font-weight="700" font-size="28" fill="url(#cart_frost_grad)" stroke="url(#cart_stroke_grad)" stroke-width="0.5" letter-spacing="1">CART</text>
 </g>
 </svg>

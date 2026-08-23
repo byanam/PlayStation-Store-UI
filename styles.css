@@ -133,18 +133,22 @@ p {
   top: 50%;
   transform: translateY(-50%);
   object-fit: contain;
-  mix-blend-mode: luminosity;
-  opacity: 0.75;
-  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.12));
+  opacity: 0.92;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.08));
   z-index: 1;
   user-select: none;
   cursor: pointer;
-  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
 }
 
 .navbar__cart:hover {
   opacity: 1;
-  transform: translateY(-50%) scale(1.04);
+  transform: translateY(-50%) scale(1.08);
+  filter: drop-shadow(0 0 14px rgba(1, 48, 236, 0.55)) drop-shadow(0 3px 8px rgba(0, 0, 0, 0.12));
+}
+
+.navbar__cart:active {
+  transform: translateY(-50%) scale(0.96);
 }
 
 /* When Cart is Open: Navbar text glides down into the cart window */

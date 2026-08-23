@@ -11,18 +11,17 @@
     <feBlend mode="normal" in2="shape" result="innerShadow"/>
   </filter>
 
-  <linearGradient id="logo_frost_grad" x1="10" y1="0" x2="63" y2="56" gradientUnits="userSpaceOnUse">
+  <linearGradient id="logo_frost_grad" x1="36.5" y1="0" x2="36.5" y2="56.3" gradientUnits="userSpaceOnUse">
     <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.95"/>
-    <stop offset="35%" stop-color="#EAF0FE" stop-opacity="0.85"/>
-    <stop offset="70%" stop-color="#D0DCFA" stop-opacity="0.75"/>
-    <stop offset="92%" stop-color="#8DAAF8" stop-opacity="0.80"/>
-    <stop offset="100%" stop-color="#0130EC" stop-opacity="0.90"/>
+    <stop offset="45%" stop-color="#ECECEF" stop-opacity="0.82"/>
+    <stop offset="75%" stop-color="#DADAE0" stop-opacity="0.70"/>
+    <stop offset="100%" stop-color="#C6C6CE" stop-opacity="0.65"/>
   </linearGradient>
 
   <linearGradient id="logo_stroke_grad" x1="0" y1="0" x2="73" y2="56" gradientUnits="userSpaceOnUse">
     <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.9"/>
-    <stop offset="60%" stop-color="#E0EAFF" stop-opacity="0.5"/>
-    <stop offset="100%" stop-color="#0130EC" stop-opacity="0.4"/>
+    <stop offset="50%" stop-color="#E8E8EC" stop-opacity="0.6"/>
+    <stop offset="100%" stop-color="#D0D0D8" stop-opacity="0.4"/>
   </linearGradient>
 </defs>
 
