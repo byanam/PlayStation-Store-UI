@@ -127,8 +127,8 @@ p {
 
 .navbar__cart {
   position: absolute;
-  width: 76px;
-  height: 22px;
+  width: 80px;
+  height: 24px;
   right: 36px;
   top: 50%;
   transform: translateY(-50%);
@@ -206,8 +206,8 @@ body.cart-open .navbar__cart {
 }
 
 .cart-panel__title-svg {
-  width: 76px;
-  height: 22px;
+  width: 80px;
+  height: 24px;
   object-fit: contain;
   opacity: 0.92;
   filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.08));
@@ -326,17 +326,20 @@ body.cart-open .navbar__cart {
 
 .cart-item__price {
   position: absolute;
-  bottom: 6px;
-  left: 6px;
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(4px);
+  bottom: 8px;
+  left: 8px;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   color: #fff;
   font-family: var(--code-font);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
-  padding: 2px 6px;
+  letter-spacing: 0.5px;
+  padding: 3px 8px;
   border-radius: 6px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
 }
 
 .cart-panel__footer {
@@ -347,13 +350,28 @@ body.cart-open .navbar__cart {
   gap: 12px;
 }
 
-.cart-panel__subtotal {
+.cart-panel__summary {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   font-family: var(--code-font);
   font-weight: 700;
-  font-size: 16px;
+}
+
+.cart-panel__total-label {
+  font-family: var(--code-font);
+  font-weight: 700;
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.82);
+  letter-spacing: 1px;
+}
+
+.cart-panel__total {
+  font-family: var(--code-font);
+  font-weight: 700;
+  font-size: 20px;
   color: #000;
+  letter-spacing: 0.5px;
 }
 
 .cart-panel__checkout {
@@ -363,19 +381,20 @@ body.cart-open .navbar__cart {
   background: var(--blue);
   border: 2px solid var(--blue);
   border-radius: 24px;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-  font-family: var(--albert);
-  font-weight: 600;
-  font-size: 18px;
-  letter-spacing: -0.5px;
+  box-shadow: 0 4px 12px rgba(1, 48, 236, 0.28);
+  font-family: var(--code-font);
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 1px;
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 8px;
   cursor: pointer;
   overflow: hidden;
   isolation: isolate;
-  transition: color 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .cart-panel__checkout::before {
