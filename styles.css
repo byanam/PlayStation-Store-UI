@@ -54,45 +54,39 @@ p {
 }
 
 /* ---------------------------------------------------------------------
-   NAVBAR  0,0  1280x73 (Fixed on scroll)
+   NAVBAR (Frame 8 & Rectangle 1 - Floating Glass Pill)
 --------------------------------------------------------------------- */
 .navbar {
   position: fixed;
-  left: 0px;
-  top: 0px;
-  width: 100%;
-  height: 73px;
-  background: rgba(1, 48, 236, 0.1);
+  width: 1209px;
+  max-width: calc(100% - 32px);
+  height: 85px;
+  left: calc(50% - 1209px / 2 - 0.5px);
+  top: 21px;
+  background: rgba(217, 217, 217, 0.42);
+  backdrop-filter: blur(9.2px);
+  -webkit-backdrop-filter: blur(9.2px);
+  border-radius: 42.5px;
   z-index: 1000;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
 .navbar::before {
-  content: "";
-  position: absolute;
-  left: 0px;
-  top: 0px;
-  width: 100%;
-  height: 72px;
-  background: rgba(217, 217, 217, 0.42);
-  backdrop-filter: blur(18.45px);
-  -webkit-backdrop-filter: blur(18.45px);
-  pointer-events: none;
+  display: none;
 }
 
 .navbar__inner {
   position: relative;
-  width: 1280px;
-  max-width: 100%;
+  width: 100%;
   height: 100%;
-  margin: 0 auto;
 }
 
 .navbar__logo {
   position: absolute;
   width: 52px;
-  left: calc(50% - 52px / 2);
-  top: 12px;
   height: 40px;
+  left: calc(50% - 52px / 2 + 0.5px);
+  top: calc(50% - 40px / 2 + 0.5px);
   object-fit: contain;
   z-index: 1;
 }
@@ -101,8 +95,8 @@ p {
   position: absolute;
   width: 74px;
   height: 22px;
-  right: 26px;
-  top: 25px;
+  right: 36px;
+  top: calc(50% - 22px / 2);
   font-family: var(--code-font);
   font-style: normal;
   font-weight: 700;
@@ -119,6 +113,7 @@ p {
   white-space: nowrap;
   z-index: 1;
   user-select: none;
+  cursor: pointer;
 }
 
 /* ---------------------------------------------------------------------
