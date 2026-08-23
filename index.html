@@ -20,7 +20,7 @@
 <body>
   <header class="navbar" id="navbar">
     <div class="navbar__inner">
-      <img class="navbar__logo" alt="PlayStation" src="assets/navbar_logo.svg?v=202608231804">
+      <img class="navbar__logo" id="navbarLogoBtn" alt="PlayStation" src="assets/navbar_logo.svg?v=202608231804">
       <img class="navbar__cart" alt="CART" src="assets/cart_text.svg?v=202608231804" id="navbarCartBtn">
     </div>
   </header>
@@ -463,10 +463,22 @@
       });
     });
 
-    var navLogo = document.querySelector('.navbar__logo');
+    var navLogo = document.getElementById('navbarLogoBtn') || document.querySelector('.navbar__logo');
     if (navLogo) {
-      navLogo.addEventListener('click', function () {
-        smoothScrollTo(0, 1600);
+      navLogo.addEventListener('click', function (e) {
+        e.stopPropagation();
+        toggleCart(false);
+        smoothScrollTo(0, 2400);
+      });
+    }
+
+    var navbarEl = document.getElementById('navbar');
+    if (navbarEl) {
+      navbarEl.addEventListener('click', function (e) {
+        if (!e.target.closest('#navbarCartBtn') && !e.target.closest('#cartPanel')) {
+          toggleCart(false);
+          smoothScrollTo(0, 2400);
+        }
       });
     }
 
