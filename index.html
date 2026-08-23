@@ -467,40 +467,30 @@
         osc.stop(now + 0.045);
       }
 
-      // 2. Punchy, Satisfying Tactile Switch Tap on Click
+      // 2. Soft, Velvety Tactile Tap on Click (Zero Clank, Pleasant & Gentle)
       function playClick() {
         var c = getContext();
         if (!c) return;
         var now = c.currentTime;
 
-        // Punchy body
         var osc = c.createOscillator();
         var gain = c.createGain();
-        osc.type = 'triangle';
-        osc.frequency.setValueAtTime(520, now);
-        osc.frequency.exponentialRampToValueAtTime(120, now + 0.04);
-        gain.gain.setValueAtTime(0.18, now);
-        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.05);
+
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(420, now);
+        osc.frequency.exponentialRampToValueAtTime(240, now + 0.035);
+
+        gain.gain.setValueAtTime(0.045, now);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.04);
+
         osc.connect(gain);
         gain.connect(c.destination);
-        osc.start(now);
-        osc.stop(now + 0.05);
 
-        // Crisp high click transient
-        var clickOsc = c.createOscillator();
-        var clickGain = c.createGain();
-        clickOsc.type = 'sine';
-        clickOsc.frequency.setValueAtTime(2400, now);
-        clickOsc.frequency.exponentialRampToValueAtTime(800, now + 0.015);
-        clickGain.gain.setValueAtTime(0.08, now);
-        clickGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.02);
-        clickOsc.connect(clickGain);
-        clickGain.connect(c.destination);
-        clickOsc.start(now);
-        clickOsc.stop(now + 0.02);
+        osc.start(now);
+        osc.stop(now + 0.04);
       }
 
-      // 3. Shimmering Crystal Trophy / Item Added Arpeggio (C6 -> E6 -> G6 -> C7)
+      // 3. Shimmering Crystal Trophy / Item Added Arpeggio (Soft, Airy & Warm)
       function playAddToCart() {
         var c = getContext();
         if (!c) return;
@@ -508,25 +498,25 @@
         var freqs = [1046.50, 1318.51, 1567.98, 2093.00];
 
         freqs.forEach(function (freq, i) {
-          var noteStart = now + i * 0.042;
+          var noteStart = now + i * 0.038;
           var osc = c.createOscillator();
           var gain = c.createGain();
 
-          osc.type = (i === 3) ? 'sine' : 'triangle';
+          osc.type = 'sine';
           osc.frequency.setValueAtTime(freq, noteStart);
 
-          gain.gain.setValueAtTime(0.14, noteStart);
-          gain.gain.exponentialRampToValueAtTime(0.0001, noteStart + (i === 3 ? 0.45 : 0.28));
+          gain.gain.setValueAtTime(0.05, noteStart);
+          gain.gain.exponentialRampToValueAtTime(0.0001, noteStart + (i === 3 ? 0.35 : 0.2));
 
           osc.connect(gain);
           gain.connect(c.destination);
 
           osc.start(noteStart);
-          osc.stop(noteStart + 0.45);
+          osc.stop(noteStart + 0.35);
         });
       }
 
-      // 4. Smooth Magnetic Glass Drawer Swoosh
+      // 4. Smooth Magnetic Glass Drawer Swoosh (Soft Volume)
       function playCartOpen() {
         var c = getContext();
         if (!c) return;
@@ -537,9 +527,9 @@
 
         osc.type = 'sine';
         osc.frequency.setValueAtTime(280, now);
-        osc.frequency.exponentialRampToValueAtTime(740, now + 0.12);
+        osc.frequency.exponentialRampToValueAtTime(680, now + 0.12);
 
-        gain.gain.setValueAtTime(0.09, now);
+        gain.gain.setValueAtTime(0.05, now);
         gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.14);
 
         osc.connect(gain);
@@ -549,7 +539,7 @@
         osc.stop(now + 0.14);
       }
 
-      // 5. Playful Bubble Pop Down on Remove / Close
+      // 5. Playful Soft Bubble Pop Down on Remove / Close
       function playRemove() {
         var c = getContext();
         if (!c) return;
@@ -559,17 +549,17 @@
         var gain = c.createGain();
 
         osc.type = 'sine';
-        osc.frequency.setValueAtTime(950, now);
-        osc.frequency.exponentialRampToValueAtTime(320, now + 0.05);
+        osc.frequency.setValueAtTime(750, now);
+        osc.frequency.exponentialRampToValueAtTime(280, now + 0.045);
 
-        gain.gain.setValueAtTime(0.12, now);
-        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.06);
+        gain.gain.setValueAtTime(0.05, now);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.05);
 
         osc.connect(gain);
         gain.connect(c.destination);
 
         osc.start(now);
-        osc.stop(now + 0.06);
+        osc.stop(now + 0.05);
       }
 
       // 6. Ethereal PlayStation Cinematic Ambient Chord Glide
