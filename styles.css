@@ -611,7 +611,7 @@ body.cart-open .navbar__cart {
 .promo__content {
   position: absolute;
   left: 10px;
-  top: 50px;
+  top: 25px;
   width: 590px;
   z-index: 2;
 }
@@ -619,39 +619,83 @@ body.cart-open .navbar__cart {
 .promo__title {
   font-family: var(--code-font);
   font-weight: 700;
-  font-size: 80px;
-  line-height: 0.95;
-  margin: 0 0 24px 0;
-  letter-spacing: 1px;
-  background: linear-gradient(180deg, #FFFFFF 0%, #E8F0FE 65%, #C2D6FF 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
-  text-shadow: 0 4px 24px rgba(0, 48, 236, 0.45);
+  font-size: 88px;
+  line-height: 0.92;
+  margin: 0 0 20px 0;
+  letter-spacing: 0.5px;
+  color: #ffffff;
+  text-shadow: none;
+  background: none;
+  -webkit-background-clip: unset;
+  -webkit-text-fill-color: #ffffff;
 }
 
 .promo__text {
   font-family: var(--albert);
-  font-size: 17.5px;
+  font-size: 16.5px;
   line-height: 1.65;
   color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 26px;
 }
 
 .promo__lead {
-  font-size: 20px;
-  font-weight: 600;
+  font-size: 19px;
+  font-weight: 500;
   line-height: 1.5;
   color: #fff;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .promo__text p {
-  margin: 0 0 14px 0;
+  margin: 0 0 12px 0;
 }
 
 .promo__text p:last-child {
   margin-bottom: 0;
+}
+
+/* Glass Feature Stats Pill */
+.promo__stats {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 20px;
+  padding: 12px 24px;
+  gap: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.promo__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.promo__stat-val {
+  font-family: var(--code-font);
+  font-weight: 700;
+  font-size: 19px;
+  color: #fff;
+  letter-spacing: 0.5px;
+}
+
+.promo__stat-lbl {
+  font-family: var(--albert);
+  font-weight: 500;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.promo__stat-sep {
+  width: 1px;
+  height: 30px;
+  background: rgba(255, 255, 255, 0.25);
 }
 
 /* ---------------------------------------------------------------------
