@@ -552,114 +552,23 @@ body.cart-open .navbar__cart {
 
 .hero__title {
   position: absolute;
-  left: 600px;
-  top: 135px;
-  width: 637px;
+  left: 627px;
+  top: 150px;
+  width: 610px;
+  height: 177px;
+  font-family: var(--code-font);
+  font-style: normal;
+  font-weight: 300;
+  font-size: 100px;
+  line-height: 75.275px;
+  color: #000000;
   text-align: right;
-  z-index: 20;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-}
-
-.hero-word {
-  font-family: var(--code-font);
-  font-size: 104px;
-  line-height: 0.82;
-  margin: 0;
   text-transform: uppercase;
-  letter-spacing: -2px;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), letter-spacing 0.4s ease;
-  user-select: none;
+  z-index: 20;
 }
 
-.hero-word--play {
-  font-weight: 300;
-  color: #111111;
-  background: linear-gradient(180deg, #000000 0%, #333333 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.hero-word--connect {
-  font-weight: 700;
-  background: linear-gradient(135deg, #0130EC 0%, #2956f8 60%, #001f99 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 4px 18px rgba(1, 48, 236, 0.22));
-}
-
-.hero-word--repeat {
-  font-weight: 300;
-  color: #111111;
-  background: linear-gradient(180deg, #111111 0%, #444444 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.hero__title:hover .hero-word--connect {
-  letter-spacing: 0px;
-  filter: drop-shadow(0 6px 24px rgba(1, 48, 236, 0.38));
-}
-
-/* Floating Glassmorphic Quick Jump CTA */
-.hero__action {
-  margin-top: 24px;
-}
-
-.hero__cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 22px;
-  border-radius: 24px;
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(1, 48, 236, 0.3);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
-  font-family: var(--code-font);
-  font-weight: 700;
-  font-size: 13px;
-  letter-spacing: 1px;
-  color: #0130EC;
-  text-decoration: none;
-  overflow: hidden;
-  position: relative;
-  isolation: isolate;
-  transition: color 0.45s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease, transform 0.3s ease;
-}
-
-.hero__cta::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #0130EC;
-  transform: scaleX(0);
-  transform-origin: left center;
-  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-  z-index: -1;
-}
-
-.hero__cta:hover {
-  color: #fff;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(1, 48, 236, 0.25);
-}
-
-.hero__cta:hover::before {
-  transform: scaleX(1);
-}
-
-.hero__cta svg {
-  transition: transform 0.3s ease;
-}
-
-.hero__cta:hover svg {
-  transform: translate(2px, -2px);
+.hero__title p {
+  margin: 0;
 }
 
 /* ---------------------------------------------------------------------
