@@ -89,7 +89,7 @@ p {
   left: calc(50% - 52px / 2 + 0.5px);
   top: calc(50% - 40px / 2 + 0.5px);
   object-fit: contain;
-  opacity: 0.5;
+  opacity: 0.75;
   z-index: 1;
 }
 
