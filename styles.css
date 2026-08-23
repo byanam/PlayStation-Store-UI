@@ -134,12 +134,15 @@ p {
 
 .hero__stack {
   position: absolute;
-  left: 0px;
-  top: -406px;
-  width: 1280px;
-  height: 884px;
+  left: -80px;
+  top: -440px;
+  width: 1440px;
+  height: 940px;
   overflow: hidden;
-  /* full border-to-border coverage */
+  perspective: 1400px;
+  transform: rotate(-6.5deg) rotateY(-8deg) rotateX(7deg) skewX(-2.5deg);
+  transform-origin: 50% 50%;
+  transform-style: preserve-3d;
 }
 
 /* ── Infinite diagonal scroll track ────────────────────────── */
