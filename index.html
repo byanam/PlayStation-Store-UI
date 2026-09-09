@@ -862,7 +862,7 @@
       if (!container || !totalEl) return;
 
       if (cartState.length === 0) {
-        container.innerHTML = '<p style="width:100%; text-align:center; color:rgba(0,0,0,0.45); font-family:var(--code-font); font-size:14px; margin-top:60px;">YOUR CART IS EMPTY</p>';
+        container.innerHTML = '<p class="cart-empty">YOUR CART IS EMPTY</p>';
         totalEl.textContent = '$0.00';
         return;
       }

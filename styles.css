@@ -285,6 +285,22 @@ body.cart-open .navbar__cart {
   display: none;
 }
 
+.cart-empty {
+  width: 100%;
+  text-align: center;
+  color: #ffffff;
+  font-family: var(--code-font);
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.35;
+  letter-spacing: 0.5px;
+  margin-top: 80px;
+  text-shadow:
+    0 2px 10px rgba(0, 0, 0, 0.35),
+    0 0 20px rgba(1, 48, 236, 0.3);
+  user-select: none;
+}
+
 /* Individual Cart Card (gow, detroit, etc.) */
 .cart-item {
   position: relative;

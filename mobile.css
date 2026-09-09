@@ -175,6 +175,23 @@ img {
   max-height: 340px;
 }
 
+.mobile-cart-empty {
+  grid-column: 1 / -1;
+  width: 100%;
+  text-align: center;
+  color: #ffffff;
+  font-family: var(--code-font);
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.35;
+  letter-spacing: 0.5px;
+  margin: 40px auto;
+  text-shadow:
+    0 2px 10px rgba(0, 0, 0, 0.4),
+    0 0 20px rgba(1, 48, 236, 0.35);
+  user-select: none;
+}
+
 .mobile-cart-item {
   position: relative;
   height: 140px;
