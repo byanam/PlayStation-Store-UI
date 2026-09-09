@@ -304,10 +304,10 @@ body.cart-open .navbar__cart {
   overflow-y: auto;
   overflow-x: hidden;
   padding: 16px 0;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
   align-content: flex-start;
-  gap: 16px 12px;
   scrollbar-width: none;
 }
 
@@ -399,8 +399,8 @@ body.cart-open .navbar__cart {
 /* Individual Cart Card (gow, detroit, etc.) */
 .cart-item {
   position: relative;
-  width: 140px;
-  height: 178px;
+  width: 100%;
+  aspect-ratio: 140 / 178;
   border-radius: 12px;
   overflow: hidden;
   background: #000;
