@@ -31,7 +31,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&family=Outfit:wght@300;400;600;700;800&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="mobile.css?v=202609092000">
+  <link rel="stylesheet" href="mobile.css?v=202609092006">
 </head>
 
 <body>
@@ -748,6 +748,62 @@
         }
       }, { passive: true });
     });
+
+    // High-performance RAF scroll-reactive animations (Page 2 Promo Glow & Store Heading)
+    var promo = document.querySelector('.promo');
+    var promoGlow = document.querySelector('.promo__glow');
+    var storeHeading = document.querySelector('.store__heading');
+    var storeSection = document.querySelector('.store');
+
+    var ticking = false;
+    function updateScrollEffects() {
+      var windowH = window.innerHeight;
+
+      if (promo && promoGlow) {
+        var pRect = promo.getBoundingClientRect();
+        var pStart = windowH * 0.95;
+        var pEnd = windowH * 0.1;
+        var pProgress = Math.max(0, Math.min(1.25, (pStart - pRect.top) / (pStart - pEnd)));
+        var scaleVal = 0.4 + pProgress * 0.7;
+        var opacityVal = 0.2 + pProgress * 0.8;
+        promoGlow.style.transform = 'translate(-50%, -50%) scale(' + scaleVal.toFixed(3) + ')';
+        promoGlow.style.opacity = opacityVal.toFixed(2);
+      }
+
+      if (storeHeading && storeSection) {
+        var sRect = storeSection.getBoundingClientRect();
+        var sStart = windowH * 0.85;
+        var sEnd = -sRect.height * 0.4;
+        var sProgress = Math.max(0, Math.min(1, (sStart - sRect.top) / (sStart - sEnd)));
+        var s0 = Math.max(0, sProgress * 35);
+        var s7 = Math.min(100, s0 + 72);
+
+        storeHeading.style.backgroundImage = 'linear-gradient(180deg, ' +
+          '#0130EC 0%, ' +
+          '#0130EC ' + s0.toFixed(1) + '%, ' +
+          '#254ef0 ' + (s0 + 10).toFixed(1) + '%, ' +
+          '#5274f4 ' + (s0 + 20).toFixed(1) + '%, ' +
+          '#819cf8 ' + (s0 + 30).toFixed(1) + '%, ' +
+          '#b0c3fb ' + (s0 + 40).toFixed(1) + '%, ' +
+          '#d4dcfc ' + (s0 + 50).toFixed(1) + '%, ' +
+          '#eef2fe ' + (s0 + 60).toFixed(1) + '%, ' +
+          '#FFFFFF ' + s7.toFixed(1) + '%, ' +
+          '#FFFFFF 100%)';
+      }
+
+      ticking = false;
+    }
+
+    function requestScrollUpdate() {
+      if (!ticking) {
+        requestAnimationFrame(updateScrollEffects);
+        ticking = true;
+      }
+    }
+
+    window.addEventListener('scroll', requestScrollUpdate, { passive: true });
+    window.addEventListener('resize', requestScrollUpdate, { passive: true });
+    requestScrollUpdate();
 
     renderCart();
   </script>
