@@ -3,8 +3,14 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PlayStation Store</title>
+  <meta name="description" content="Explore next-generation gaming on the PlayStation Store mobile web app. Discover top featured titles, live shopping cart, and procedural Web Audio.">
+  <meta property="og:title" content="PlayStation Store — Mobile Experience">
+  <meta property="og:description" content="Connect. Play. Repeat. Discover top PlayStation hits and exclusives on mobile.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/gow.webp">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <!-- Preconnect & Preload Key Assets -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,8 +31,13 @@
 
   <!-- Floating Mobile Glassmorphic Navbar -->
   <header class="mobile-navbar" id="mobileNavbar">
-    <img class="mobile-navbar__logo" id="mobileNavLogo" alt="PlayStation" src="assets/navbar_logo.svg?v=202608231804">
-    <img class="mobile-navbar__cart" id="mobileCartBtn" alt="CART" src="assets/cart_text.svg?v=202608231834">
+    <button class="mobile-navbar__logo" id="mobileNavLogo" aria-label="PlayStation Home" type="button">
+      <img alt="PlayStation" src="assets/navbar_logo.svg?v=202608231804">
+    </button>
+    <button class="mobile-navbar__cart-btn" id="mobileCartBtn" aria-label="Shopping Cart" type="button">
+      <img class="mobile-navbar__cart" alt="CART" src="assets/cart_text.svg?v=202608231834">
+      <span class="mobile-navbar__badge" id="mobileCartBadge">0</span>
+    </button>
   </header>
 
   <!-- Mobile Cart Drawer -->
@@ -158,7 +169,7 @@
             <img src="assets/detroit.webp?v=hd" alt="Detroit Become Human" loading="lazy">
             <video class="mobile-game-card__video" src="assets/videos/detroit.mp4" muted loop playsinline preload="none"></video>
           </div>
-          <h3 class="mobile-game-card__title">Detroit Human</h3>
+          <h3 class="mobile-game-card__title">Detroit Become Human</h3>
           <p class="mobile-game-card__cat">Narrative &middot; Cyber</p>
           <div class="mobile-game-card__footer">
             <span class="mobile-game-card__price">$39.99</span>
@@ -200,7 +211,7 @@
             <img src="assets/spider.webp?v=hd" alt="Spider-Man" loading="lazy">
             <video class="mobile-game-card__video" src="assets/videos/spider.mp4" muted loop playsinline preload="none"></video>
           </div>
-          <h3 class="mobile-game-card__title">Spider-Man</h3>
+          <h3 class="mobile-game-card__title">Marvel's Spider-Man</h3>
           <p class="mobile-game-card__cat">Action &middot; Superhero</p>
           <div class="mobile-game-card__footer">
             <span class="mobile-game-card__price">$49.99</span>
@@ -250,8 +261,8 @@
         <div class="mobile-newsletter">
           <h3 class="mobile-newsletter__title">STAY IN THE GAME</h3>
           <p class="mobile-newsletter__desc">Get exclusive PlayStation Store drops, new releases, and subscriber discounts.</p>
-          <form class="mobile-newsletter__form" onsubmit="event.preventDefault(); AudioFX.click(); alert('Thank you for subscribing to PlayStation!');">
-            <input class="mobile-newsletter__input" type="email" placeholder="Enter your email" required>
+          <form class="mobile-newsletter__form" id="mobileNewsletterForm" onsubmit="event.preventDefault(); handleMobileNewsletter();">
+            <input class="mobile-newsletter__input" id="mobileNewsletterInput" type="email" placeholder="Enter your email" required>
             <button class="mobile-newsletter__btn" type="submit">SUBSCRIBE</button>
           </form>
         </div>
@@ -436,6 +447,7 @@
       }
 
       return {
+        getContext: getContext,
         hover: playHover,
         click: playClick,
         addToCart: playAddToCart,
@@ -445,34 +457,56 @@
       };
     })();
 
-    // Auto-unlock Web Audio on first touch/click
-    ['touchstart', 'click'].forEach(function (evt) {
+    // Auto-unlock Web Audio silently on first user interaction
+    ['touchstart', 'click', 'keydown'].forEach(function (evt) {
       window.addEventListener(evt, function unlock() {
-        if (AudioFX && AudioFX.hover) AudioFX.hover();
+        var c = AudioFX.getContext ? AudioFX.getContext() : null;
+        if (c && c.state === 'suspended') {
+          c.resume();
+        }
         window.removeEventListener(evt, unlock);
       }, { once: true, passive: true });
     });
 
     // -----------------------------------------------------------------
-    // Shopping Cart State & Interactivity
+    // Shopping Cart State & Interactivity with LocalStorage Sync
     // -----------------------------------------------------------------
-    var cartState = [
+    var defaultCart = [
       { id: 'gow', title: 'God of War', price: 59.99, img: 'assets/gow.webp' },
       { id: 'detroit', title: 'Detroit Become Human', price: 39.99, img: 'assets/detroit.webp' }
     ];
+
+    var cartState = (function () {
+      try {
+        var saved = localStorage.getItem('playstation_cart');
+        return saved ? JSON.parse(saved) : defaultCart;
+      } catch (e) {
+        return defaultCart;
+      }
+    })();
+
+    function saveCart() {
+      try {
+        localStorage.setItem('playstation_cart', JSON.stringify(cartState));
+      } catch (e) { }
+    }
 
     var gameDetails = {
       'gow': { id: 'gow', title: 'God of War', price: 59.99, img: 'assets/gow.webp' },
       'detroit': { id: 'detroit', title: 'Detroit Become Human', price: 39.99, img: 'assets/detroit.webp' },
       'wwe': { id: 'wwe', title: 'WWE 2K17', price: 49.99, img: 'assets/wwe.webp' },
       'ratchet': { id: 'ratchet', title: 'Ratchet & Clank', price: 69.99, img: 'assets/ratchet.webp' },
-      'spider': { id: 'spider', title: 'Spider-Man', price: 49.99, img: 'assets/spider.webp' },
+      'spider': { id: 'spider', title: "Marvel's Spider-Man", price: 49.99, img: 'assets/spider.webp' },
       're7': { id: 're7', title: 'Resident Evil 7', price: 19.99, img: 'assets/re7.webp' }
     };
 
     function renderCart() {
       var container = document.getElementById('mobileCartItems');
       var totalEl = document.getElementById('mobileCartTotal');
+      var badge = document.getElementById('mobileCartBadge');
+      if (badge) {
+        badge.textContent = cartState.length;
+      }
       if (!container || !totalEl) return;
 
       if (cartState.length === 0) {
@@ -486,7 +520,7 @@
         total += item.price;
         return '<div class="mobile-cart-item">' +
           '<img src="' + item.img + '" alt="' + item.title + '" loading="lazy">' +
-          '<button class="mobile-cart-item__remove" onclick="removeMobileCartItem(event, ' + idx + ');" title="Remove">&times;</button>' +
+          '<button class="mobile-cart-item__remove" aria-label="Remove ' + item.title + '" onclick="removeMobileCartItem(event, ' + idx + ');" title="Remove">&times;</button>' +
           '<div class="mobile-cart-item__price">$' + item.price.toFixed(2) + '</div>' +
           '</div>';
       }).join('');
@@ -498,6 +532,7 @@
       if (e && e.stopPropagation) e.stopPropagation();
       AudioFX.remove();
       cartState.splice(idx, 1);
+      saveCart();
       renderCart();
     };
 
@@ -550,22 +585,34 @@
       }
     });
 
-    // Add To Cart Buttons
+    // Add To Cart Buttons with debounce & badge pulse
+    var buyBtnTimers = new WeakMap();
     document.querySelectorAll('.buy-btn').forEach(function (btn) {
+      var defaultText = btn.textContent;
       btn.addEventListener('click', function (e) {
         e.stopPropagation();
         AudioFX.addToCart();
         var gameId = btn.getAttribute('data-id');
         var game = gameDetails[gameId] || gameDetails['gow'];
         cartState.push(game);
+        saveCart();
         renderCart();
         toggleCart(true);
 
-        var original = btn.textContent;
+        var badge = document.getElementById('mobileCartBadge');
+        if (badge) {
+          badge.classList.remove('pulse');
+          void badge.offsetWidth;
+          badge.classList.add('pulse');
+        }
+
         btn.textContent = 'Added!';
-        setTimeout(function () {
-          btn.textContent = original;
+        if (buyBtnTimers.has(btn)) clearTimeout(buyBtnTimers.get(btn));
+        var timer = setTimeout(function () {
+          btn.textContent = defaultText;
+          buyBtnTimers.delete(btn);
         }, 1400);
+        buyBtnTimers.set(btn, timer);
       });
     });
 
@@ -594,31 +641,98 @@
       });
     }
 
-    // Video Previews on Tap / Touch
+    // Video Previews on Tap / Touch (toggle is-playing)
     document.querySelectorAll('.mobile-game-card').forEach(function (card) {
       var video = card.querySelector('.mobile-game-card__video');
-      if (!video) return;
+      var cover = card.querySelector('.mobile-game-card__cover');
+      if (!video || !cover) return;
+
+      cover.addEventListener('click', function (e) {
+        e.stopPropagation();
+        if (video.preload === 'none') video.preload = 'auto';
+
+        if (video.paused) {
+          // Pause all others
+          document.querySelectorAll('.mobile-game-card').forEach(function (other) {
+            if (other !== card) {
+              other.classList.remove('is-playing');
+              var otherVid = other.querySelector('.mobile-game-card__video');
+              if (otherVid) otherVid.pause();
+            }
+          });
+          card.classList.add('is-playing');
+          video.play().catch(function () { });
+        } else {
+          card.classList.remove('is-playing');
+          video.pause();
+        }
+      });
+
       card.addEventListener('mouseenter', function () {
         if (video.preload === 'none') video.preload = 'auto';
         video.currentTime = 0;
-        video.play().catch(function () {});
+        video.play().catch(function () { });
       });
+
       card.addEventListener('mouseleave', function () {
+        card.classList.remove('is-playing');
         video.pause();
         video.currentTime = 0;
       });
-      card.addEventListener('touchstart', function () {
-        if (video.preload === 'none') video.preload = 'auto';
-        if (video.paused) {
-          video.play().catch(function () {});
-        } else {
-          video.pause();
+    });
+
+    // Pause mobile videos during page scroll
+    var scrollTimeout = null;
+    window.addEventListener('scroll', function () {
+      if (!scrollTimeout) {
+        scrollTimeout = setTimeout(function () {
+          document.querySelectorAll('.mobile-game-card.is-playing').forEach(function (card) {
+            var rect = card.getBoundingClientRect();
+            if (rect.bottom < 0 || rect.top > window.innerHeight) {
+              card.classList.remove('is-playing');
+              var v = card.querySelector('.mobile-game-card__video');
+              if (v) v.pause();
+            }
+          });
+          scrollTimeout = null;
+        }, 150);
+      }
+    }, { passive: true });
+
+    // Toast Notification System for Mobile
+    var mobileToastTimer = null;
+    function showMobileToast(message) {
+      var toast = document.getElementById('mobileToast');
+      if (!toast) return;
+      if (mobileToastTimer) clearTimeout(mobileToastTimer);
+      toast.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00d287" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span>' + message + '</span>';
+      toast.classList.add('show');
+      mobileToastTimer = setTimeout(function () {
+        toast.classList.remove('show');
+      }, 3000);
+    }
+
+    // Mobile Newsletter Submission Handler
+    window.handleMobileNewsletter = function () {
+      AudioFX.click();
+      var input = document.getElementById('mobileNewsletterInput');
+      if (input) input.value = '';
+      showMobileToast('Thank you for subscribing to PlayStation updates!');
+    };
+
+    // Footer links click handling & sound effects
+    document.querySelectorAll('.mobile-footer-col a, .mobile-footer__links a').forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        if (link.getAttribute('href') === '#') {
+          e.preventDefault();
         }
-      }, { passive: true });
+        AudioFX.click();
+      });
     });
 
     renderCart();
   </script>
+  <div class="mobile-toast" id="mobileToast" role="status" aria-live="polite"></div>
 </body>
 
 </html>

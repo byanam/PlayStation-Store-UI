@@ -16,8 +16,8 @@
 }
 
 :root {
-  --code-font: "Code", sans-serif;
-  --albert: "Albert Sans", Arial, sans-serif;
+  --code-font: "Code", "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --albert: "Albert Sans", -apple-system, BlinkMacSystemFont, Arial, sans-serif;
   --blue: #0130ec;
 }
 
@@ -112,6 +112,9 @@ p {
   z-index: 1;
   cursor: pointer;
   user-select: none;
+  border: none;
+  background: none;
+  padding: 0;
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
 }
 
@@ -125,37 +128,91 @@ p {
   transform: translateY(-50%) scale(0.96);
 }
 
-.navbar__cart {
+.navbar__logo:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 4px;
+  border-radius: 8px;
+}
+
+.navbar__cart-btn {
   position: absolute;
-  width: 80px;
-  height: 24px;
-  right: 36px;
+  right: 28px;
   top: 50%;
   transform: translateY(-50%);
-  object-fit: contain;
-  opacity: 0.92;
-  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.08));
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  border: 1px solid transparent;
+  padding: 6px 12px;
+  border-radius: 20px;
+  cursor: pointer;
   z-index: 1;
   user-select: none;
-  cursor: pointer;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease, border-color 0.3s ease, filter 0.3s ease;
 }
 
-.navbar__cart:hover {
-  opacity: 1;
-  transform: translateY(-50%) scale(1.08);
-  filter: drop-shadow(0 0 14px rgba(1, 48, 236, 0.55)) drop-shadow(0 3px 8px rgba(0, 0, 0, 0.12));
+.navbar__cart-btn:hover {
+  transform: translateY(-50%) scale(1.05);
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
-.navbar__cart:active {
+.navbar__cart-btn:active {
   transform: translateY(-50%) scale(0.96);
 }
 
-/* When Cart is Open: Navbar text glides down into the cart window */
-body.cart-open .navbar__cart {
-  opacity: 0;
-  transform: translateY(22px) scale(0.85);
+.navbar__cart-btn:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+
+.navbar__cart {
+  width: 80px;
+  height: 24px;
+  object-fit: contain;
+  opacity: 0.92;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.08));
+  user-select: none;
   pointer-events: none;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+}
+
+.navbar__cart-btn:hover .navbar__cart {
+  opacity: 1;
+  filter: drop-shadow(0 0 14px rgba(1, 48, 236, 0.55)) drop-shadow(0 3px 8px rgba(0, 0, 0, 0.12));
+}
+
+.navbar__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 10px;
+  background: var(--blue);
+  color: #fff;
+  font-family: var(--code-font);
+  font-size: 11px;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(1, 48, 236, 0.55);
+  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.navbar__badge.pulse {
+  transform: scale(1.35);
+}
+
+/* When Cart is Open: Cart button stays illuminated as an active toggle */
+body.cart-open .navbar__cart-btn {
+  background: rgba(1, 48, 236, 0.12);
+  border-color: rgba(1, 48, 236, 0.35);
+}
+
+body.cart-open .navbar__cart {
+  opacity: 1;
+  filter: drop-shadow(0 0 12px rgba(1, 48, 236, 0.55));
 }
 
 /* ---------------------------------------------------------------------
@@ -1413,4 +1470,36 @@ body.cart-open .navbar__cart {
 
 .footer-legal a:hover {
   color: #fff;
+}
+
+/* Glassmorphic Toast Notification */
+.toast {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%) translateY(80px);
+  background: rgba(10, 15, 35, 0.88);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 30px;
+  padding: 12px 24px;
+  color: #fff;
+  font-family: var(--albert);
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+  z-index: 2000;
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
 }

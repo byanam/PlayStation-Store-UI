@@ -5,6 +5,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PlayStation Store</title>
+  <meta name="description" content="Explore next-generation gaming on the PlayStation Store concept UI featuring live 3D showcase carousels, responsive cart state, and procedural Web Audio.">
+  <meta property="og:title" content="PlayStation Store — Concept UI">
+  <meta property="og:description" content="Connect. Play. Repeat. Discover top PlayStation hits, exclusives, and interactive next-gen showcases.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/gow.webp">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <!-- Preconnect & Preload Key Hero Assets -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,8 +32,13 @@
 <body>
   <header class="navbar" id="navbar">
     <div class="navbar__inner">
-      <img class="navbar__logo" id="navbarLogoBtn" alt="PlayStation" src="assets/navbar_logo.svg?v=202608231804">
-      <img class="navbar__cart" alt="CART" src="assets/cart_text.svg?v=202608231834" id="navbarCartBtn">
+      <button class="navbar__logo" id="navbarLogoBtn" aria-label="PlayStation Home" type="button">
+        <img alt="PlayStation" src="assets/navbar_logo.svg?v=202608231804">
+      </button>
+      <button class="navbar__cart-btn" id="navbarCartBtn" aria-label="Shopping Cart" type="button">
+        <img class="navbar__cart" alt="CART" src="assets/cart_text.svg?v=202608231834">
+        <span class="navbar__badge" id="cartBadge">0</span>
+      </button>
     </div>
   </header>
 
@@ -127,11 +138,11 @@
 
         </div>
       </div>
-      <div class="hero__title">
-        <p class="hero-word hero-word--play">play</p>
-        <p class="hero-word hero-word--connect">connect</p>
-        <p class="hero-word hero-word--repeat">repeat</p>
-        <div class="hero__action">
+      <h1 class="hero__title">
+        <span class="hero-word hero-word--play">play</span>
+        <span class="hero-word hero-word--connect">connect</span>
+        <span class="hero-word hero-word--repeat">repeat</span>
+        <span class="hero__action">
           <a href="#store" class="hero__cta" id="heroCtaBtn">
             <span>VISIT STORE</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
@@ -140,8 +151,8 @@
               <polyline points="7 7 17 7 17 17"></polyline>
             </svg>
           </a>
-        </div>
-      </div>
+        </span>
+      </h1>
     </section>
 
     <section class="promo">
@@ -213,7 +224,7 @@
             <img src="assets/wwe.webp" alt="WWE 2K17" loading="lazy" decoding="async">
             <video class="art__video" src="assets/videos/wwe.mp4" muted loop playsinline preload="none"></video>
           </div>
-          <p class="title title--wwe">WWE 2K1</p>
+          <p class="title title--wwe">WWE 2K17</p>
           <p class="meta meta--wwe"><span class="meta__cat">Sports &middot; Wrestling</span><br>
             <span class="meta__desc">Step into the ring and become a WWE Superstar.</span>
           </p>
@@ -241,7 +252,7 @@
             <img src="assets/spider.webp" alt="Spider-Man" loading="lazy" decoding="async">
             <video class="art__video" src="assets/videos/spider.mp4" muted loop playsinline preload="none"></video>
           </div>
-          <p class="title title--spider">Spiderman</p>
+          <p class="title title--spider">Marvel's Spider-Man</p>
           <p class="meta meta--spider"><span class="meta__cat">Action &middot; Adventure</span><br>
             <span class="meta__desc">Swing through New York and become Spider-Man.</span>
           </p>
@@ -436,11 +447,11 @@
 
         <!-- Newsletter Bar -->
         <div class="page-footer__newsletter">
-          <div class="newsletter__glass">
-            <input type="email" class="newsletter__input"
-              placeholder="Enter your email for exclusive game drops & updates" aria-label="Email address">
-            <button class="newsletter__btn" type="button">JOIN NOW</button>
-          </div>
+          <form class="newsletter__glass" id="newsletterForm" onsubmit="event.preventDefault(); handleNewsletterSubmit();">
+            <input type="email" class="newsletter__input" id="newsletterInput"
+              placeholder="Enter your email for exclusive game drops & updates" aria-label="Email address" required>
+            <button class="newsletter__btn" type="submit">JOIN NOW</button>
+          </form>
         </div>
 
         <!-- Navigation Columns -->
@@ -733,6 +744,7 @@
       }
 
       return {
+        getContext: getContext,
         hover: playHover,
         click: playClick,
         addToCart: playAddToCart,
@@ -742,18 +754,31 @@
       };
     })();
 
-    // Ensure audio context is immediately unlocked on first gesture
-    ['click', 'touchstart', 'pointerdown'].forEach(function (evt) {
+    // Ensure audio context is immediately unlocked silently on first gesture
+    ['click', 'touchstart', 'pointerdown', 'keydown'].forEach(function (evt) {
       window.addEventListener(evt, function unlockAudio() {
-        if (AudioFX && AudioFX.hover) {
-          AudioFX.hover();
+        var c = AudioFX.getContext ? AudioFX.getContext() : null;
+        if (c && c.state === 'suspended') {
+          c.resume();
         }
         window.removeEventListener(evt, unlockAudio);
       }, { once: true, passive: true });
     });
 
-    // Slow, luxurious smooth scroll animation to Store section
+    // Smooth scroll animation to Store section with user interruption cancellation
+    var scrollAnimId = null;
+    function cancelSmoothScroll() {
+      if (scrollAnimId) {
+        cancelAnimationFrame(scrollAnimId);
+        scrollAnimId = null;
+      }
+    }
+    ['wheel', 'touchmove', 'pointerdown'].forEach(function (evt) {
+      window.addEventListener(evt, cancelSmoothScroll, { passive: true });
+    });
+
     function smoothScrollTo(targetY, duration) {
+      cancelSmoothScroll();
       var startY = window.pageYOffset;
       var diff = targetY - startY;
       var startTime = null;
@@ -770,11 +795,13 @@
         window.scrollTo(0, startY + diff * ease);
 
         if (timeElapsed < duration) {
-          requestAnimationFrame(step);
+          scrollAnimId = requestAnimationFrame(step);
+        } else {
+          scrollAnimId = null;
         }
       }
 
-      requestAnimationFrame(step);
+      scrollAnimId = requestAnimationFrame(step);
     }
 
     document.querySelectorAll('a[href="#store"]').forEach(function (link) {
@@ -786,46 +813,61 @@
           var storeEl = document.getElementById('store');
           if (storeEl) {
             var targetY = window.pageYOffset + storeEl.getBoundingClientRect().top - 70;
-            smoothScrollTo(Math.max(0, targetY), 1600);
+            smoothScrollTo(Math.max(0, targetY), 1000);
             return;
           }
         }
         var s = window.innerWidth / DESIGN_W;
         var targetY = (1730 * s) - (60 * s);
-        smoothScrollTo(Math.max(0, targetY), 2400);
+        smoothScrollTo(Math.max(0, targetY), 1200);
       });
     });
 
-    var navLogo = document.getElementById('navbarLogoBtn') || document.querySelector('.navbar__logo');
+    var navLogo = document.getElementById('navbarLogoBtn');
     if (navLogo) {
       navLogo.addEventListener('mouseenter', AudioFX.hover);
       navLogo.addEventListener('click', function (e) {
         e.stopPropagation();
         AudioFX.glide();
         toggleCart(false);
-        smoothScrollTo(0, 2400);
+        smoothScrollTo(0, 1100);
       });
-    }
-
-    var navbarEl = document.getElementById('navbar');
-    if (navbarEl) {
-      navbarEl.addEventListener('click', function (e) {
-        if (!e.target.closest('#navbarCartBtn') && !e.target.closest('#cartPanel')) {
-          toggleCart(false);
-          smoothScrollTo(0, 2400);
+      navLogo.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          navLogo.click();
         }
       });
     }
 
-    // Shopping Cart State & Interactivity
-    var cartState = [
+    // Shopping Cart State with LocalStorage Persistence & Live Item Count
+    var defaultCart = [
       { id: 'gow', title: 'God of War', price: 59.99, img: 'assets/gow.webp' },
       { id: 'detroit', title: 'Detroit Become Human', price: 39.99, img: 'assets/detroit.webp' }
     ];
 
+    var cartState = (function () {
+      try {
+        var saved = localStorage.getItem('playstation_cart');
+        return saved ? JSON.parse(saved) : defaultCart;
+      } catch (e) {
+        return defaultCart;
+      }
+    })();
+
+    function saveCart() {
+      try {
+        localStorage.setItem('playstation_cart', JSON.stringify(cartState));
+      } catch (e) { }
+    }
+
     function renderCart() {
       var container = document.getElementById('cartItems');
       var totalEl = document.getElementById('cartTotal');
+      var badge = document.getElementById('cartBadge');
+      if (badge) {
+        badge.textContent = cartState.length;
+      }
       if (!container || !totalEl) return;
 
       if (cartState.length === 0) {
@@ -839,7 +881,7 @@
         total += item.price;
         return '<div class="cart-item">' +
           '<img src="' + item.img + '" alt="' + item.title + '" loading="lazy" decoding="async">' +
-          '<button class="cart-item__remove" onmouseenter="AudioFX.hover();" onclick="event.stopPropagation(); removeCartItem(event, ' + idx + ');" title="Remove item">&times;</button>' +
+          '<button class="cart-item__remove" aria-label="Remove ' + item.title + '" onmouseenter="AudioFX.hover();" onclick="event.stopPropagation(); removeCartItem(event, ' + idx + ');" title="Remove item">&times;</button>' +
           '<div class="cart-item__price">$' + item.price.toFixed(2) + '</div>' +
           '</div>';
       }).join('');
@@ -851,6 +893,7 @@
       if (e && e.stopPropagation) e.stopPropagation();
       AudioFX.remove();
       cartState.splice(idx, 1);
+      saveCart();
       renderCart();
     };
 
@@ -876,6 +919,12 @@
       cartBtn.addEventListener('click', function (e) {
         e.stopPropagation();
         toggleCart();
+      });
+      cartBtn.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          cartBtn.click();
+        }
       });
     }
 
@@ -935,46 +984,76 @@
       });
     });
 
-    // Interactive add to cart functionality
+    // Interactive add to cart functionality with debounce protection
     var gameDetails = [
       { id: 'gow', title: 'God of War', price: 59.99, img: 'assets/gow.webp' },
       { id: 'detroit', title: 'Detroit Become Human', price: 39.99, img: 'assets/detroit.webp' },
       { id: 'wwe', title: 'WWE 2K17', price: 49.99, img: 'assets/wwe.webp' },
       { id: 'ratchet', title: 'Ratchet & Clank', price: 69.99, img: 'assets/ratchet.webp' },
-      { id: 'spider', title: 'Marvel Spider-Man', price: 49.99, img: 'assets/spider.webp' },
+      { id: 'spider', title: "Marvel's Spider-Man", price: 49.99, img: 'assets/spider.webp' },
       { id: 're7', title: 'Resident Evil 7', price: 19.99, img: 'assets/re7.webp' }
     ];
 
+    var buyTimers = new WeakMap();
     document.querySelectorAll('.buy').forEach(function (btn, index) {
+      var defaultText = btn.childNodes[0].textContent;
       btn.addEventListener('mouseenter', AudioFX.hover);
       btn.addEventListener('click', function (e) {
         e.stopPropagation();
         AudioFX.addToCart();
         var game = gameDetails[index % gameDetails.length];
         cartState.push(game);
+        saveCart();
         renderCart();
         toggleCart(true);
 
-        var original = btn.childNodes[0].textContent;
+        var badge = document.getElementById('cartBadge');
+        if (badge) {
+          badge.classList.remove('pulse');
+          void badge.offsetWidth;
+          badge.classList.add('pulse');
+        }
+
         btn.childNodes[0].textContent = 'Added! ';
-        setTimeout(function () {
-          btn.childNodes[0].textContent = original;
-        }, 1500);
+        if (buyTimers.has(btn)) clearTimeout(buyTimers.get(btn));
+        var timer = setTimeout(function () {
+          btn.childNodes[0].textContent = defaultText;
+          buyTimers.delete(btn);
+        }, 1400);
+        buyTimers.set(btn, timer);
       });
     });
 
-    // Newsletter & Footer Link Sound Effects
-    var newsBtn = document.querySelector('.newsletter__btn');
-    if (newsBtn) {
-      newsBtn.addEventListener('mouseenter', AudioFX.hover);
-      newsBtn.addEventListener('click', function () {
-        AudioFX.click();
-      });
+    // Toast Notification System
+    var toastTimer = null;
+    function showToast(message) {
+      var toast = document.getElementById('toast');
+      if (!toast) return;
+      if (toastTimer) clearTimeout(toastTimer);
+      toast.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00d287" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span>' + message + '</span>';
+      toast.classList.add('show');
+      toastTimer = setTimeout(function () {
+        toast.classList.remove('show');
+      }, 3000);
     }
 
+    // Newsletter Submission Handler
+    window.handleNewsletterSubmit = function () {
+      AudioFX.click();
+      var input = document.getElementById('newsletterInput');
+      if (input) input.value = '';
+      showToast('Thank you for subscribing to PlayStation updates!');
+    };
+
+    // Footer links click handling & sound effects
     document.querySelectorAll('.footer-col a, .footer-legal a').forEach(function (link) {
       link.addEventListener('mouseenter', AudioFX.hover);
-      link.addEventListener('click', AudioFX.click);
+      link.addEventListener('click', function (e) {
+        if (link.getAttribute('href') === '#') {
+          e.preventDefault();
+        }
+        AudioFX.click();
+      });
     });
 
     // High-performance RAF scroll-reactive animations
@@ -1038,6 +1117,7 @@
     requestScrollUpdate();
 
   </script>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 </body>
 
 </html>
