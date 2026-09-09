@@ -175,21 +175,79 @@ img {
   max-height: 340px;
 }
 
-.mobile-cart-empty {
-  grid-column: 1 / -1;
+.mobile-cart-drawer__items.is-empty,
+.mobile-cart-drawer__items:has(.mobile-cart-empty) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  min-height: 200px;
+  padding: 0;
   width: 100%;
+}
+
+.mobile-cart-empty {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  color: #ffffff;
-  font-family: var(--code-font);
-  font-weight: 700;
-  font-size: 22px;
-  line-height: 1.35;
-  letter-spacing: 0.5px;
-  margin: 40px auto;
-  text-shadow:
-    0 2px 10px rgba(0, 0, 0, 0.4),
-    0 0 20px rgba(1, 48, 236, 0.35);
+  padding: 20px 8px;
   user-select: none;
+}
+
+.mobile-cart-empty__svg {
+  width: 90%;
+  max-width: 240px;
+  height: 22px;
+  object-fit: contain;
+  opacity: 0.92;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.08));
+  user-select: none;
+  cursor: default;
+  transform: translateY(-4px);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+}
+
+.mobile-cart-drawer.is-open .mobile-cart-empty__svg {
+  transform: translateY(0);
+}
+
+.mobile-cart-empty__svg:hover,
+.mobile-cart-empty__svg:active {
+  opacity: 1;
+  transform: scale(1.04);
+  filter: drop-shadow(0 0 14px rgba(1, 48, 236, 0.55)) drop-shadow(0 3px 8px rgba(0, 0, 0, 0.12));
+}
+
+/* Graceful text fallback if SVG is not rendered */
+.mobile-cart-empty:not(:has(.mobile-cart-empty__svg)) {
+  font-family: "Code", var(--code-font);
+  font-weight: 700;
+  font-size: 19px;
+  letter-spacing: 1.5px;
+  line-height: 1.35;
+  text-transform: uppercase;
+  white-space: nowrap;
+  background: linear-gradient(180deg,
+      #FFFFFF 0%,
+      #ECECEF 45%,
+      #DADAE0 75%,
+      #C6C6CE 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-stroke: 0.3px rgba(255, 255, 255, 0.65);
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.08));
+  transform: translateY(-4px);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+}
+
+.mobile-cart-drawer.is-open .mobile-cart-empty:not(:has(.mobile-cart-empty__svg)) {
+  transform: translateY(0);
 }
 
 .mobile-cart-item {

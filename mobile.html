@@ -501,10 +501,12 @@
       if (!container || !totalEl) return;
 
       if (cartState.length === 0) {
-        container.innerHTML = '<p class="mobile-cart-empty">YOUR CART IS EMPTY</p>';
+        container.classList.add('is-empty');
+        container.innerHTML = '<div class="mobile-cart-empty"><img class="mobile-cart-empty__svg" alt="YOUR CART IS EMPTY" src="assets/cart_empty_text.svg?v=202609091930"></div>';
         totalEl.textContent = '$0.00';
         return;
       }
+      container.classList.remove('is-empty');
 
       var total = 0;
       container.innerHTML = cartState.map(function (item, idx) {

@@ -285,20 +285,84 @@ body.cart-open .navbar__cart {
   display: none;
 }
 
+.cart-panel__items.is-empty,
+.cart-panel__items:has(.cart-empty) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  padding: 0;
+  min-height: 280px;
+  width: 100%;
+}
+
 .cart-empty {
   width: 100%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  color: #ffffff;
-  font-family: var(--code-font);
-  font-weight: 700;
-  font-size: 26px;
-  line-height: 1.35;
-  letter-spacing: 0.5px;
-  margin-top: 80px;
-  text-shadow:
-    0 2px 10px rgba(0, 0, 0, 0.35),
-    0 0 20px rgba(1, 48, 236, 0.3);
+  padding: 24px 10px;
   user-select: none;
+}
+
+.cart-empty__svg {
+  width: 100%;
+  max-width: 258px;
+  height: 24px;
+  object-fit: contain;
+  opacity: 0.92;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.08));
+  user-select: none;
+  cursor: default;
+  transform: translateY(-6px);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+}
+
+.cart-panel.is-open .cart-empty__svg {
+  transform: translateY(0);
+}
+
+.cart-empty__svg:hover {
+  opacity: 1;
+  transform: scale(1.06);
+  filter: drop-shadow(0 0 16px rgba(1, 48, 236, 0.55)) drop-shadow(0 3px 8px rgba(0, 0, 0, 0.12));
+}
+
+/* Graceful text fallback if SVG is not rendered */
+.cart-empty:not(:has(.cart-empty__svg)) {
+  font-family: "Code", var(--code-font);
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: 1.5px;
+  line-height: 1.35;
+  text-transform: uppercase;
+  white-space: nowrap;
+  background: linear-gradient(180deg,
+      #FFFFFF 0%,
+      #ECECEF 45%,
+      #DADAE0 75%,
+      #C6C6CE 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-stroke: 0.35px rgba(255, 255, 255, 0.65);
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.08));
+  transform: translateY(-6px);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+}
+
+.cart-panel.is-open .cart-empty:not(:has(.cart-empty__svg)) {
+  transform: translateY(0);
+}
+
+.cart-empty:not(:has(.cart-empty__svg)):hover {
+  opacity: 1;
+  transform: scale(1.06);
+  filter: drop-shadow(0 0 16px rgba(1, 48, 236, 0.55)) drop-shadow(0 3px 8px rgba(0, 0, 0, 0.12));
 }
 
 /* Individual Cart Card (gow, detroit, etc.) */
