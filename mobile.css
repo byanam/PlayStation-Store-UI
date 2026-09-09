@@ -158,11 +158,31 @@ img {
   background: none;
   border: none;
   font-family: var(--code-font);
+  font-weight: 700;
   font-size: 26px;
   line-height: 1;
-  color: #666;
+  background: linear-gradient(180deg,
+      rgba(209, 209, 209, 0.75) 0%,
+      rgba(199, 199, 199, 0.65) 58.17%,
+      rgba(206, 206, 206, 0.55) 78.37%,
+      rgba(196, 196, 196, 0.5) 88.46%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  mix-blend-mode: luminosity;
+  opacity: 0.75;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.08));
   cursor: pointer;
   padding: 4px;
+  transition: opacity 0.2s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mobile-cart-drawer__close:hover,
+.mobile-cart-drawer__close:active {
+  opacity: 1;
+  transform: scale(1.15) rotate(90deg);
+  filter: drop-shadow(0 0 14px rgba(1, 48, 236, 0.55)) drop-shadow(0 3px 8px rgba(0, 0, 0, 0.12));
 }
 
 .mobile-cart-drawer__items {
