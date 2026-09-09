@@ -32,13 +32,8 @@
 <body>
   <header class="navbar" id="navbar">
     <div class="navbar__inner">
-      <button class="navbar__logo" id="navbarLogoBtn" aria-label="PlayStation Home" type="button">
-        <img alt="PlayStation" src="assets/navbar_logo.svg?v=202608231804">
-      </button>
-      <button class="navbar__cart-btn" id="navbarCartBtn" aria-label="Shopping Cart" type="button">
-        <img class="navbar__cart" alt="CART" src="assets/cart_text.svg?v=202608231834">
-        <span class="navbar__badge" id="cartBadge">0</span>
-      </button>
+      <img class="navbar__logo" id="navbarLogoBtn" alt="PlayStation" src="assets/navbar_logo.svg?v=202608231804">
+      <img class="navbar__cart" alt="CART" src="assets/cart_text.svg?v=202608231834" id="navbarCartBtn">
     </div>
   </header>
 
@@ -864,10 +859,6 @@
     function renderCart() {
       var container = document.getElementById('cartItems');
       var totalEl = document.getElementById('cartTotal');
-      var badge = document.getElementById('cartBadge');
-      if (badge) {
-        badge.textContent = cartState.length;
-      }
       if (!container || !totalEl) return;
 
       if (cartState.length === 0) {
@@ -1006,13 +997,6 @@
         saveCart();
         renderCart();
         toggleCart(true);
-
-        var badge = document.getElementById('cartBadge');
-        if (badge) {
-          badge.classList.remove('pulse');
-          void badge.offsetWidth;
-          badge.classList.add('pulse');
-        }
 
         btn.childNodes[0].textContent = 'Added! ';
         if (buyTimers.has(btn)) clearTimeout(buyTimers.get(btn));

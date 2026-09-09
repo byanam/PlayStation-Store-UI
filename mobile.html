@@ -31,13 +31,8 @@
 
   <!-- Floating Mobile Glassmorphic Navbar -->
   <header class="mobile-navbar" id="mobileNavbar">
-    <button class="mobile-navbar__logo" id="mobileNavLogo" aria-label="PlayStation Home" type="button">
-      <img alt="PlayStation" src="assets/navbar_logo.svg?v=202608231804">
-    </button>
-    <button class="mobile-navbar__cart-btn" id="mobileCartBtn" aria-label="Shopping Cart" type="button">
-      <img class="mobile-navbar__cart" alt="CART" src="assets/cart_text.svg?v=202608231834">
-      <span class="mobile-navbar__badge" id="mobileCartBadge">0</span>
-    </button>
+    <img class="mobile-navbar__logo" id="mobileNavLogo" alt="PlayStation" src="assets/navbar_logo.svg?v=202608231804">
+    <img class="mobile-navbar__cart" id="mobileCartBtn" alt="CART" src="assets/cart_text.svg?v=202608231834">
   </header>
 
   <!-- Mobile Cart Drawer -->
@@ -503,10 +498,6 @@
     function renderCart() {
       var container = document.getElementById('mobileCartItems');
       var totalEl = document.getElementById('mobileCartTotal');
-      var badge = document.getElementById('mobileCartBadge');
-      if (badge) {
-        badge.textContent = cartState.length;
-      }
       if (!container || !totalEl) return;
 
       if (cartState.length === 0) {
@@ -598,13 +589,6 @@
         saveCart();
         renderCart();
         toggleCart(true);
-
-        var badge = document.getElementById('mobileCartBadge');
-        if (badge) {
-          badge.classList.remove('pulse');
-          void badge.offsetWidth;
-          badge.classList.add('pulse');
-        }
 
         btn.textContent = 'Added!';
         if (buyBtnTimers.has(btn)) clearTimeout(buyBtnTimers.get(btn));
