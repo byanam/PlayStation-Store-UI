@@ -674,8 +674,8 @@ a {
 .store__heading {
   font-family: var(--code-font);
   font-weight: 700;
-  font-size: clamp(94px, 27vw, 145px);
-  line-height: 1;
+  font-size: clamp(118px, 34vw, 180px);
+  line-height: 0.95;
   text-align: center;
   text-transform: uppercase;
   margin: 0;
