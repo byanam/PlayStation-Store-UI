@@ -782,10 +782,10 @@
         if (!startTime) startTime = currentTime;
         var timeElapsed = currentTime - startTime;
         var progress = Math.min(timeElapsed / duration, 1);
-        // Easing: easeInOutCubic for cinematic deceleration
+        // Easing: easeInOutQuart for ultra-smooth, slow, cinematic glide & gentle deceleration
         var ease = progress < 0.5
-          ? 4 * progress * progress * progress
-          : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+          ? 8 * progress * progress * progress * progress
+          : 1 - Math.pow(-2 * progress + 2, 4) / 2;
 
         window.scrollTo(0, startY + diff * ease);
 
@@ -808,13 +808,13 @@
           var storeEl = document.getElementById('store');
           if (storeEl) {
             var targetY = window.pageYOffset + storeEl.getBoundingClientRect().top - 70;
-            smoothScrollTo(Math.max(0, targetY), 1000);
+            smoothScrollTo(Math.max(0, targetY), 1600);
             return;
           }
         }
         var s = window.innerWidth / DESIGN_W;
         var targetY = (1730 * s) - (60 * s);
-        smoothScrollTo(Math.max(0, targetY), 1200);
+        smoothScrollTo(Math.max(0, targetY), 2000);
       });
     });
 
@@ -825,7 +825,7 @@
         e.stopPropagation();
         AudioFX.glide();
         toggleCart(false);
-        smoothScrollTo(0, 1100);
+        smoothScrollTo(0, 1800);
       });
       navLogo.addEventListener('keydown', function (e) {
         if (e.key === 'Enter' || e.key === ' ') {

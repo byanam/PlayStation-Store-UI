@@ -459,16 +459,19 @@ body.cart-open .navbar__cart {
   top: 0;
   width: 100%;
   height: 100%;
-  animation: heroScroll 55s linear infinite;
+  animation: heroScroll 90s linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
 }
 
 @keyframes heroScroll {
   from {
-    transform: translate(0, 0);
+    transform: translate3d(0, 0, 0);
   }
 
   to {
-    transform: translate(-1530px, 594px);
+    transform: translate3d(-1530px, 594px, 0);
   }
 }
 
