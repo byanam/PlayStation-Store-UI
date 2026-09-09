@@ -313,7 +313,7 @@ body.cart-open .navbar__cart {
   max-width: 258px;
   height: 24px;
   object-fit: contain;
-  opacity: 0.92;
+  opacity: 0.58;
   filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.08));
   user-select: none;
   cursor: default;
@@ -326,7 +326,7 @@ body.cart-open .navbar__cart {
 }
 
 .cart-empty__svg:hover {
-  opacity: 1;
+  opacity: 0.95;
   transform: scale(1.06);
   filter: drop-shadow(0 0 16px rgba(1, 48, 236, 0.55)) drop-shadow(0 3px 8px rgba(0, 0, 0, 0.12));
 }
@@ -340,6 +340,7 @@ body.cart-open .navbar__cart {
   line-height: 1.35;
   text-transform: uppercase;
   white-space: nowrap;
+  opacity: 0.58;
   background: linear-gradient(180deg,
       #FFFFFF 0%,
       #ECECEF 45%,
@@ -360,7 +361,7 @@ body.cart-open .navbar__cart {
 }
 
 .cart-empty:not(:has(.cart-empty__svg)):hover {
-  opacity: 1;
+  opacity: 0.95;
   transform: scale(1.06);
   filter: drop-shadow(0 0 16px rgba(1, 48, 236, 0.55)) drop-shadow(0 3px 8px rgba(0, 0, 0, 0.12));
 }
