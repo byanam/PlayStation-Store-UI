@@ -1,0 +1,32 @@
+<svg preserveAspectRatio="xMidYMid meet" overflow="visible" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <filter id="close_glass_filter" x="-30%" y="-30%" width="160%" height="160%" filterUnits="userSpaceOnUse">
+    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+    <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+    <feOffset dy="1.5"/>
+    <feGaussianBlur stdDeviation="1"/>
+    <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+    <feBlend mode="normal" in2="shape" result="innerShadow"/>
+  </filter>
+
+  <linearGradient id="close_frost_grad" x1="12" y1="0" x2="12" y2="24" gradientUnits="userSpaceOnUse">
+    <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.95"/>
+    <stop offset="45%" stop-color="#ECECEF" stop-opacity="0.82"/>
+    <stop offset="75%" stop-color="#DADAE0" stop-opacity="0.70"/>
+    <stop offset="100%" stop-color="#C6C6CE" stop-opacity="0.65"/>
+  </linearGradient>
+
+  <linearGradient id="close_stroke_grad" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+    <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.9"/>
+    <stop offset="50%" stop-color="#E8E8EC" stop-opacity="0.6"/>
+    <stop offset="100%" stop-color="#D0D0D8" stop-opacity="0.4"/>
+  </linearGradient>
+</defs>
+
+<g filter="url(#close_glass_filter)">
+  <rect x="4.2" y="10.6" width="15.6" height="2.8" rx="1.4" transform="rotate(45 12 12)" fill="url(#close_frost_grad)" stroke="url(#close_stroke_grad)" stroke-width="0.5"/>
+  <rect x="4.2" y="10.6" width="15.6" height="2.8" rx="1.4" transform="rotate(-45 12 12)" fill="url(#close_frost_grad)" stroke="url(#close_stroke_grad)" stroke-width="0.5"/>
+</g>
+</svg>
