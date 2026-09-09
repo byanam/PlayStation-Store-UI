@@ -538,7 +538,7 @@
         var cartPanel = document.getElementById('cartPanel');
         if (cartPanel) {
           var isOpen = cartPanel.classList.contains('is-open');
-          cartPanel.style.transform = isOpen ? 'translateY(0)' : 'translateY(-15px)';
+          cartPanel.style.transform = (isOpen ? 'translateY(0)' : 'translateY(-15px)') + ' translateZ(0)';
           cartPanel.style.top = '76px';
           cartPanel.style.right = '12px';
           cartPanel.style.width = 'calc(100% - 24px)';
@@ -558,7 +558,7 @@
 
       var navbar = document.getElementById('navbar');
       if (navbar) {
-        navbar.style.transform = 'translateX(-50%) scale(' + s + ')';
+        navbar.style.transform = 'translateX(-50%) scale(' + s + ') translateZ(0)';
         navbar.style.top = (21 * s) + 'px';
         navbar.style.width = '1209px';
       }
@@ -572,7 +572,7 @@
         cartPanel.style.maxWidth = 'none';
         cartPanel.style.maxHeight = maxH + 'px';
         cartPanel.style.height = Math.min(689, maxH) + 'px';
-        cartPanel.style.transform = (isOpen ? 'translateY(0)' : 'translateY(-15px)') + ' scale(' + s + ')';
+        cartPanel.style.transform = (isOpen ? 'translateY(0)' : 'translateY(-15px)') + ' scale(' + s + ') translateZ(0)';
         cartPanel.style.top = topPos + 'px';
         cartPanel.style.right = (36 * s) + 'px';
         cartPanel.style.transformOrigin = 'top right';

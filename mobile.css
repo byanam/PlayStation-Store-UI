@@ -3,16 +3,24 @@
    ===================================================================== */
 @font-face {
   font-family: "Code";
-  src: local("Code Light");
+  src: local("Code Light"),
+       local("CODE Light"),
+       url("assets/fonts/code_light.woff") format("woff"),
+       url("assets/fonts/code_light.otf") format("opentype");
   font-weight: 300;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Code";
-  src: local("Code Bold");
+  src: local("Code Bold"),
+       local("CODE Bold"),
+       url("assets/fonts/code_bold.woff") format("woff"),
+       url("assets/fonts/code_bold.otf") format("opentype");
   font-weight: 700;
   font-style: normal;
+  font-display: swap;
 }
 
 :root {
