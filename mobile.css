@@ -674,7 +674,7 @@ a {
 .store__heading {
   font-family: var(--code-font);
   font-weight: 700;
-  font-size: clamp(82px, 24vw, 130px);
+  font-size: clamp(94px, 27vw, 145px);
   line-height: 1;
   text-align: center;
   text-transform: uppercase;
@@ -696,7 +696,7 @@ a {
   color: transparent;
   user-select: none;
   pointer-events: none;
-  margin-bottom: -35px;
+  margin-bottom: -10px;
 }
 
 .games {
