@@ -1,8 +1,16 @@
-# PlayStation Store — Concept UI
+<div align="center">
+  <h1>PlayStation Store — Concept UI</h1>
+  <p>A modern, high-performance animated concept landing page for the PlayStation Store built with vanilla web technologies.</p>
+  <p>
+    <a href="https://byanam.github.io/PlayStation-Store-UI/"><img src="https://img.shields.io/badge/🌐_LIVE_DEMO-PlayStation--Store--UI-003087?style=for-the-badge&logoColor=white" alt="Live Demo"></a>
+    <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5">
+    <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3">
+    <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript">
+    <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-black?style=for-the-badge" alt="MIT License"></a>
+  </p>
+</div>
 
-> 🎮 **Live Demo**: [https://byanam.github.io/PlayStation-Store-UI/](https://byanam.github.io/PlayStation-Store-UI/)
-
-A modern, high-performance animated concept landing page for the PlayStation Store built with vanilla HTML, CSS, and JavaScript.
+> 🎮 **Live Demo**: [https://byanam.github.io/PlayStation-Store-UI/](https://byanam.github.io/PlayStation-Store-UI/) · **Mobile**: [https://byanam.github.io/PlayStation-Store-UI/mobile.html](https://byanam.github.io/PlayStation-Store-UI/mobile.html)
 
 ---
 
