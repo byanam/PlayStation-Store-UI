@@ -2,7 +2,7 @@
   <h1>PlayStation Store — Concept UI</h1>
   <p>A modern, high-performance animated concept landing page for the PlayStation Store built with vanilla web technologies.</p>
   <p>
-    <a href="https://byanam.github.io/PlayStation-Store-UI/"><img src="https://img.shields.io/badge/🌐_LIVE_DEMO-PlayStation--Store--UI-003087?style=for-the-badge&logoColor=white" alt="Live Demo"></a>
+    <a href="https://byanam.github.io/PlayStation-Store-UI/"><img src="https://img.shields.io/badge/LIVE_DEMO-PlayStation--Store--UI-003087?style=for-the-badge&logoColor=white" alt="Live Demo"></a>
     <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5">
     <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3">
     <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript">
@@ -10,11 +10,11 @@
   </p>
 </div>
 
-> 🎮 **Live Demo**: [https://byanam.github.io/PlayStation-Store-UI/](https://byanam.github.io/PlayStation-Store-UI/) · **Mobile**: [https://byanam.github.io/PlayStation-Store-UI/mobile.html](https://byanam.github.io/PlayStation-Store-UI/mobile.html)
+> **Live Demo**: [https://byanam.github.io/PlayStation-Store-UI/](https://byanam.github.io/PlayStation-Store-UI/) · **Mobile**: [https://byanam.github.io/PlayStation-Store-UI/mobile.html](https://byanam.github.io/PlayStation-Store-UI/mobile.html)
 
 ---
 
-## ✨ Features
+## Features
 
 - **Infinite Diagonal Game Carousel**: Smooth, continuous 3D card flow with seamless stacking.
 - **Responsive Dual Experience**: Dedicated desktop 3D presentation and lightweight mobile web app (`mobile.html`).
@@ -25,7 +25,7 @@
 
 ---
 
-## 🚀 Running Locally
+## Running Locally
 
 No build tools or package managers required.
 
@@ -46,7 +46,7 @@ No build tools or package managers required.
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **HTML5** — Semantic markup, link preloading, and accessibility attributes
 - **CSS3** — Custom keyframe animations, glassmorphism filters, CSS variables, and fluid typography
@@ -54,6 +54,6 @@ No build tools or package managers required.
 
 ---
 
-## 📄 License
+## License
 
 MIT License. Free to use and adapt for personal projects or portfolio showcases.
