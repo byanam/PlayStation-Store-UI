@@ -1573,3 +1573,15 @@ body.cart-open .navbar__cart {
   transform: translateX(-50%) translateY(0);
   pointer-events: auto;
 }
+
+/* Accessibility: respect user preferences for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
